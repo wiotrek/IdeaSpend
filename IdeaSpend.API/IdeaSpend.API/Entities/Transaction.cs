@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace IdeaSpend.API.Models
 {
     /// <summary>
-    /// The bill entity with information about product/service
+    /// The transaction entity with information about product/service
     /// </summary>
     [Table("Platnosci")]
-    public class Transaction
+    public class TransactionEntity
     {
         #region Primary Key
 
-        [Key] public int BillId { get; set; }
+        [Key] public int TransactionId { get; set; }
 
         #endregion
 

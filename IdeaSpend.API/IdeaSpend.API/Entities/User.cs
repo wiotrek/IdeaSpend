@@ -8,7 +8,7 @@ namespace IdeaSpend.API.Models
     /// An user entity model represent personal user details
     /// </summary>
     [Table("Uzytkownik")]
-    public class User
+    public class UserEntity
     {
         #region Primary Key
 
