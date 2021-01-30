@@ -8,7 +8,7 @@ namespace IdeaSpend.API
     public interface IAuthRepository
     {
         Task<UserEntity> Login( string username, string password );
-        Task<UserEntity> Register( UserEntity user, string password );
+        Task<bool> Register( UserEntity user, string password );
         
         /// <summary>
         /// Check if user exist

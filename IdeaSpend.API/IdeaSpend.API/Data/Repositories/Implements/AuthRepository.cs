@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdeaSpend.API.Repositories.Implements
+namespace IdeaSpend.API
 {
     public class AuthRepository : IAuthRepository
     {
@@ -50,7 +50,7 @@ namespace IdeaSpend.API.Repositories.Implements
         /// <param name="user">User information to create</param>
         /// <param name="password">The password to login</param>
         /// <returns></returns>
-        public async Task<UserEntity> Register( UserEntity user, string password )
+        public async Task<bool> Register( UserEntity user, string password )
         {
             CreatePasswordHashSalt ( password, out var passwordHash, out var passwordSalt );
 
@@ -58,9 +58,7 @@ namespace IdeaSpend.API.Repositories.Implements
             user.PasswordSalt = passwordSalt;
 
             await _context.Users.AddAsync ( user );
-            await _context.SaveChangesAsync();
-            
-            return user;
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> IsUserExist( string username )
