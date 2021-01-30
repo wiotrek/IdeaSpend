@@ -63,7 +63,6 @@ namespace IdeaSpend.API.Repositories.Implements
             return user;
         }
 
-        
         public async Task<bool> IsUserExist( string username )
         {
             return await _context.Users.AnyAsync ( x => x.Username == username );
