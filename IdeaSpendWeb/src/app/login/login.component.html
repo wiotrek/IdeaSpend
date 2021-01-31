@@ -2,20 +2,36 @@
 <div class="cnt-center">
 
   <!-- Form to realize login request method -->
-  <form>
+  <!-- ngForm is required register by app.module.ts -->
+  <form #loginForm="ngForm" (ngSubmit)="login()">
 
     <!-- Username -->
     <input class="form-control"
            type="text"
-           placeholder="Nazwa użytkownika">
+           placeholder="Nazwa użytkownika"
+           [(ngModel)]="model.username"
+           name="login"
+           required
+    >
 
     <!-- Password -->
     <input class="form-control"
            type="password"
-           placeholder="Hasło">
+           placeholder="Hasło"
+           [(ngModel)]="model.password"
+           name="password"
+           required
+    >
 
-    <!-- Login button -->
-    <button type="submit" class="btn btn-success login-button">Zaloguj</button>
+    <!-- Login button is access if all inputs from loginForm directive
+         contain at least one sign (defaults) -->
+    <button [disabled]="!loginForm.valid"
+            type="submit"
+            class="btn btn-success login-button">
+
+        Zaloguj
+
+    </button>
 
   </form>
 

@@ -67,6 +67,7 @@ namespace IdeaSpend.API
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseRouting();
 
