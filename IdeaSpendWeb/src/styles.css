@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+
+.page {
+  margin: 20px auto;
+  width: 1400px;
+  background-color: #bdc3c7;
+  height: 800px;
+  border: 10px solid
+}
+
+/* =================================================== */
+                /* Position elements */
+/* =================================================== */
+
+.cnt-center {
+  float: left;
+  align-content: center;
+  width: 200px;
+  margin: 200px 580px 200px;
+  padding: 0;
+}
+
+/* =================================================== */
+                  /* Text styles */
+/* =================================================== */
+.title {
+  font-family: Algerian;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-align: center;
+  margin-top: 33px;
+  position: absolute;
+  margin-left: 60px;
+  color: #fff;
+}
+
+/* =================================================== */
+                    /* Buttons */
+/* =================================================== */
+.login-button{
+  margin-left: 50px;
+  margin-top: 3px;
+}
