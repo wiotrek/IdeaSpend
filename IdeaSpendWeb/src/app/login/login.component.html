@@ -1,38 +1,69 @@
-<!-- Login form container -->
-<div class="cnt-center">
+  <div class="col-12">
 
-  <!-- Form to realize login request method -->
-  <!-- ngForm is required register by app.module.ts -->
-  <form #loginForm="ngForm" (ngSubmit)="login()">
 
-    <!-- Username -->
-    <input class="form-control"
-           type="text"
-           placeholder="Nazwa użytkownika"
-           [(ngModel)]="model.username"
-           name="login"
-           required
-    >
+    <!-- Logo section -->
+    <section class="text-center">
+      <div class="logo-image">
+        <img [src]="logoImage"/>
+      </div>
+    </section>
 
-    <!-- Password -->
-    <input class="form-control"
-           type="password"
-           placeholder="Hasło"
-           [(ngModel)]="model.password"
-           name="password"
-           required
-    >
 
-    <!-- Login button is access if all inputs from loginForm directive
-         contain at least one sign (defaults) -->
-    <button [disabled]="!loginForm.valid"
-            type="submit"
-            class="btn btn-success login-button">
+    <!-- Sekcja formularza logowania -->
+    <section class="text-center">
 
-        Zaloguj
+      <!-- Form to realize login request method -->
+      <!-- ngForm is required register by app.module.ts -->
+      <form #loginForm="ngForm" (ngSubmit)="login()">
 
-    </button>
+        <!-- login form container -->
+        <div class="col-2 login-form">
 
-  </form>
+          <!-- Username -->
+          <div class="form-group pt-3">
 
-</div>
+            <input class="form-control"
+                   type="text"
+                   placeholder="Login"
+                   [(ngModel)]="userModel.username"
+                   name="login"
+                   required>
+
+          </div>
+
+          <!-- Password -->
+          <div class="form-group mt-5">
+
+            <input class="form-control"
+                   type="password"
+                   placeholder="Hasło"
+                   [(ngModel)]="userModel.password"
+                   name="password"
+                   required>
+          </div>
+
+          <!-- Login button is access if all inputs from loginForm directive
+                 contain at least one sign (defaults) -->
+          <div class="mt-4">
+
+            <button [disabled]="!loginForm.valid"
+                    type="submit"
+                    class="btn btn-success login-button">
+
+              Zaloguj
+
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </section>
+
+
+    <!-- Redirect to register page section -->
+    <section>
+      <div class="register text-center">
+        <p>Jeśli nie posiadasz konta <span>zarejestruj się</span></p>
+      </div>
+    </section>
+  </div>

@@ -9,7 +9,10 @@ import {AuthService} from '../_services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  model: any = {};
+  logoImage = '../assets/logo/Logo.png';
+
+  // User model arrived from api request
+  userModel: any = {};
 
   constructor(public authService: AuthService) { }
 
@@ -20,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   // login method invoke in login.component.html
   login(): void {
-    this.authService.login(this.model)
+    this.authService.login(this.userModel)
       .subscribe(
         next =>  { console.log('Everything okay'); },
         error => { console.log('Nothing okay'); }
