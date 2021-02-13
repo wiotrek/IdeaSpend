@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand py-2">
+
+  <div class="container-fluid">
+
+
+    <!-- mini logo image -->
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img [src]="logoImage">
+    </a>
+
+
+    <!-- redirect links to subpages -->
+    <div class="collapse navbar-collapse">
+
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active mx-4" [routerLink]="['/']">Główna</a>
+        <a class="nav-item nav-link mx-4" routerLinkActive="active"[routerLink]="['/']">Produkty</a>
+        <a class="nav-item nav-link mx-4" [routerLink]="['/']">Statystyki</a>
+        <a class="nav-item nav-link mx-4" [routerLink]="['/']">Transakcje</a>
+      </div>
+    </div>
+
+
+    <!-- profil contener -->
+    <div class="d-flex">
+
+      <!-- image -->
+      <div class="circle mx-4">
+
+      </div>
+
+      <!-- First and last name -->
+      <div class="align-items-center mx-2 text-center">
+        <p>Imie Nazwisko</p>
+      </div>
+
+      <!-- dropdown item -->
+      <div class="dropdown">
+        <button class="bg-transparent border-0 dropdown-toggle mx-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Konto</a>
+          <a class="dropdown-item" href="#">Wyloguj</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</nav>

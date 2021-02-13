@@ -1,0 +1,28 @@
+nav {
+  font-size: 2.2rem;
+  background-color: #4B5062;
+}
+
+.navbar a {
+  color: #6C707E;
+  text-decoration: #FFFFFF;
+}
+
+.navbar p {
+  font-size: 2rem;
+  color: #EDF1EF;
+  padding-top: 17px;
+}
+
+.navbar i {
+  font-size: 2rem;
+  color: #FFDE59;
+  padding-top: 22px;
+}
+
+.circle {
+  border-radius: 70px;
+  background-color: #fff;
+  height: 66px;
+  width: 66px;
+}
