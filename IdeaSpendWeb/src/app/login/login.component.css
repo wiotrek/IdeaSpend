@@ -1,16 +1,21 @@
 /* ========================== */
-/*            LOGIN           */
+/*            LOGO            */
 /* ========================== */
 .logo-image {
   margin-top: -100px;
 }
 
+
+/* ========================== */
+/*            LOGIN           */
+/* ========================== */
 .login-form {
   display: flex;
   flex-direction: column;
 
-  margin-left: 600px;
-  height: 250px;
+  width: 300px;
+  margin-left: 580px;
+  padding: 60px;
 
   transition: background-color .4s;
 }
@@ -26,7 +31,7 @@
   border-bottom-width: 1px;
 
   text-align: left;
-  justify-content: center;
+  justify-content: left;
 
   font-size: 2.2rem;
   font-family: 'Segoe UI Light';
@@ -40,13 +45,15 @@
 
   font-size: 2.2rem;
   width: 100%;
+
+  cursor: pointer;
 }
 
 
 /* ========================== */
 /*           REGISTER         */
 /* ========================== */
-.register p{
+.register p {
   margin-top: 50px;
   margin-right: 90px;
 
@@ -54,6 +61,7 @@
   color: #5D5D5D;
 }
 
-.register span {
+.register a {
   color: #FFDE59;
+  text-decoration: none;
 }

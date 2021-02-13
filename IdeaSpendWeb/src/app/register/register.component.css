@@ -1,0 +1,60 @@
+/* ========================== */
+/*            REGISTER           */
+/* ========================== */
+.logo-image {
+  margin-top: -100px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 550px;
+  margin-top: -115px;
+  padding: 20px 60px;
+
+  transition: background-color .4s;
+}
+
+.register-form:hover {
+  background: #333B54;
+}
+
+.register-form p {
+  margin-left: -42px;
+  color: #EDF1EF;
+  font-size: 1.5rem;
+}
+
+.register-form input {
+  background-color: transparent;
+
+  border: 0 solid #fff;
+  border-bottom-width: 1px;
+
+  text-align: left;
+  justify-content: center;
+
+  font-size: 1.8rem;
+  font-family: 'Segoe UI Light';
+
+  color: white;
+}
+
+.register-form button {
+  background-color: #FFDE59;
+  color: #FFFFFF;
+
+  font-size: 2.2rem;
+  width: 100%;
+
+  cursor: pointer;
+}
+
+
+.login-form a {
+  padding-right: 55px;
+  color: #5D5D5D;
+  text-decoration: none;
+  font-size: 1.8rem;
+}

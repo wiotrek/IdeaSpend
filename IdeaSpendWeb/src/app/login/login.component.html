@@ -1,6 +1,5 @@
   <div class="col-12">
 
-
     <!-- Logo section -->
     <section class="text-center">
       <div class="logo-image">
@@ -9,54 +8,55 @@
     </section>
 
 
-    <!-- Sekcja formularza logowania -->
+    <!-- login form section -->
     <section class="text-center">
 
-      <!-- Form to realize login request method -->
-      <!-- ngForm is required register by app.module.ts -->
-      <form #loginForm="ngForm" (ngSubmit)="login()">
+      <!-- login form container -->
+      <div class="col-4 login-form">
 
-        <!-- login form container -->
-        <div class="col-2 login-form">
+        <!-- Form to realize login request method -->
+        <!-- ngForm is required register by app.module.ts -->
+        <form #loginForm="ngForm" (ngSubmit)="login()">
 
-          <!-- Username -->
-          <div class="form-group pt-3">
+            <!-- Username -->
+            <div class="form-group pt-3">
 
-            <input class="form-control"
-                   type="text"
-                   placeholder="Login"
-                   [(ngModel)]="userModel.username"
-                   name="login"
-                   required>
+              <input class="form-control"
+                     type="text"
+                     placeholder="Login"
+                     [(ngModel)]="userModel.username"
+                     name="login"
+                     required>
 
-          </div>
+            </div>
 
-          <!-- Password -->
-          <div class="form-group mt-5">
+            <!-- Password -->
+            <div class="form-group mt-5">
 
-            <input class="form-control"
-                   type="password"
-                   placeholder="Hasło"
-                   [(ngModel)]="userModel.password"
-                   name="password"
-                   required>
-          </div>
+              <input class="form-control"
+                     type="password"
+                     placeholder="Hasło"
+                     [(ngModel)]="userModel.password"
+                     name="password"
+                     required>
+            </div>
 
-          <!-- Login button is access if all inputs from loginForm directive
-                 contain at least one sign (defaults) -->
-          <div class="mt-4">
+            <!-- Login button is access if all inputs from loginForm directive
+                   contain at least one sign (defaults) -->
+            <div class="mt-4">
 
-            <button [disabled]="!loginForm.valid"
-                    type="submit"
-                    class="btn btn-success login-button">
+              <button [disabled]="!loginForm.valid"
+                      type="submit"
+                      class="btn btn-success login-button">
 
-              Zaloguj
+                Zaloguj
 
-            </button>
-          </div>
-        </div>
+              </button>
+            </div>
 
-      </form>
+        </form>
+
+      </div>
     </section>
 
 
@@ -66,4 +66,5 @@
         <p>Jeśli nie posiadasz konta <span><a [routerLink]="['/register']">zarejestruj się</a></span></p>
       </div>
     </section>
+
   </div>

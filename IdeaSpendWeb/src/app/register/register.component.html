@@ -1,10 +1,119 @@
 <div class="col-12">
 
-
   <!-- Logo section -->
   <section class="text-center">
     <div class="logo-image">
       <img [src]="logoImage"/>
     </div>
   </section>
+
+
+  <!-- register form section -->
+  <section class="text-center">
+
+    <!-- register form container -->
+    <div class="col-3 register-form">
+
+      <!-- Form to realize register request method -->
+      <form>
+
+        <!-- First name -->
+        <div class="form-group pt-3">
+
+          <p class="text-left">Podaj imię:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="30"
+                 placeholder="Imię"
+                 required>
+
+        </div>
+
+        <!-- Last name -->
+        <div class="form-group pt-3">
+
+          <p class="text-light text-left">Podaj nazwisko:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="30"
+                 placeholder="Nazwisko"
+                 required>
+
+        </div>
+
+        <!-- Email -->
+        <div class="form-group pt-3">
+
+          <p class="text-light text-left">Podaj email:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="50"
+                 placeholder="Email"
+                 required>
+
+        </div>
+
+        <!-- Login -->
+        <div class="form-group pt-3">
+
+          <p class="text-light text-left">Podaj login:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="30"
+                 placeholder="Login"
+                 required>
+
+        </div>
+
+        <!-- Password -->
+        <div class="form-group pt-3">
+
+          <p class="text-light text-left">Podaj hasło:</p>
+          <input class="form-control"
+                 type="password"
+                 maxlength="100"
+                 placeholder="Hasło"
+                 required>
+
+        </div>
+
+        <!-- Repeat password -->
+        <div class="form-group pt-3">
+
+          <p class="text-light text-left">Powtórz hasło:</p>
+          <input class="form-control"
+                 type="password"
+                 maxlength="100"
+                 placeholder="Powtórz hasło"
+                 required>
+
+        </div>
+
+        <!-- Login button is access if all inputs from loginForm directive
+               contain at least one sign (defaults) -->
+        <div class="mt-5 pt-3">
+
+          <button type="submit"
+                  class="btn btn-success login-button">
+
+            Zarejestruj się
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- Redirect to register page section -->
+  <section>
+    <div class="container login-form text-center text-center">
+      <a [routerLink]="['/login']">Wróć</a>
+    </div>
+  </section>
+
 </div>
