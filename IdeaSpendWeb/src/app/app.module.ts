@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MainComponent } from './main/main.component';
 import { ProductComponent } from './product/product.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ProductComponent } from './product/product.component';
     RegisterComponent,
     NavigationComponent,
     MainComponent,
-    ProductComponent
+    ProductComponent,
+    StatisticsComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,
