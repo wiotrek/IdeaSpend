@@ -1,2 +1,114 @@
 <app-navigation></app-navigation>
-<p class="text-light">test content</p>
+
+<main>
+
+  <div class="row">
+    <div class="col-10 text-light">
+
+      <!-- date and currency -->
+      <section class="py-5 px-5 date-and-currency">
+
+        <div class="mt-5">
+          <p>Styczeń 2021 PLN</p>
+        </div>
+
+      </section>
+
+      <!-- main stat of the month -->
+      <section class="px-5 main-stats">
+
+        <div class="square text-center p-5">
+
+          <h1>Zaoszczędzono</h1>
+
+          <div class="pt-5 pl-4 d-flex info">
+            <img [src]="greenTriangleImage" alt="Zaoszczędzono"/>
+            <h3>1132 zł</h3>
+          </div>
+
+        </div>
+
+        <div class="square text-center p-5">
+
+          <h1>Ilość transakcji</h1>
+
+          <div class="pt-5 pl-4 d-flex info">
+            <img [src]="greenTriangleImage" alt="Ilość transakcji"/>
+            <h3>74</h3>
+          </div>
+
+        </div>
+
+        <div class="square text-center p-5">
+
+          <h1>Wydano łącznie</h1>
+
+          <div class="pt-5 pl-4 d-flex info">
+            <img [src]="redTriangleImage" alt="Wydano łącznie"/>
+            <h3>3132 zł</h3>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- table with 5 last transactions -->
+      <section class="pt-5 transaction-table ">
+        <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Sprzedawca</th>
+            <th scope="col">Cena</th>
+            <th scope="col">Ilość</th>
+            <th scope="col">Data</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Bułka pszenna</td>
+            <td>Rena</td>
+            <td>3,00</td>
+            <td>3</td>
+            <td>01.24.21</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Cukier</td>
+            <td>Iloneczka</td>
+            <td>11,00</td>
+            <td>1</td>
+            <td>11.29.19</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Worek ziemniaków</td>
+            <td>Zinambwe</td>
+            <td>30,00</td>
+            <td>12</td>
+            <td>11.29.19</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Musztarda</td>
+            <td>Jarek</td>
+            <td>9,00</td>
+            <td>1</td>
+            <td>11.29.19</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Produkt z bardzo dlugo nazwa będzie kropko...</td>
+            <td>Iloneczka</td>
+            <td>1,00</td>
+            <td>1</td>
+            <td>11.29.19</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</main>

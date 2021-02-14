@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  // TODO: change font family for information inside square
+
+  greenTriangleImage = '../assets/main/green-triangle.png';
+  redTriangleImage = '../assets/main/red-triangle.png';
+
   constructor() { }
 
   ngOnInit(): void {
