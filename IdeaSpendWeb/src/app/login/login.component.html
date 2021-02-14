@@ -1,4 +1,4 @@
-  <div class="col-12">
+  <div class="container">
 
     <!-- Logo section -->
     <section class="text-center">
@@ -11,52 +11,67 @@
     <!-- login form section -->
     <section class="text-center">
 
-      <!-- login form container -->
-      <div class="col-4 login-form">
+      <!-- row class give possibility create 3 columns for classes col-sm -->
+      <div class="row">
 
-        <!-- Form to realize login request method -->
-        <!-- ngForm is required register by app.module.ts -->
-        <form #loginForm="ngForm" (ngSubmit)="login()">
 
-            <!-- Username -->
-            <div class="form-group pt-3">
+        <!-- left block - it is for center form block -->
+        <div class="col-sm"></div>
 
-              <input class="form-control"
-                     type="text"
-                     placeholder="Login"
-                     [(ngModel)]="userModel.username"
-                     name="login"
-                     required>
 
-            </div>
 
-            <!-- Password -->
-            <div class="form-group mt-5">
+        <!-- login form container -->
+        <div class="col-sm login-form">
 
-              <input class="form-control"
-                     type="password"
-                     placeholder="Hasło"
-                     [(ngModel)]="userModel.password"
-                     name="password"
-                     required>
-            </div>
+          <!-- Form to realize login request method -->
+          <!-- ngForm is required register by app.module.ts -->
+          <form #loginForm="ngForm" (ngSubmit)="login()">
 
-            <!-- Login button is access if all inputs from loginForm directive
-                   contain at least one sign (defaults) -->
-            <div class="mt-4">
+              <!-- Username -->
+              <div class="form-group pt-3">
 
-              <button [disabled]="!loginForm.valid"
-                      type="submit"
-                      class="btn btn-success">
+                <input class="form-control"
+                      type="text"
+                      placeholder="Login"
+                      [(ngModel)]="userModel.username"
+                      name="login"
+                      required>
 
-                Zaloguj
+              </div>
 
-              </button>
-            </div>
+              <!-- Password -->
+              <div class="form-group mt-5">
 
-        </form>
+                <input class="form-control"
+                      type="password"
+                      placeholder="Hasło"
+                      [(ngModel)]="userModel.password"
+                      name="password"
+                      required>
+              </div>
 
+              <!-- Login button is access if all inputs from loginForm directive
+                    contain at least one sign (defaults) -->
+              <div class="mt-4">
+
+                <button [disabled]="!loginForm.valid"
+                        type="submit"
+                        class="btn btn-success">
+
+                  Zaloguj sie
+
+                </button>
+              </div>
+
+          </form>
+
+        </div>
+
+        <!-- right block -->
+        <div class="col-sm"></div>
       </div>
+
+
     </section>
 
 
