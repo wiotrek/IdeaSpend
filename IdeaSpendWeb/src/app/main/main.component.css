@@ -1,13 +1,14 @@
 /* ============================= */
-/* Date and currency */
+/*       Date and currency       */
 /* ============================= */
 .date-and-currency, .main-stats {
   font-size: 3rem;
   margin-left: 280px;
 }
 
+
 /* ============================= */
-/*Main stats*/
+/*          Main stats           */
 /* ============================= */
 .main-stats {
   display: flex;
@@ -40,29 +41,36 @@
   padding-left: 15px;
 }
 
+/* ============================= */
+/*        LAST TRANSACTIONS      */
+/* ============================= */
 .transaction-table {
   margin-left: 310px;
-  width: 800
+  width: 963px;
+  margin-top: 110px;
 }
 
 .transaction-table th {
   color: #EDF1EF;
   background-color: #38425B;
-  font-size: 2.5rem;
-  border: 0;
+  font-size: 2.2rem;
 }
 
-.transaction-table tr {
+.transaction-table td {
   color: #EDF1EF;
   font-size: 2rem;
+  border: 0
+}
+
+.transaction-table h1 {
+  margin-bottom: 20px;
+  font-size: 3rem;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(31, 32, 55, 1);
-  border: 0;
 }
 
 .table-striped tbody tr:nth-of-type(even) {
   background-color: rgba(51, 59, 84, 1);
-  border: 0;
 }
