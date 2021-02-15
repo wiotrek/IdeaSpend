@@ -41,14 +41,26 @@ nav {
 }
 
 .dropdown-menu {
-  margin: 0 0 10px 0;
   background-color: #333B54;
+}
+
+.dropdown-transaction {
+  width: 130px;
+}
+
+.dropdown-menu a {
+  transition: color .4s;
+}
+
+.dropdown-menu a:hover {
+  color: #fff;
 }
 
 .dropdown-item {
   padding: 5px 7px;
   color: #fff;
   font-size: 1.4rem;
+  transition: background-color .4s;
 }
 
 .dropdown-item:hover {

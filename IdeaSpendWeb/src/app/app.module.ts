@@ -13,7 +13,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MainComponent } from './main/main.component';
 import { ProductComponent } from './product/product.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { TransactionsComponent } from './transactions/transactions.component';
+import { TransactionsOverviewComponent } from './transactions/transactions-overview/transactions-overview.component';
+import { TransactionsNewComponent } from './transactions/transactions-new/transactions-new.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
     MainComponent,
     ProductComponent,
     StatisticsComponent,
-    TransactionsComponent
+    TransactionsOverviewComponent,
+    TransactionsNewComponent,
   ],
   imports: [
     BrowserModule,

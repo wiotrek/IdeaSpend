@@ -12,16 +12,41 @@
     <!-- redirect links to subpages -->
     <div class="collapse navbar-collapse">
 
+      <!-- navbar container -->
       <div class="navbar-nav">
+
+        <!-- main page -->
         <a class="nav-item nav-link mx-4"
            [routerLink]="['/']"
            routerLinkActive="active"
            [routerLinkActiveOptions]="{exact: true}"
         >Główna</a>
 
+        <!-- products page -->
         <a class="nav-item nav-link mx-4" [routerLink]="['/products']" routerLinkActive="active">Produkty</a>
+
+        <!-- statistics page -->
         <a class="nav-item nav-link mx-4" [routerLink]="['/statistics']" routerLinkActive="active">Statystyki</a>
-        <a class="nav-item nav-link mx-4" [routerLink]="['/transactions']" routerLinkActive="active">Transakcje</a>
+
+        <!-- Dropdown transactions with two subpages -->
+        <div class="nav-item nav-link dropdown mx-4">
+
+          <button class="bg-transparent border-0"
+                  [ngStyle]="{color: getColor()}"
+                  type="button"
+                  id="dropdownTransactionsButton"
+                  data-toggle="dropdown"
+                  aria-expanded="false">
+            Transakcje
+          </button>
+
+          <div class="dropdown-menu dropdown-transaction" aria-labelledby="dropdownTransactionsButton">
+            <a class="dropdown-item" [routerLink]="['/transactions/new']">Przegląd</a>
+            <a class="dropdown-item" [routerLink]="['/transactions/overview']">Dodaj nowe</a>
+          </div>
+
+        </div>
+
       </div>
     </div>
 
