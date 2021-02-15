@@ -6,6 +6,20 @@
   margin-left: 280px;
 }
 
+.date-and-currency-p{
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.date-and-currency-blocks {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  text-align: center;
+}
+
 
 /* ============================= */
 /*          Main stats           */
