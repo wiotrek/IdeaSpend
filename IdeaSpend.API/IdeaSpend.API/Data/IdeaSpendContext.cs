@@ -14,6 +14,9 @@ namespace IdeaSpend.API
         /// </summary>
         public DbSet<UserEntity> Users { get; set; } 
         public DbSet<TransactionEntity> Transactions { get; set; } 
+        public DbSet<ProductEntity> Products { get; set; } 
+        public DbSet<CatalogEntity> Catalogs { get; set; } 
+        public DbSet<CurrencyEntity> Currency { get; set; } 
 
         #endregion
         
@@ -26,18 +29,5 @@ namespace IdeaSpend.API
         public IdeaSpendContext(DbContextOptions<IdeaSpendContext> options) : base(options) {}
 
         #endregion
-
-        #region Protected Overrides Methods
-        
-        protected override void OnModelCreating( ModelBuilder modelBuilder )
-        {
-            // configure one-to-many relationship
-            modelBuilder.Entity<UserEntity>()
-                .OwnsMany ( t => t.Transactions )
-                .HasKey ( u => u.TransactionId );
-        }
-
-        #endregion
-        
     }
 }

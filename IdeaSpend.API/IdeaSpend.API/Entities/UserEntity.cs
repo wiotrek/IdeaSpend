@@ -56,6 +56,12 @@ namespace IdeaSpend.API
         /// </summary>
         public ICollection<TransactionEntity> Transactions { get; set; }
         
+        /// <summary>
+        /// The specify user have many products
+        /// </summary>
+        
+        public ICollection<ProductEntity> Products { get; set; }
+        
         #endregion
     }
 }
