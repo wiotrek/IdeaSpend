@@ -41,11 +41,14 @@ namespace IdeaSpend.API
         [Column("hash")]              
         public byte[] PasswordHash { get; set; }
         
-        [Column("account_created")]   
+        [Column("utworzono")]   
         public DateTime Created { get; set; }
         
-        [Column("last_login")]        
+        [Column("ostatnie_logowanie")]        
         public DateTime LastLogin { get; set; }
+
+        [Column("dochód")]
+        public double Income { get; set; }
 
         #endregion
         

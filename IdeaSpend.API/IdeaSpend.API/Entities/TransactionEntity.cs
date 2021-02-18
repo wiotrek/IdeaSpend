@@ -27,6 +27,18 @@ namespace IdeaSpend.API
         [Column("data_transakcji")] 
         public DateTime TransactionDate { get; set; }
         
+        /// <summary>
+        /// The currency of the product user bought
+        /// </summary>
+        [Column("waluta")]
+        public string Currency { get; set; }
+        
+        /// <summary>
+        /// The weight for products not counted in pieces
+        /// </summary>
+        [Column("waga")]
+        public double Weights { get; set; }
+        
         #endregion
         
         #region Relations

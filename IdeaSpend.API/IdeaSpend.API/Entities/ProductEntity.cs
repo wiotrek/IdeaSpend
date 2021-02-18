@@ -31,18 +31,7 @@ namespace IdeaSpend.API
         /// </summary>
         [Column("cena")] [Required]        
         public double Price { get; set; }
-        
-        /// <summary>
-        /// The currency of the product user bought
-        /// </summary>
-        public string Currency { get; set; }
-        
-        /// <summary>
-        /// The weight for products not counted in pieces
-        /// </summary>
-        [Column("waga")]
-        public double Weights { get; set; }
-        
+
         /// <summary>
         /// The unit weight like kg, g, dkg
         /// </summary>

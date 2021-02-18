@@ -3,14 +3,16 @@ using System;
 using IdeaSpend.API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IdeaSpend.API.Migrations
 {
     [DbContext(typeof(IdeaSpendContext))]
-    partial class IdeaSpendContextModelSnapshot : ModelSnapshot
+    [Migration("20210218194104_ChangeStructureDb")]
+    partial class ChangeStructureDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
