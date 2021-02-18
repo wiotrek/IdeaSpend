@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         next => {},
         error => { console.log('Instead this log show user wrong credentials message'); },
-        () => { this.router.navigate([''] );
+        () => { this.router.navigate(['/'] );
         });
   }
 

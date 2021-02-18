@@ -73,7 +73,7 @@
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" [routerLink]="['/']">Konto</a>
-          <a class="dropdown-item" [routerLink]="['/']">Wyloguj</a>
+          <a class="btn dropdown-item" (click)="authService.logout()">Wyloguj</a>
         </div>
 
       </div>

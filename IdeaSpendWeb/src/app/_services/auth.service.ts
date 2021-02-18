@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {Router} from '@angular/router';
 
 @Injectable()
 
@@ -18,7 +19,7 @@ export class AuthService {
 
   //endregion
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   // login received response from api request
   login(model: any): Observable<void>{
@@ -37,5 +38,16 @@ export class AuthService {
 
   register(model: any): Observable<object> {
     return this.http.post(this.baseUrl + 'register', model);
+  }
+
+  // Check if token is still active - true for active
+  loggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
