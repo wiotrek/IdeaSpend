@@ -15,7 +15,7 @@
     <div class="col-3 register-form">
 
       <!-- Form to realize register request method -->
-      <form>
+      <form (ngSubmit)="register()">
 
         <!-- First name -->
         <div class="form-group pt-3">
@@ -25,7 +25,9 @@
                  type="text"
                  maxlength="30"
                  placeholder="Imię"
-                 required>
+                 required
+                 name="FirstName"
+                 [(ngModel)]="registerModel.FirstName">
 
         </div>
 
@@ -37,7 +39,9 @@
                  type="text"
                  maxlength="30"
                  placeholder="Nazwisko"
-                 required>
+                 required
+                 name="LastName"
+                 [(ngModel)]="registerModel.LastName">
 
         </div>
 
@@ -49,7 +53,9 @@
                  type="text"
                  maxlength="50"
                  placeholder="Email"
-                 required>
+                 required
+                 name="Email"
+                 [(ngModel)]="registerModel.Email">
 
         </div>
 
@@ -61,7 +67,10 @@
                  type="text"
                  maxlength="30"
                  placeholder="Login"
-                 required>
+                 required
+                 name="UserName"
+                 [(ngModel)]="registerModel.UserName"
+          >
 
         </div>
 
@@ -73,7 +82,9 @@
                  type="password"
                  maxlength="100"
                  placeholder="Hasło"
-                 required>
+                 required
+                 name="Password"
+                 [(ngModel)]="registerModel.Password">
 
         </div>
 
@@ -85,7 +96,9 @@
                  type="password"
                  maxlength="100"
                  placeholder="Powtórz hasło"
-                 required>
+                 required
+                 name="RepeatPassword"
+                 [(ngModel)]="registerModel.RepeatPassword">
 
         </div>
 

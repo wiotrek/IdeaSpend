@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.userModel)
       .subscribe(
+        next => {},
         error => { console.log('Instead this log show user wrong credentials message'); },
         () => { this.router.navigate([''] );
         });
