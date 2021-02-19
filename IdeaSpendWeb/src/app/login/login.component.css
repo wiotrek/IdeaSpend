@@ -26,10 +26,7 @@
   border: 0 solid #fff;
   border-bottom-width: 1px;
 
-  text-align: left;
-  justify-content: left;
-
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-family: 'Segoe UI Light';
 
   color: white;
@@ -39,9 +36,9 @@
 
 .login-form button {
   background-color: #FFDE59;
-  color: #FFFFFF;
+  color: #5D5D5D;
 
-  font-size: 2rem;
+  font-size: 1.3rem;
   width: 100%;
 
   cursor: pointer;
@@ -55,7 +52,7 @@
 /*           REGISTER         */
 /* ========================== */
 .register p {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   color: #5D5D5D;
   padding: 10px;
 }
