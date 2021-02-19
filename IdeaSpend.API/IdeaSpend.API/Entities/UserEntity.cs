@@ -62,8 +62,12 @@ namespace IdeaSpend.API
         /// <summary>
         /// The specify user have many products
         /// </summary>
-        
         public ICollection<ProductEntity> Products { get; set; }
+
+        /// <summary>
+        /// The specify user have many catalogs
+        /// </summary>
+        public ICollection<CatalogEntity> Catalogs { get; set; }
         
         #endregion
     }

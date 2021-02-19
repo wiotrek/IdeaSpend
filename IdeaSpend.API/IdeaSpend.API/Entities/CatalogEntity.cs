@@ -33,6 +33,16 @@ namespace IdeaSpend.API
         /// </summary>
         public ICollection<ProductEntity> Produts { get; set; }
 
+        /// <summary>
+        /// The foreign user id for Katalog_produktów table
+        /// </summary>
+        public int UserId { get; set; }
+
+        /// <summary>
+        /// One of many catalogs are assign to specify user
+        /// </summary>
+        public UserEntity User { get; set; }
+
         #endregion
     }
 }
