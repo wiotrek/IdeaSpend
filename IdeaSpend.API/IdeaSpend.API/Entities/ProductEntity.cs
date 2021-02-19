@@ -43,7 +43,7 @@ namespace IdeaSpend.API
         #region Relations
 
         /// <summary>
-        /// The foreign catalog id for Produkty table
+        /// The foreign catalog id for Produkty table. Catalog with id = 0 means that product is without catalog
         /// </summary>
         public int CatalogId { get; set; }
         

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace IdeaSpend.API
 {
@@ -42,6 +43,20 @@ namespace IdeaSpend.API
             await _dataContext.AddAsync(catalogEntity);
 
             return await _dataContext.SaveChangesAsync() > 0;
+        }
+
+        public int FindCatalogIdByName(string catalogName)
+        {
+            // Go to catalog table
+            var id = _dataContext.Catalogs
+
+                // Filter catalog data by catalog name
+                .Where( n => n.CatalogName == catalogName )
+
+                // Get first match catalog id
+                .FirstOrDefault().CatalogId;
+
+            return id;
         }
 
         #endregion

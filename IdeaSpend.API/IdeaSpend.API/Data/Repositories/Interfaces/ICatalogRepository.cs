@@ -11,5 +11,7 @@ namespace IdeaSpend.API
         /// <param name="userId">User id of the current login user provided from decoded token</param>
         /// <returns></returns>
         Task<bool> AddCatalogAsync(CatalogDto catalogDto, int userId);
+
+        int FindCatalogIdByName(string catalogName);
     }
 }
