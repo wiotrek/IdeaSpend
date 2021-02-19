@@ -14,10 +14,26 @@
 
       <div class="col-sm"></div>
 
+<<<<<<< HEAD
+=======
+      <!-- Form to realize register request method -->
+      <form (ngSubmit)="register()">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
 
+<<<<<<< HEAD
       <!-- register form container -->
       <div class="col-sm register-form">
+=======
+          <p class="text-left">Podaj imię:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="30"
+                 placeholder="Imię"
+                 required
+                 name="FirstName"
+                 [(ngModel)]="registerModel.FirstName">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
         <!-- Form to realize register request method -->
         <form>
@@ -25,60 +41,116 @@
           <!-- First name -->
           <div class="form-group pt-3">
 
+<<<<<<< HEAD
             <p class="text-left">Podaj imię:</p>
             <input class="form-control"
                   type="text"
                   maxlength="30"
                   placeholder="Imię"
                   required>
+=======
+          <p class="text-light text-left">Podaj nazwisko:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="30"
+                 placeholder="Nazwisko"
+                 required
+                 name="LastName"
+                 [(ngModel)]="registerModel.LastName">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
           </div>
 
           <!-- Last name -->
           <div class="form-group pt-3">
 
+<<<<<<< HEAD
             <p class="text-light text-left">Podaj nazwisko:</p>
             <input class="form-control"
                   type="text"
                   maxlength="30"
                   placeholder="Nazwisko"
                   required>
+=======
+          <p class="text-light text-left">Podaj email:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="50"
+                 placeholder="Email"
+                 required
+                 name="Email"
+                 [(ngModel)]="registerModel.Email">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
           </div>
 
           <!-- Email -->
           <div class="form-group pt-3">
 
+<<<<<<< HEAD
             <p class="text-light text-left">Podaj email:</p>
             <input class="form-control"
                   type="text"
                   maxlength="50"
                   placeholder="Email"
                   required>
+=======
+          <p class="text-light text-left">Podaj login:</p>
+          <input class="form-control"
+                 type="text"
+                 maxlength="30"
+                 placeholder="Login"
+                 required
+                 name="UserName"
+                 [(ngModel)]="registerModel.UserName"
+          >
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
           </div>
 
           <!-- Login -->
           <div class="form-group pt-3">
 
+<<<<<<< HEAD
             <p class="text-light text-left">Podaj login:</p>
             <input class="form-control"
                   type="text"
                   maxlength="30"
                   placeholder="Login"
                   required>
+=======
+          <p class="text-light text-left">Podaj hasło:</p>
+          <input class="form-control"
+                 type="password"
+                 maxlength="100"
+                 placeholder="Hasło"
+                 required
+                 name="Password"
+                 [(ngModel)]="registerModel.Password">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
           </div>
 
           <!-- Password -->
           <div class="form-group pt-3">
 
+<<<<<<< HEAD
             <p class="text-light text-left">Podaj hasło:</p>
             <input class="form-control"
                   type="password"
                   maxlength="100"
                   placeholder="Hasło"
                   required>
+=======
+          <p class="text-light text-left">Powtórz hasło:</p>
+          <input class="form-control"
+                 type="password"
+                 maxlength="100"
+                 placeholder="Powtórz hasło"
+                 required
+                 name="RepeatPassword"
+                 [(ngModel)]="registerModel.RepeatPassword">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
           </div>
 

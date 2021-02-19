@@ -41,6 +41,10 @@ namespace IdeaSpend.API
             if (await _authRepository.IsUserExist ( registerDto.Username ))
                 return BadRequest($"Nazwa użytkownika {registerDto.Username} jest zajęta.");
             
+            // Check repeat password with password user want
+            if( registerDto.Password != registerDto.RepeatPassword )
+                return BadRequest ( "Wpisane hasła do siebie nie pasują" );
+            
             // Fill user information from view form
             user.Username = registerDto.Username;
             user.FirstName = registerDto.FirstName;
