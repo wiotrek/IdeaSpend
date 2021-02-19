@@ -38,6 +38,12 @@ namespace IdeaSpend.API
         /// </summary>
         [Column("waga")]
         public double Weights { get; set; }
+
+        /// <summary>
+        /// A total cost for single transaction
+        /// </summary>
+        [Column("zapłacono")]
+        public double Paid { get; set; }
         
         #endregion
         
