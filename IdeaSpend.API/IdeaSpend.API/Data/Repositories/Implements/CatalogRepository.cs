@@ -50,11 +50,8 @@ namespace IdeaSpend.API
             // Go to catalog table
             var id = _dataContext.Catalogs
 
-                // Filter catalog data by catalog name
-                .Where( n => n.CatalogName == catalogName )
-
-                // Get first match catalog id
-                .FirstOrDefault().CatalogId;
+                // Get first match catalog id filtered by catalog name
+                .FirstOrDefault( n => n.CatalogName == catalogName ).CatalogId;
 
             return id;
         }

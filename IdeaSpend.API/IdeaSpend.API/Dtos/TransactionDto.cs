@@ -7,13 +7,26 @@ namespace IdeaSpend.API
     /// </summary>
     public class TransactionDto
     {
-        public string Seller { get; set; }
-        public string ProductName { get; set; }
-        public double Price { get; set; }
+        #region Product Entity Properties
+
+        /// <summary>
+        /// The product name with pattern {nazwa_produktu} - {sprzedawca} from Produkty table
+        /// </summary>
+        public string ProductNameFrom { get; set; }
+
+        #endregion
+
+        #region Transaction Entity Properties
+
+        /// <summary>
+        /// The 3-letters code of currency
+        /// </summary>
+        public string Currency { get; set; }
         public int Quantity { get; set; }
-        public string Category { get; set; }
-        public string Unit { get; set; }
+        public double Weights { get; set; }
+        public double Paid { get; set; }
         public DateTime TransactionDate { get; set; }
-        public int UserId { get; set; }
+
+        #endregion
     }
 }

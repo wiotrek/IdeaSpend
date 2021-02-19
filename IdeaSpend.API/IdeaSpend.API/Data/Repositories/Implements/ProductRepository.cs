@@ -1,7 +1,11 @@
 ﻿using System.Threading.Tasks;
+using System.Linq;
 
 namespace IdeaSpend.API
 {
+    /// <summary>
+    /// CRUD operation for Produkty table
+    /// </summary>
     public class ProductRepository : IProductRepository
     {
         #region Private Members
@@ -33,7 +37,7 @@ namespace IdeaSpend.API
         /// <returns></returns>
         public async Task<bool> AddProductAsync(ProductDto productDto, int userId)
         {
-            int catalogId = default(int);
+            var catalogId = default(int);
 
             // If user choose any catalog then get id of the catalog
             if (!string.IsNullOrWhiteSpace(productDto.CatalogName))
@@ -54,5 +58,26 @@ namespace IdeaSpend.API
 
             return await _dataContext.SaveChangesAsync() > 0;
         }
+
+        /// <summary>
+        /// Get product id by product name and seller
+        /// </summary>
+        /// <param name="productName">The name of the product</param>
+        /// <param name="seller">The seller from product was bought</param>
+        /// <returns>Product id</returns>
+        public ProductEntity FindProductIdByNameAndSeller( string productName, string seller )
+        {
+            // Go to Product table
+            var id = _dataContext.Products
+
+                // Filter by product name
+                .Where ( p => p.ProductName == productName )
+
+                // and by seller and return product id
+                .FirstOrDefault ( s => s.Seller == seller );
+            
+            return id;
+        }
+        
     }
 }

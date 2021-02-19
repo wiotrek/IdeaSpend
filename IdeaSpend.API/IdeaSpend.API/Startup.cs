@@ -32,6 +32,7 @@ namespace IdeaSpend.API
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<ICatalogRepository, CatalogRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             
             
             // Setup Jwt Tokens
