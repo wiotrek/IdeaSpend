@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  logoImage = '../assets/logo/Logo2.png';
+  logoImage = '../assets/logo/Logo.png';
 
   // User model arrived from api request
   userModel: any = {};

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  logoImage = '../assets/logo/Logo2.png';
+  logoImage = '../assets/logo/Logo.png';
 
   constructor() { }
 
