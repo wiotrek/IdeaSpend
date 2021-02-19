@@ -30,6 +30,7 @@ namespace IdeaSpend.API
             
             // Local request scope for access to database
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ICatalogRepository, CatalogRepository>();
             
             
             // Setup Jwt Tokens
