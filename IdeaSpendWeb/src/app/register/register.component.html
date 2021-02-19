@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="container">
 
   <!-- Logo section -->
   <section class="text-center">
@@ -10,16 +10,21 @@
 
   <!-- register form section -->
   <section class="text-center">
+    <div class="row">
 
-    <!-- register form container -->
-    <div class="col-3 register-form">
+      <div class="col-sm"></div>
 
+<<<<<<< HEAD
+=======
       <!-- Form to realize register request method -->
       <form (ngSubmit)="register()">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        <!-- First name -->
-        <div class="form-group pt-3">
 
+<<<<<<< HEAD
+      <!-- register form container -->
+      <div class="col-sm register-form">
+=======
           <p class="text-left">Podaj imię:</p>
           <input class="form-control"
                  type="text"
@@ -28,12 +33,22 @@
                  required
                  name="FirstName"
                  [(ngModel)]="registerModel.FirstName">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        </div>
+        <!-- Form to realize register request method -->
+        <form>
 
-        <!-- Last name -->
-        <div class="form-group pt-3">
+          <!-- First name -->
+          <div class="form-group pt-3">
 
+<<<<<<< HEAD
+            <p class="text-left">Podaj imię:</p>
+            <input class="form-control"
+                  type="text"
+                  maxlength="30"
+                  placeholder="Imię"
+                  required>
+=======
           <p class="text-light text-left">Podaj nazwisko:</p>
           <input class="form-control"
                  type="text"
@@ -42,12 +57,21 @@
                  required
                  name="LastName"
                  [(ngModel)]="registerModel.LastName">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        </div>
+          </div>
 
-        <!-- Email -->
-        <div class="form-group pt-3">
+          <!-- Last name -->
+          <div class="form-group pt-3">
 
+<<<<<<< HEAD
+            <p class="text-light text-left">Podaj nazwisko:</p>
+            <input class="form-control"
+                  type="text"
+                  maxlength="30"
+                  placeholder="Nazwisko"
+                  required>
+=======
           <p class="text-light text-left">Podaj email:</p>
           <input class="form-control"
                  type="text"
@@ -56,12 +80,21 @@
                  required
                  name="Email"
                  [(ngModel)]="registerModel.Email">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        </div>
+          </div>
 
-        <!-- Login -->
-        <div class="form-group pt-3">
+          <!-- Email -->
+          <div class="form-group pt-3">
 
+<<<<<<< HEAD
+            <p class="text-light text-left">Podaj email:</p>
+            <input class="form-control"
+                  type="text"
+                  maxlength="50"
+                  placeholder="Email"
+                  required>
+=======
           <p class="text-light text-left">Podaj login:</p>
           <input class="form-control"
                  type="text"
@@ -71,12 +104,21 @@
                  name="UserName"
                  [(ngModel)]="registerModel.UserName"
           >
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        </div>
+          </div>
 
-        <!-- Password -->
-        <div class="form-group pt-3">
+          <!-- Login -->
+          <div class="form-group pt-3">
 
+<<<<<<< HEAD
+            <p class="text-light text-left">Podaj login:</p>
+            <input class="form-control"
+                  type="text"
+                  maxlength="30"
+                  placeholder="Login"
+                  required>
+=======
           <p class="text-light text-left">Podaj hasło:</p>
           <input class="form-control"
                  type="password"
@@ -85,12 +127,21 @@
                  required
                  name="Password"
                  [(ngModel)]="registerModel.Password">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        </div>
+          </div>
 
-        <!-- Repeat password -->
-        <div class="form-group pt-3">
+          <!-- Password -->
+          <div class="form-group pt-3">
 
+<<<<<<< HEAD
+            <p class="text-light text-left">Podaj hasło:</p>
+            <input class="form-control"
+                  type="password"
+                  maxlength="100"
+                  placeholder="Hasło"
+                  required>
+=======
           <p class="text-light text-left">Powtórz hasło:</p>
           <input class="form-control"
                  type="password"
@@ -99,22 +150,39 @@
                  required
                  name="RepeatPassword"
                  [(ngModel)]="registerModel.RepeatPassword">
+>>>>>>> 35f87c2f43ac74153ba46e694c21fe7bb26ebc41
 
-        </div>
+          </div>
 
-        <!-- Register button -->
-        <div class="mt-5 pt-3">
+          <!-- Repeat password -->
+          <div class="form-group pt-3">
 
-          <button type="submit"
-                  class="btn btn-success">
+            <p class="text-light text-left">Powtórz hasło:</p>
+            <input class="form-control"
+                  type="password"
+                  maxlength="100"
+                  placeholder="Powtórz hasło"
+                  required>
 
-            Zarejestruj się
+          </div>
 
-          </button>
+          <!-- Register button -->
+          <div class="mt-5 pt-3">
 
-        </div>
+            <button type="submit"
+                    class="btn btn-success">
 
-      </form>
+              Zarejestruj się
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+      <div class="col-sm"></div>
 
     </div>
 
@@ -123,7 +191,7 @@
 
   <!-- Redirect to register page section -->
   <section>
-    <div class="container login-form text-center text-center">
+    <div class="container login-form text-center text-center p-2">
       <a [routerLink]="['/login']">Wróć</a>
     </div>
   </section>
