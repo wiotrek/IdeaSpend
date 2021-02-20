@@ -1,7 +1,53 @@
 <app-navigation></app-navigation>
 
+
 <div class="row container-fluid">
 
+  <!-- Menu navigation for product subpage -->
   <app-product class="col-2"></app-product>
+
+
+  <!-- List of products -->
+  <section class="col-7 d-flex flex-column align-items-center">
+
+    <!-- Title and search button -->
+    <div class="mb-5">
+      <h1>Kategorie</h1>
+    </div>
+
+    <!-- Content list -->
+    <div class="catalog-list">
+
+      <ul class="list-group flex-row text-center content mt-2" *ngFor="let catalog of catalogs">
+
+
+        <li class="list-group-item">{{catalog}}</li>
+
+        <!-- Edit button -->
+        <li class="list-group-item d-flex pr-2" style="width: 70px">
+          <button class="btn edit-catalog">
+            E
+          </button>
+        </li>
+
+        <!-- Cancel button -->
+        <li class="list-group-item d-flex pl-1" style="width: 70px">
+          <button class="btn edit-catalog">
+            X
+          </button>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- Add new catalog -->
+    <div class="align-items-start col-7 add-catalog">
+      <h3>Dodaj kategorie</h3>
+      <input type="text" placeholder="nazwa">
+      <button class="btn">Dodaj</button>
+    </div>
+
+  </section>
+
 
 </div>

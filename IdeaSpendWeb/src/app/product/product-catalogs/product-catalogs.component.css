@@ -1,3 +1,80 @@
 .container-fluid{
   margin-top: 80px;
 }
+
+h1 {
+  color: #EDF1EF;
+}
+
+.catalog-list {
+  max-height: 300px;
+  width: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.content {
+  font-size: 2rem;
+  width: 470px;
+  background-color: #333B54;
+  border-radius: 12px;
+}
+
+.content li {
+  text-align: left;
+}
+
+.list-group-item {
+  background: transparent;
+  color: #EDF1EF;
+  border: 0;
+  width: 350px;
+}
+
+.edit-catalog {
+  text-align: center;
+  background-color: #282D45;
+  color: #FFDE59;
+  font-size: 1.2rem;
+  padding: 7px;
+  width: 40px;
+  height: 30px;
+}
+
+.add-catalog {
+  color: #EDF1EF;
+  padding-top: 50px;
+}
+
+.add-catalog input {
+  width: 95%;
+  background-color: #333B54;
+  color: #868993;
+  border: 0;
+  font-size: 1.2rem;
+  padding: 7px 9px;
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+.add-catalog button {
+  width: 12%;
+  padding: 3px;
+  color: #333B54;
+  background-color: #FFDE59;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-left: 83%;
+}
+
+::-webkit-scrollbar {
+  background-color: #282D45;
+  width: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FFDE59;
+  border: 3px solid transparent;
+  border-radius: 7px;
+  background-clip: content-box;
+}

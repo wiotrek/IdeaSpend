@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
+import { SimplebarAngularModule } from 'simplebar-angular';
 
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_guards/AuthGuard';
@@ -46,7 +47,8 @@ import { ProductAddComponent } from './product/product-add/product-add.component
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    SimplebarAngularModule
   ],
   providers: [
     AuthGuard,
