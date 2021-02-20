@@ -3,7 +3,7 @@ nav {
   background-color: #4B5062;
 }
 
-.navbar-nav a {
+.navbar-nav a, .nav-item button {
   color: #6C707E;
   text-decoration: #FFFFFF;
   transition: color .2s;
@@ -13,7 +13,7 @@ nav {
   color: #fff;
 }
 
-.navbar-nav a:hover {
+.navbar-nav a:hover, .navbar-nav button:hover {
   color: white;
 }
 

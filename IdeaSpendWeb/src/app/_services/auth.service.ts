@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
 
@@ -12,8 +12,9 @@ import {Router} from '@angular/router';
 // NOTE: After create service put this class in app.module.ts inside provides
 export class AuthService {
 
-  private backend =  environment.apiUrl;
   //region Public Members
+
+  private backend =  environment.apiUrl;
   jwtHelper = new JwtHelperService();
   decodedToken;
 
@@ -23,8 +24,9 @@ export class AuthService {
 
   // login received response from api request
   login(model: any): Observable<void>{
-      // Do something with response from server
-      return this.http.post(`${this.backend}/api/auth/login`, model)
+    console.log(this.backend);
+    // Do something with response from server
+    return this.http.post(`${this.backend}/api/auth/login`, model)
       .pipe(map((response: any) => {
 
         const user = response;

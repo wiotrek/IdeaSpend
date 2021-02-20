@@ -23,7 +23,7 @@
         >Główna</a>
 
         <!-- products page -->
-        <a class="nav-item nav-link mx-4" [routerLink]="['/products']" routerLinkActive="active">Produkty</a>
+        <a class="nav-item nav-link mx-4" [routerLink]="['/products/overview']" [ngStyle]="{color: getProductColor()}">Produkty</a>
 
         <!-- statistics page -->
         <a class="nav-item nav-link mx-4" [routerLink]="['/statistics']" routerLinkActive="active">Statystyki</a>
@@ -32,7 +32,7 @@
         <div class="nav-item nav-link dropdown mx-4">
 
           <button class="bg-transparent border-0"
-                  [ngStyle]="{color: getColor()}"
+                  [ngStyle]="{color: getTransactionColor()}"
                   type="button"
                   id="dropdownTransactionsButton"
                   data-toggle="dropdown"

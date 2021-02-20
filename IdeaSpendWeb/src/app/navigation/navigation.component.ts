@@ -1,3 +1,4 @@
+/* tslint:disable */
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthService} from '../_services/auth.service';
@@ -23,12 +24,43 @@ export class NavigationComponent implements OnInit {
   //region Get/Set Color
 
   setColor(): void {
-    if (this.router.url.includes('/transactions')) { this.activeColor = '#fff'; }
-    else                                           { this.activeColor = '#6C707E'; }
+
+    switch ( this.router.url ) {
+
+      case '/products/overview':
+        this.activeColor = '#fff';
+        break;
+
+      case '/products/categories':
+        this.activeColor = '#fff';
+        break;
+
+      case '/products/add':
+        this.activeColor = '#fff';
+        break;
+
+      case '/transactions/new':
+        this.activeColor = '#fff';
+        break;
+
+      case '/transactions/overview':
+        this.activeColor = '#fff';
+        break;
+
+    }
+
   }
 
-  getColor(): string {
-    return this.activeColor;
+  getTransactionColor(): string {
+    if (this.router.url.includes('/transactions')) {
+      return this.activeColor;
+    }
+  }
+
+  getProductColor(): string {
+    if (this.router.url.includes('/products')) {
+      return this.activeColor;
+    }
   }
 
   //endregion

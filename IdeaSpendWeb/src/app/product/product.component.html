@@ -1,1 +1,29 @@
 <app-navigation></app-navigation>
+
+<div class="container-fluid">
+  <div class="row m-0">
+    <div class="col-2">
+
+      <section class="menu text-center">
+
+        <a [routerLink]="['/products/overview']">
+          <div class="menu-item" [ngStyle]="{opacity: GetOpacityOverview()}">
+            <p>Wyświetl</p>
+          </div>
+        </a>
+        <a [routerLink]="['/products/categories']">
+          <div class="menu-item" [ngStyle]="{opacity: GetOpacityCategories()}">
+            <p>Kategorie</p>
+          </div>
+        </a>
+        <a [routerLink]="['/products/add']">
+          <div class="menu-item" [ngStyle]="{opacity: GetOpacityAdd()}">
+            <p>Wprowadź produkty</p>
+          </div>
+        </a>
+
+      </section>
+
+    </div>
+  </div>
+</div>

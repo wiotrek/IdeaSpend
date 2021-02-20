@@ -1,0 +1,38 @@
+.container-fluid{
+  margin-top: 80px;
+}
+
+.active {
+  opacity: 100%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #EDF1EF;
+  width: 80%;
+}
+
+.menu-item {
+  font-size: 1.6rem;
+  margin-bottom: .4em;
+  background: #333B54;
+  opacity: 50%;
+
+  transition: opacity .3s;
+}
+
+.menu-item:hover {
+  opacity: 100;
+}
+
+.menu-item p {
+  padding: 8px 0;
+}
