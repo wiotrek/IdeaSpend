@@ -1,0 +1,44 @@
+.container-fluid{
+  margin-top: 80px;
+}
+
+h1 {
+  color: #EDF1EF;
+}
+
+.header {
+  width: 1120px;
+  font-size: 2.2rem;
+}
+
+.content {
+  font-size: 2rem;
+  width: 1170px;
+  background-color: #333B54;
+  border-radius: 12px;
+}
+
+.content li {
+  text-align: left;
+}
+
+.product-list li {
+  padding: .1em 1em;
+  margin: .1em 0;
+}
+
+.product-list .list-group-item {
+  background: transparent;
+  color: #EDF1EF;
+  border: 0;
+}
+
+.edit-product {
+  text-align: center;
+  background-color: #282D45;
+  color: #FFDE59;
+  font-size: 1.2rem;
+  padding: 7px;
+  width: 40px;
+  height: 30px;
+}
