@@ -1,13 +1,17 @@
 <app-navigation></app-navigation>
 
+
 <div class="row container-fluid">
+
 
   <!-- Menu navigation for product subpage -->
   <app-product class="col-2"></app-product>
 
+
   <!-- List of products -->
   <section class="col-9 product-list">
 
+    <!-- Title and search button -->
     <div class="text-light d-flex justify-content-between">
       <h1>Lista produktów</h1>
       <div class="flex-row form-inline search">
@@ -25,7 +29,6 @@
       <li class="list-group-item" style="width: 100px">Jednostka</li>
       <li class="list-group-item" style="width: 200px">Kategoria</li>
     </ul>
-
 
     <!-- Content list -->
     <ul class="list-group flex-row text-center content mt-2" *ngFor="let product of products; index as poz">
@@ -54,5 +57,6 @@
     </ul>
 
   </section>
+
 
 </div>
