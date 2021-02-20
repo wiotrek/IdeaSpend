@@ -20,20 +20,8 @@ export class ProductComponent implements OnInit {
   // region Set/Get Opacity
 
   setOpacity(): void {
-    switch ( this.router.url ) {
-
-      case '/products/overview':
-        this.opacity = '100%';
-        break;
-
-      case '/products/categories':
-        this.opacity = '100%';
-        break;
-
-      case '/products/add':
-        this.opacity = '100%';
-        break;
-
+    if (this.router.url.includes('products')) {
+      this.opacity = '100%';
     }
   }
 

@@ -24,7 +24,7 @@ export class AuthService {
 
   // login received response from api request
   login(model: any): Observable<void>{
-    console.log(this.backend);
+
     // Do something with response from server
     return this.http.post(`${this.backend}/api/auth/login`, model)
       .pipe(map((response: any) => {

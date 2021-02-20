@@ -25,28 +25,12 @@ export class NavigationComponent implements OnInit {
 
   setColor(): void {
 
-    switch ( this.router.url ) {
+    if (this.router.url.includes('products')) {
+      this.activeColor = '#fff';
+    }
 
-      case '/products/overview':
-        this.activeColor = '#fff';
-        break;
-
-      case '/products/categories':
-        this.activeColor = '#fff';
-        break;
-
-      case '/products/add':
-        this.activeColor = '#fff';
-        break;
-
-      case '/transactions/new':
-        this.activeColor = '#fff';
-        break;
-
-      case '/transactions/overview':
-        this.activeColor = '#fff';
-        break;
-
+    if (this.router.url.includes('transactions')) {
+      this.activeColor = '#fff';
     }
 
   }
