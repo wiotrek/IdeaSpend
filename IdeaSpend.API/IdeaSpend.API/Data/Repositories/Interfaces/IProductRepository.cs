@@ -21,6 +21,6 @@ namespace IdeaSpend.API
         /// <param name="productName">The name of the product</param>
         /// <param name="seller">The seller from product was bought</param>
         /// <returns>Product id</returns>
-        ProductEntity FindProductIdByNameAndSeller( string productName, string seller );
+        ProductEntity FindProductByNameAndSeller( string productName, string seller );
     }
 }

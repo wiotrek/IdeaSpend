@@ -65,10 +65,10 @@ namespace IdeaSpend.API
         /// <param name="productName">The name of the product</param>
         /// <param name="seller">The seller from product was bought</param>
         /// <returns>Product id</returns>
-        public ProductEntity FindProductIdByNameAndSeller( string productName, string seller )
+        public ProductEntity FindProductByNameAndSeller( string productName, string seller )
         {
             // Go to Product table
-            var id = _dataContext.Products
+            var product = _dataContext.Products
 
                 // Filter by product name
                 .Where ( p => p.ProductName == productName )
@@ -76,7 +76,7 @@ namespace IdeaSpend.API
                 // and by seller and return product id
                 .FirstOrDefault ( s => s.Seller == seller );
             
-            return id;
+            return product;
         }
         
     }

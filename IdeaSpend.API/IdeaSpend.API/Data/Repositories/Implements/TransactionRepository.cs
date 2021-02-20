@@ -35,7 +35,7 @@ namespace IdeaSpend.API
 
             // Get product id for identify product with transaction
             var productId =
-                _productRepository.FindProductIdByNameAndSeller ( productName_Seller[0], productName_Seller[1] );
+                _productRepository.FindProductByNameAndSeller ( productName_Seller[0], productName_Seller[1] );
             
             // Create transaction to add
             var transaction = new TransactionEntity
