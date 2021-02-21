@@ -1,3 +1,68 @@
 .container-fluid{
   margin-top: 80px;
 }
+
+h1 {
+  color: #EDF1EF;
+}
+
+.product-add-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-add-input-div {
+  background-color: #333B54;
+  border-radius: var(--border-radius);
+  color: #868993;
+}
+
+input, select {
+  background-color: transparent;
+  border: 0;
+  font-size: 2rem;
+}
+
+.add-product-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+text, label, select  {
+  color: white;
+}
+
+.product-add-button-add {
+  background-color: #FFDE59;
+  border-radius: 5px;
+  font-size: 2rem;
+}
+
+/* region style to delete arrows in
+type=numbers and arrow in select */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* display dropdown list without arrow down */
+select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
+}

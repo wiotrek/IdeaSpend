@@ -12,4 +12,12 @@ export class ProductAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  public AvailableCategory: Array<string> = [
+    "ubrania", "paliwo", "książki", "gry"
+  ];
+
+  public UnitsValue: Array<string> = [
+    "szt", "kg", "l", "m"
+  ];
 }

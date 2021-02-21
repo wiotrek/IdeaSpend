@@ -3,6 +3,10 @@
 @import '../node_modules/simplebar/dist/simplebar.css';
 @import '../node_modules/simplebar';
 
+:root {
+  --border-radius:2px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
