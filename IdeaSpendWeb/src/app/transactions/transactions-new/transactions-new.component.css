@@ -1,0 +1,166 @@
+/* Dropdown effects documentation: https://codinhood.com/micro/10-dropdown-menu-animations-css-transform */
+
+.container-fluid{
+  margin-top: 80px;
+}
+
+/* =================================================== */
+/* ================= PRODUCT CATALOGS ================ */
+/* =================================================== */
+@keyframes growDown {
+
+  0% {
+    transform: scaleY(0)
+  }
+  80% {
+    transform: scaleY(1.1)
+  }
+  100% {
+    transform: scaleY(1)
+  }
+
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7px;
+  background-color: #333B54;
+  cursor: pointer;
+}
+
+.category-list p {
+  font-size: 2rem;
+  color: #EDF1EF;
+  opacity: 50%;
+  border: 0;
+
+}
+
+.category-list ul {
+  margin-top: 5px;
+  background: transparent;
+}
+
+.dropdown-item {
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  height: 33px;
+  padding-top: 3px;
+  border-radius: 7px;
+  background-color: #333B54;
+  color: #EDF1EF;
+
+  animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
+
+  transition: background-color .3s;
+}
+
+.dropdown-item:hover {
+  background-color: #6C707E;
+}
+
+/* =================================================== */
+/* ===================== FILTER ====================== */
+/* =================================================== */
+
+.search input {
+  background-color: #333B54;
+  border-radius: 10px;
+  color: #EDF1EF;
+}
+
+.search input, .search button {
+  font-size: 2rem;
+}
+
+.search button {
+  background-color: #FFDE59;
+  border-radius: 5px;
+}
+
+/* =================================================== */
+/* =================== PRODUCT LIST ================== */
+/* =================================================== */
+
+.header {
+  width: 1120px;
+  font-size: 2.2rem;
+}
+
+.header li {
+  background-color: transparent;
+}
+
+.content {
+  font-size: 2rem;
+  width: 1020px;
+  border-radius: 12px;
+
+  overflow: hidden;
+  height: 220px;
+}
+
+.content li {
+  text-align: left;
+}
+
+.content ul {
+  background-color: #333B54;
+  border-radius: 12px;
+}
+
+.product-list .header {
+  margin-left: 95px;
+}
+
+.product-list li, .transaction-list li {
+  padding: .1em 1em;
+  margin: .1em 0;
+}
+
+.product-list .list-group-item, .transaction-list .list-group-item {
+  background: transparent;
+  color: #EDF1EF;
+  border: 0;
+}
+
+.edit-product {
+  text-align: center;
+  background-color: #282D45;
+  color: #FFDE59;
+  font-size: 1.2rem;
+  padding: 0 12px;
+  height: 30px;
+}
+
+.transaction-list .content, .transaction-list .header {
+  margin-left: 210px;
+}
+
+/* =================================================== */
+/* ==================== NAVIGATION =================== */
+/* =================================================== */
+
+.page-link {
+  padding: .5em 1em;
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: #EDF1EF;
+
+  transition: color .3s, background-color .3s;
+}
+
+.page-link:hover {
+  color: #DDD;
+  background-color: rgba(255, 255, 255, .08);
+}
+
+.product-list nav li {
+  padding: 0;
+  margin: 0;
+}

@@ -1,2 +1,206 @@
 <app-navigation></app-navigation>
-<p>transactions-new works!</p>
+
+<div class="row container-fluid">
+
+
+  <!-- Category filter -->
+  <section class="text-center col-2 h-100">
+
+    <div class="category-list">
+      <p data-toggle="dropdown">
+        - Wybierz kategorie -
+      </p>
+      <ul class="dropdown-menu w-75">
+        <li class="dropdown-item"></li>
+        <li class="dropdown-item">kategoria 1</li>
+        <li class="dropdown-item">kategoria 2</li>
+        <li class="dropdown-item">kategoria 3</li>
+        <li class="dropdown-item">kategoria 4</li>
+        <li class="dropdown-item">kategoria 5</li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <!-- Product filter -->
+  <section class="col-8">
+
+    <div class="d-flex justify-content-end">
+      <div class="flex-row form-inline search">
+
+        <input class="h-100 py-3 pl-4 border-0" type="text" placeholder="nazwa / sprzedawca">
+        <button class="btn ml-2 py-3 px-5">Szukaj</button>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- List of products -->
+  <section class="col ml-4 product-list d-flex flex-column align-items-center">
+
+    <!-- Header list -->
+    <ul class="list-group flex-row text-center mt-5 header">
+      <li class="list-group-item" style="width: 100px"></li>
+      <li class="list-group-item" style="width: 350px">Nazwa</li>
+      <li class="list-group-item" style="width: 180px">Sprzedawca</li>
+      <li class="list-group-item" style="width: 120px">Cena</li>
+      <li class="list-group-item" style="width: 100px">Jednostka</li>
+      <li class="list-group-item" style="width: 200px">Kategoria</li>
+    </ul>
+
+    <!-- Content list -->
+    <div class="content">
+
+      <ul class="list-group flex-row text-center mt-2">
+
+        <!-- Add product to transaction button -->
+        <li class="list-group-item d-flex pr-2" style="width: 100px">
+          <button class="btn edit-product">
+            Dodaj
+          </button>
+        </li>
+
+        <li class="list-group-item" style="width: 350px">Produkt</li>
+        <li class="list-group-item pl-5" style="width: 180px">Sprzedawca</li>
+        <li class="list-group-item pl-5" style="width: 120px">20 zł</li>
+        <li class="list-group-item" style="width: 100px">szt</li>
+        <li class="list-group-item pl-5 text-right" style="width: 150px">Kategoria</li>
+
+      </ul>
+
+      <ul class="list-group flex-row text-center mt-2">
+
+        <!-- Add product to transaction button -->
+        <li class="list-group-item d-flex pr-2" style="width: 100px">
+          <button class="btn edit-product">
+            Dodaj
+          </button>
+        </li>
+
+        <li class="list-group-item" style="width: 350px">inny Produkt</li>
+        <li class="list-group-item pl-5" style="width: 180px">Sprzedawca</li>
+        <li class="list-group-item pl-5" style="width: 120px">45 zł</li>
+        <li class="list-group-item" style="width: 100px">szt</li>
+        <li class="list-group-item pl-5 text-right" style="width: 150px">Kategoria</li>
+
+      </ul>
+
+    </div>
+
+    <!-- Pagination will be visible only if item numbers will above 5 -->
+    <nav aria-label="Page navigation" class="mt-2" >
+      <ul class="pagination">
+
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        <li class="page-item"><a class="page-link" href="/transactions/new">1</a></li>
+        <li class="page-item"><a class="page-link" href="/transactions/new">2</a></li>
+        <li class="page-item"><a class="page-link" href="/transactions/new">3</a></li>
+
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+  </section>
+
+
+  <!-- List of transactions -->
+  <section class="col ml-4 transaction-list d-flex flex-row align-items-center">
+
+    <!-- Current transactions to accept -->
+    <section class="col-10">
+
+      <!-- Header list -->
+      <ul class="list-group flex-row text-center mt-5 header">
+        <li class="list-group-item" style="width: 110px"></li>
+        <li class="list-group-item" style="width: 350px">Produkt</li>
+        <li class="list-group-item" style="width: 80px">Ilość</li>
+        <li class="list-group-item" style="width: 80px">Waga</li>
+        <li class="list-group-item" style="width: 80px">Waluta</li>
+        <li class="list-group-item" style="width: 200px">Data kupna</li>
+        <li class="list-group-item" style="width: 120px">Suma</li>
+      </ul>
+
+      <!-- Content list -->
+      <div class="content">
+
+        <ul class="list-group flex-row text-center mt-2">
+
+          <!-- Edit button -->
+          <li class="list-group-item d-flex pr-2" style="width: 55px">
+            <button class="btn edit-product">
+              E
+            </button>
+          </li>
+
+          <!-- Cancel button -->
+          <li class="list-group-item d-flex pl-1" style="width: 55px">
+            <button class="btn edit-product">
+              X
+            </button>
+          </li>
+
+          <li class="list-group-item" style="width: 350px">Produkt - Sprzedawca</li>
+          <li class="list-group-item pl-5" style="width: 80px">3</li>
+          <li class="list-group-item pl-5" style="width: 80px">450</li>
+          <li class="list-group-item" style="width: 80px">PLN</li>
+          <li class="list-group-item pl-5 " style="width: 200px">2021.01.20</li>
+          <li class="list-group-item pl-5 " style="width: 120px">60 zł</li>
+
+        </ul>
+
+        <ul class="list-group flex-row text-center mt-2">
+
+          <!-- Edit button -->
+          <li class="list-group-item d-flex pr-2" style="width: 55px">
+            <button class="btn edit-product">
+              E
+            </button>
+          </li>
+
+          <!-- Cancel button -->
+          <li class="list-group-item d-flex pl-1" style="width: 55px">
+            <button class="btn edit-product">
+              X
+            </button>
+          </li>
+
+          <li class="list-group-item" style="width: 350px">inny Produkt - Sprzedawca</li>
+          <li class="list-group-item pl-5" style="width: 80px">2</li>
+          <li class="list-group-item pl-5" style="width: 80px">-</li>
+          <li class="list-group-item" style="width: 80px">PLN</li>
+          <li class="list-group-item pl-5 " style="width: 200px">2021.01.20</li>
+          <li class="list-group-item pl-5 " style="width: 120px">90 zł</li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- TODO: Summary and accept -->
+    <section class="col-2 align-items-center">
+      <div class="text-light">
+        HERE
+      </div>
+    </section>
+
+  </section>
+
+
+</div>
+
+
+
