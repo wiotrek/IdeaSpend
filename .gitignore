@@ -4,3 +4,8 @@ _ReSharper.*
 bin
 obj
 packages
+.vscode
+IdeaSpend.db
+IdeaSpend.db-shm
+IdeaSpend.db-wal
+appsettings.json
