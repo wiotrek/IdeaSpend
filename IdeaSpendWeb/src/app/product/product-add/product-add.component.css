@@ -12,7 +12,8 @@ h1 {
   align-items: center;
 }
 
-.product-add-input-div {
+.product-add-input-div,
+.add-product-already-element {
   background-color: #333B54;
   border-radius: var(--border-radius);
   color: #868993;
@@ -24,7 +25,8 @@ input, select {
   font-size: 2rem;
 }
 
-.add-product-amount {
+.add-product-amount,
+.add-product-already-element {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +41,27 @@ text, label, select  {
   font-size: 2rem;
 }
 
-/* region style to delete arrows in
+.add-product-already-element {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 2rem;
+  list-style: none;
+}
+
+.add-product-already-element {
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 10px;
+}
+.add-product-already-element p{
+  margin-bottom: 0;
+}
+a.add-product-delete {
+  color: #FFDE59;
+  border: 0;
+  cursor: pointer;
+}
+/*style to delete arrows in
 type=numbers and arrow in select */
 
 /* Chrome, Safari, Edge, Opera */

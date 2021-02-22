@@ -30,12 +30,12 @@
           <input type="text" class="form-control" id="addSellerName" placeholder="Sprzedawca">
         </div>
         <div class="form-group w-25 product-add-input-div">
-          <input type="number" class="form-control" id="addSellerName" placeholder="Cena">
+          <input type="number" class="form-control" id="addPriceName" placeholder="Cena">
         </div>
 
         <div class="add-product-amount">
           <div class="form-group w-25 product-add-input-div">
-            <input type="number" class="form-control" id="addSellerName" placeholder="Ilosc">
+            <input type="number" class="form-control" id="addAmountName" placeholder="Ilosc">
           </div>
             <select name="unity" id="addUnityName">
               <option selected disabled>Jednostka</option>
@@ -48,9 +48,18 @@
         </div>
       </form>
 
+      <div class="mb-5 mt-5 product-add-title-done">
+        <h1>Dodane</h1>
+      </div>
 
+      <ul class="list-group">
+        <li class="add-product-already-element">
+          <p>Nazwa elementu</p>
+          <p>cena*ilosc zł</p>
+          <a class="add-product-delete"> X</a>
+        </li>
+      </ul>
 
     </div>
   </section>
-
 </div>
