@@ -4,7 +4,12 @@
 @import '../node_modules/simplebar';
 
 :root {
-  --border-radius:2px;
+  --border-radius: 5px;
+  --yellow: #FFDE59;
+  --text-light: #EDF1EF;
+  --text-grey: #868993;
+  --div-color: #333B54;
+  --div-color-dark: #282D45;
 }
 
 * {

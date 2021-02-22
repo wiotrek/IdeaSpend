@@ -3,7 +3,7 @@
 }
 
 h1 {
-  color: #EDF1EF;
+  color: var(--text-light);
 }
 
 .product-add-title {
@@ -14,15 +14,16 @@ h1 {
 
 .product-add-input-div,
 .add-product-already-element {
-  background-color: #333B54;
+  background-color: var(--div-color);
   border-radius: var(--border-radius);
-  color: #868993;
+  color: var(--text-grey);
 }
 
 input, select {
   background-color: transparent;
   border: 0;
   font-size: 2rem;
+  color: var(--text-light);
 }
 
 .add-product-unity,
@@ -31,19 +32,16 @@ input, select {
   justify-content: space-between;
   align-items: center;
 }
-text, label, select  {
-  color: white;
-}
 
 .product-add-button-add {
-  background-color: #FFDE59;
+  background-color: var(--yellow);
   border-radius: 5px;
   font-size: 2rem;
 }
 
 .add-product-already-element {
   padding: 5px;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   font-size: 2rem;
   list-style: none;
 }
@@ -53,11 +51,14 @@ text, label, select  {
   align-items: flex-end;
   padding: 10px;
 }
+
 .add-product-already-element p{
   margin-bottom: 0;
+  color: var(--text-light);
 }
+
 a.add-product-delete {
-  color: #FFDE59;
+  color: var(--yellow);
   border: 0;
   cursor: pointer;
 }

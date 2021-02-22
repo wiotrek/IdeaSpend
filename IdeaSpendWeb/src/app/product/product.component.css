@@ -8,14 +8,14 @@
 
 .menu a {
   text-decoration: none;
-  color: #EDF1EF;
+  color: var(--text-light);
   width: 80%;
 }
 
 .menu-item {
   font-size: 1.6rem;
   margin-bottom: .4em;
-  background: #333B54;
+  background: var(--div-color);
   opacity: 50%;
 
   transition: opacity .3s;

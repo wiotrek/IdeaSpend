@@ -19,13 +19,13 @@ nav {
 
 .navbar p {
   font-size: 2rem;
-  color: #EDF1EF;
+  color: var(--text-light);
   padding-top: 17px;
 }
 
 .navbar i {
   font-size: 2rem;
-  color: #FFDE59;
+  color: var(--yellow);
   padding-top: 27px;
 }
 
@@ -41,7 +41,7 @@ nav {
 }
 
 .dropdown-menu {
-  background-color: #333B54;
+  background-color: var(--div-color);
 }
 
 .dropdown-transaction {

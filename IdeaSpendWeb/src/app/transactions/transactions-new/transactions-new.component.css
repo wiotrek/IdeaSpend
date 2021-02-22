@@ -107,7 +107,7 @@
 
 .content {
   font-size: 2rem;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   height: 220px;
 }
 
@@ -116,8 +116,8 @@
 }
 
 .content ul {
-  background-color: #333B54;
-  border-radius: 12px;
+  background-color: var(--div-color);
+  border-radius: var(--border-radius);
 }
 
 .product-list li, .transaction-list li {
@@ -127,14 +127,14 @@
 
 .product-list .list-group-item, .transaction-list .list-group-item {
   background: transparent;
-  color: #EDF1EF;
+  color: var(--text-light);
   border: 0;
 }
 
 .edit-product {
   text-align: center;
-  background-color: #282D45;
-  color: #FFDE59;
+  background-color: var(--div-color-dark);
+  color: var(--yellow);
   font-size: 1.2rem;
   padding: 0 12px;
   height: 30px;
@@ -155,7 +155,7 @@
   padding: .5em 1em;
   font-size: 1.2rem;
   background-color: transparent;
-  color: #EDF1EF;
+  color: var(--text-light);
 
   transition: color .3s, background-color .3s;
 }
@@ -177,14 +177,14 @@
 
 .summary div{
   font-size: 1.8rem;
-  background-color: #333B54;
-  border-radius: 7px;
-  color: #EDF1EF;
+  background-color: var(--div-color);
+  border-radius: var(--border-radius);
+  color: var(--text-light);
 }
 
 .summary button {
-  background-color: #FFDE59;
-  color: #333B54;
+  background-color: var(--yellow);
+  color: var(--div-color);
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -195,13 +195,13 @@
 /* =================================================== */
 
 ::-webkit-scrollbar {
-  background-color: #282D45;
+  background-color: var(--div-color-dark);
   width: 13px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #FFDE59;
+  background-color: var(--yellow);
   border: 3px solid transparent;
-  border-radius: 7px;
+  border-radius: var(--border-radius);
   background-clip: content-box;
 }
