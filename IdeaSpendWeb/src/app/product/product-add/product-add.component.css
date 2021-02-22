@@ -25,7 +25,7 @@ input, select {
   font-size: 2rem;
 }
 
-.add-product-amount,
+.add-product-unity,
 .add-product-already-element {
   display: flex;
   justify-content: space-between;
