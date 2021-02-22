@@ -3,14 +3,17 @@
 <div class="row container-fluid">
 
 
-  <!-- Category filter -->
-  <section class="text-center col-2 h-100">
+  <!-- Category filter & search -->
+  <section class="col-9 d-flex justify-content-between">
 
-    <div class="category-list">
+    <!-- dropdown list category -->
+    <div class="category-list text-center">
+
       <p data-toggle="dropdown">
         - Wybierz kategorie -
       </p>
-      <ul class="dropdown-menu w-75">
+
+      <ul class="dropdown-menu">
         <li class="dropdown-item"></li>
         <li class="dropdown-item">kategoria 1</li>
         <li class="dropdown-item">kategoria 2</li>
@@ -18,28 +21,23 @@
         <li class="dropdown-item">kategoria 4</li>
         <li class="dropdown-item">kategoria 5</li>
       </ul>
+
+    </div>
+
+    <!-- Search product button -->
+    <div class="form-inline search">
+
+      <input class="h-100 py-3 pl-4 border-0" type="text" placeholder="nazwa / sprzedawca">
+      <button class="btn ml-2 py-3 px-5">Szukaj</button>
+
     </div>
 
   </section>
 
-
-  <!-- Product filter -->
-  <section class="col-8">
-
-    <div class="d-flex justify-content-end">
-      <div class="flex-row form-inline search">
-
-        <input class="h-100 py-3 pl-4 border-0" type="text" placeholder="nazwa / sprzedawca">
-        <button class="btn ml-2 py-3 px-5">Szukaj</button>
-
-      </div>
-    </div>
-
-  </section>
-
+  <section class="col-3 text-light text-right basket-logo">Logo koszyk</section>
 
   <!-- List of products -->
-  <section class="col ml-4 product-list d-flex flex-column align-items-center">
+  <section class="col ml-4 product-list d-flex flex-column align-items-center" >
 
     <!-- Header list -->
     <ul class="list-group flex-row text-center mt-5 header">
@@ -117,26 +115,28 @@
 
 
   <!-- List of transactions -->
-  <section class="col ml-4 transaction-list d-flex flex-row align-items-center">
+  <section class="col-12 ml-4 transaction-list d-flex" >
+
+    <section class="col-1"></section>
 
     <!-- Current transactions to accept -->
-    <section class="col-10">
+    <section class="col-9 d-flex flex-column align-items-end justify-content-end mx-4">
 
-      <!-- Header list -->
-      <ul class="list-group flex-row text-center mt-5 header">
-        <li class="list-group-item" style="width: 110px"></li>
-        <li class="list-group-item" style="width: 350px">Produkt</li>
-        <li class="list-group-item" style="width: 80px">Ilość</li>
-        <li class="list-group-item" style="width: 80px">Waga</li>
-        <li class="list-group-item" style="width: 80px">Waluta</li>
-        <li class="list-group-item" style="width: 200px">Data kupna</li>
-        <li class="list-group-item" style="width: 120px">Suma</li>
-      </ul>
+        <!-- Header list -->
+        <ul class="list-group flex-row text-center mt-5 header">
+          <li class="list-group-item" style="width: 110px"></li>
+          <li class="list-group-item" style="width: 350px">Produkt</li>
+          <li class="list-group-item" style="width: 80px">Ilość</li>
+          <li class="list-group-item" style="width: 80px">Waga</li>
+          <li class="list-group-item" style="width: 80px">Waluta</li>
+          <li class="list-group-item" style="width: 200px">Data kupna</li>
+          <li class="list-group-item" style="width: 120px">Suma</li>
+        </ul>
 
       <!-- Content list -->
-      <div class="content">
+      <div class="content justify-content-start">
 
-        <ul class="list-group flex-row text-center mt-2">
+        <ul class="list-group flex-row text-center mt-2 ">
 
           <!-- Edit button -->
           <li class="list-group-item d-flex pr-2" style="width: 55px">
@@ -190,10 +190,14 @@
 
     </section>
 
-    <!-- TODO: Summary and accept -->
-    <section class="col-2 align-items-center">
-      <div class="text-light">
-        HERE
+
+    <!-- TODO: Summary section is auto updated after each added transaction -->
+    <section class="col-2 summary d-flex align-items-center">
+      <div class="text-center w-100 p-3 mb-5">
+
+        <p>Kwota łącznie: 150 zł</p>
+        <button class="btn">Zatwierdź</button>
+
       </div>
     </section>
 
@@ -201,6 +205,3 @@
 
 
 </div>
-
-
-

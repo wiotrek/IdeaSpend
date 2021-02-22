@@ -21,13 +21,12 @@
 
 }
 
+
 .category-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 7px;
+  padding-top: 10px;
   background-color: #333B54;
   cursor: pointer;
+  width: 230px;
 }
 
 .category-list p {
@@ -39,8 +38,11 @@
 }
 
 .category-list ul {
-  margin-top: 5px;
+  margin-top: 8px;
+  margin-left: 15px;
   background: transparent;
+  border: 0;
+  width: 200px;
 }
 
 .dropdown-item {
@@ -83,12 +85,19 @@
   border-radius: 5px;
 }
 
+
+/* LOGO */
+
+.basket-logo {
+  font-size: 2rem;
+}
+
+
 /* =================================================== */
 /* =================== PRODUCT LIST ================== */
 /* =================================================== */
 
 .header {
-  width: 1120px;
   font-size: 2.2rem;
 }
 
@@ -98,10 +107,7 @@
 
 .content {
   font-size: 2rem;
-  width: 1020px;
   border-radius: 12px;
-
-  overflow: hidden;
   height: 220px;
 }
 
@@ -112,10 +118,6 @@
 .content ul {
   background-color: #333B54;
   border-radius: 12px;
-}
-
-.product-list .header {
-  margin-left: 95px;
 }
 
 .product-list li, .transaction-list li {
@@ -138,8 +140,11 @@
   height: 30px;
 }
 
-.transaction-list .content, .transaction-list .header {
-  margin-left: 210px;
+.transaction-list .content {
+  max-height: 300px;
+  overflow-y: scroll hidden;
+  overflow-x: hidden;
+  width: 92%;
 }
 
 /* =================================================== */
@@ -163,4 +168,40 @@
 .product-list nav li {
   padding: 0;
   margin: 0;
+}
+
+
+/* =================================================== */
+/* ====================== SUMMARY ==================== */
+/* =================================================== */
+
+.summary div{
+  font-size: 1.8rem;
+  background-color: #333B54;
+  border-radius: 7px;
+  color: #EDF1EF;
+}
+
+.summary button {
+  background-color: #FFDE59;
+  color: #333B54;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+
+/* =================================================== */
+/* ====================== SCROLL ===================== */
+/* =================================================== */
+
+::-webkit-scrollbar {
+  background-color: #282D45;
+  width: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FFDE59;
+  border: 3px solid transparent;
+  border-radius: 7px;
+  background-clip: content-box;
 }
