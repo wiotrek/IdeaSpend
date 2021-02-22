@@ -24,24 +24,10 @@ namespace IdeaSpend.API
         #endregion
 
         #region Implemented Methods
-
-        /// <summary>
-        /// Create new catalog
-        /// </summary>
-        /// <param name="catalogDto">Object with base information of the catalog entity</param>
-        /// <param name="userId">User id of the current login user provided from decoded token</param>
-        /// <returns></returns>
-        public async Task<bool> AddCatalogAsync(CatalogDto catalogDto, int userId)
+        
+        public async Task<bool> CreateCatalogAsync(CatalogEntity catalogEntity)
         {
-            // new catalog to add with properties from view
-            var catalogEntity = new CatalogEntity
-            {
-                CatalogName = catalogDto.CatalogName,
-                UserId = userId
-            };
-
             await _dataContext.AddAsync(catalogEntity);
-
             return await _dataContext.SaveChangesAsync() > 0;
         }
 

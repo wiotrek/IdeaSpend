@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   register(model: any): Observable<object> {
-    return this.http.post(`${this.backend}/api/auth/token`, model);
+    return this.http.post(`${this.backend}/api/auth/register`, model);
   }
 
   // Check if token is still active - true for active

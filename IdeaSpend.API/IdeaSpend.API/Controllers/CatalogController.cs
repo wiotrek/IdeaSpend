@@ -8,15 +8,15 @@ namespace IdeaSpend.API
     {
         #region Private Members
 
-        private readonly ICatalogRepository _catalogRepository;
+        private readonly CatalogService _catalogService;
 
         #endregion
 
         #region Constructor
 
-        public CatalogController(ICatalogRepository catalogRepository)
+        public CatalogController(CatalogService catalogService)
         {
-            _catalogRepository = catalogRepository;
+            _catalogService = catalogService;
         }
 
         #endregion
@@ -24,10 +24,8 @@ namespace IdeaSpend.API
         [HttpPost("add/{userId}")]
         public async Task<IActionResult> AddCatalog([FromBody] CatalogDto catalogDto, int userId)
         {
-            // TODO: Validate properties of the catalogDto
-
             // If didn't save return message
-            if (!await _catalogRepository.AddCatalogAsync(catalogDto, userId))
+            if (!await _catalogService.AddCatalog(catalogDto, userId))
                 return BadRequest("Nie udało się dodać katalogu");
 
             return StatusCode(201);

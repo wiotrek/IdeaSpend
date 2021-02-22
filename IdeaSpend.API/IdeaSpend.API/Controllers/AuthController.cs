@@ -9,21 +9,22 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace IdeaSpend.API
 {
+    // TODO: Create Response class to keep success flag and message depend on status
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         #region Private Members
         
-        private readonly IAuthRepository _authRepository;
+        private readonly AuthService _authService;
         private readonly IConfiguration _config;
         
         #endregion
 
         #region Constructor
         
-        public AuthController( IAuthRepository authRepository, IConfiguration config )
+        public AuthController( AuthService authService, IConfiguration config )
         {
-            _authRepository = authRepository;
+            _authService = authService;
             _config = config;
         }
         
@@ -37,14 +38,13 @@ namespace IdeaSpend.API
             // Create user to save
             var user = new UserEntity();
 
-            // Make sure username is free
-            if (await _authRepository.IsUserExist ( registerDto.Username ))
-                return BadRequest($"Nazwa użytkownika {registerDto.Username} jest zajęta.");
             
             // Check repeat password with password user want
             if( registerDto.Password != registerDto.RepeatPassword )
                 return BadRequest ( "Wpisane hasła do siebie nie pasują" );
             
+            
+            // TODO: Transfer data via automapper class
             // Fill user information from view form
             user.Username = registerDto.Username;
             user.FirstName = registerDto.FirstName;
@@ -52,24 +52,29 @@ namespace IdeaSpend.API
             user.Email = registerDto.Email;
             user.Created = DateTime.Now;
 
+            
             // Save user to database
-            var createdUser = await _authRepository.Register ( user, registerDto.Password );
+            var isCreated = await _authService.AddUser ( user, registerDto.Password );
 
+            
             // Get know user something was wrong
-            if( createdUser == false )
+            if( isCreated == false )
                 return BadRequest ( $"Utworzenie użytkownika {registerDto.Username} nie powiodło się" );
 
+            
             return StatusCode ( 201 );
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login( [FromBody] LoginDto loginDto )
+        public async Task<IActionResult> LoginAsync( [FromBody] LoginDto loginDto )
         {
             // Get user from database via auth
-            var user = await _authRepository.Login ( loginDto.Username, loginDto.Password );
+            var user = await _authService.LoginAsync( loginDto.Username, loginDto.Password );
+            
             
             if( user == null )
                 return Unauthorized();
+            
             
             #region Create Token
             
@@ -94,6 +99,7 @@ namespace IdeaSpend.API
             
             #endregion
 
+            
             return Ok(new { token = tokenHandler.WriteToken(token) });
         }
         
