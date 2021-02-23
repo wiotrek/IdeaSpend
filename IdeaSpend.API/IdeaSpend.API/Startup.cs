@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using AutoMapper;
 
 namespace IdeaSpend.API
 {
@@ -26,7 +27,8 @@ namespace IdeaSpend.API
             // Create connection string for database to use by application
             services.AddDbContext<IdeaSpendContext> ( 
                 x => x.UseSqlite ( Configuration.GetConnectionString ( "DefaultConnection" ) ) );
-            
+
+            services.AddAutoMapper(typeof(Startup));
             
             // Local request scope for access to database
             services.AddScoped<IAuthRepository, AuthRepository>();

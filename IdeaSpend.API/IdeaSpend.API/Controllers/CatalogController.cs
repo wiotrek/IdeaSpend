@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace IdeaSpend.API
 {
@@ -9,14 +11,16 @@ namespace IdeaSpend.API
         #region Private Members
 
         private readonly CatalogService _catalogService;
+        private readonly IMapper _mapper;
 
         #endregion
 
         #region Constructor
 
-        public CatalogController(CatalogService catalogService)
+        public CatalogController(CatalogService catalogService, IMapper mapper)
         {
             _catalogService = catalogService;
+            _mapper = mapper;
         }
 
         #endregion
@@ -34,10 +38,10 @@ namespace IdeaSpend.API
         [HttpGet("get/{userId}")]
         public IActionResult GetCatalos(int userId)
         {
-            // TODO: Return only names by automapper
             var userCatalogs = _catalogService.Catalogs(userId);
+            var userCatalogsName = _mapper.Map<IEnumerable<CatalogDto>> ( userCatalogs );
 
-            return Ok( userCatalogs );
+            return Ok( userCatalogsName );
         }
     }
 }

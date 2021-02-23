@@ -28,6 +28,10 @@ namespace IdeaSpend.API
         {
             if( catalogDto == null )
                 return false;
+
+            // Only unique names for catalog
+            if( _catalogRepository.IsExistCatalog ( catalogDto.CatalogName ) )
+                return false;
             
             // new catalog to add with properties from view
             var catalogEntity = new CatalogEntity
