@@ -13,7 +13,7 @@ namespace IdeaSpend.API
         /// <param name="productDto">Object contain information for product</param>
         /// <param name="userId">Decoded token current login user id</param>
         /// <returns></returns>
-        Task<bool> AddProductAsync(ProductDto productDto, int userId);
+        Task<bool> AddProductAsync(ProductEntity product);
 
         /// <summary>
         /// Get product id by product name and seller

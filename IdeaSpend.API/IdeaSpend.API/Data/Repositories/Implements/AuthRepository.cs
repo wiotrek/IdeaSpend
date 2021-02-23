@@ -3,20 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
-    public class AuthRepository : IAuthRepository
+    public class AuthRepository : BaseRepository, IAuthRepository
     {
-        #region Private Members
-        
-        private readonly IdeaSpendContext _context;
-        
-        #endregion
-        
         #region Constructors
 
-        public AuthRepository(IdeaSpendContext context)
-        {
-            _context = context;
-        }
+        public AuthRepository(IdeaSpendContext context) : base(context) { }
         
         #endregion
         
@@ -24,7 +15,7 @@ namespace IdeaSpend.API
         
         public async Task<UserEntity> FindUserByUsername( string username )
         {
-            return await _context.Users.FirstOrDefaultAsync ( x => x.Username == username );
+            return await _dataContext.Users.FirstOrDefaultAsync ( x => x.Username == username );
         }
 
         /// <summary>
@@ -32,8 +23,8 @@ namespace IdeaSpend.API
         /// </summary>
         public async Task<bool> Register( UserEntity user )
         {
-            await _context.Users.AddAsync ( user );
-            return await _context.SaveChangesAsync() > 0;
+            await _dataContext.Users.AddAsync ( user );
+            return await _dataContext.SaveChangesAsync() > 0;
         }
 
         #endregion

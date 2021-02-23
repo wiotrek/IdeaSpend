@@ -12,7 +12,7 @@ namespace IdeaSpend.API
         /// <summary>
         /// The scope application data context
         /// </summary>
-        private readonly IdeaSpendContext _dataContext;
+        protected readonly IdeaSpendContext _dataContext;
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace IdeaSpend.API
         /// <param name="entity">The entity class</param>
         public void Add<T> ( T entity ) where T : class
         {
-            _dataContext.Add( entity );
+             _dataContext.Add( entity );
         }
 
         /// <summary>

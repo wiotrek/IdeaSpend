@@ -36,6 +36,8 @@ namespace IdeaSpend.API
 
             services.AddTransient<AuthService>();
             services.AddTransient<CatalogService>();
+            services.AddTransient<ProductService>();
+            services.AddTransient<TransactionService>();
             
             
             // Setup Jwt Tokens

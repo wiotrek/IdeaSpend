@@ -8,9 +8,8 @@ namespace IdeaSpend.API
     public interface ITransactionRepository
     {
         /// <summary>
-        /// Create single transaction
+        /// Saving transaction to db
         /// </summary>
-        /// <returns></returns>
-        Task<bool> AddTransaction(TransactionDto transactionDto, int userId);
+        Task<bool> AddTransaction(TransactionEntity transaction);
     }
 }

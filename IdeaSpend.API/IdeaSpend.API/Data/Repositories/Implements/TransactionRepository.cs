@@ -3,55 +3,27 @@
 namespace IdeaSpend.API
 {
     /// <summary>
-    /// CRUD operation for Płatności table
+    /// CRUD operation for Płatności table which is implemented by <see cref="BaseRepository"/>
     /// </summary>
-    public class TransactionRepository : ITransactionRepository
+    public class TransactionRepository : BaseRepository, ITransactionRepository
     {
-        #region Private Members
-
-        /// <summary>
-        /// The scope application data context
-        /// </summary>
-        private readonly IdeaSpendContext _dataContext;
-
-        private readonly IProductRepository _productRepository;
-
-        #endregion
-
         #region Constructor
 
-        public TransactionRepository(IdeaSpendContext dataContext, IProductRepository productRepository)
+        public TransactionRepository(IdeaSpendContext dataContext) : base(dataContext) { }
+
+        #endregion
+
+        #region Implemented Methods
+
+        /// <summary>
+        /// Saving transaction to db
+        /// </summary>
+        public async Task<bool> AddTransaction( TransactionEntity transaction )
         {
-            _dataContext = dataContext;
-            _productRepository = productRepository;
+            await _dataContext.AddAsync ( transaction );
+            return await _dataContext.SaveChangesAsync() > 0;
         }
 
         #endregion
-        
-        public async Task<bool> AddTransaction( TransactionDto transactionDto, int userId )
-        {
-            // Split ProductNameFrom on product name and seller
-            var productName_Seller = transactionDto.ProductNameFrom.Split ( " - " );
-
-            // Get product id for identify product with transaction
-            var productId =
-                _productRepository.FindProductByNameAndSeller ( productName_Seller[0], productName_Seller[1] );
-            
-            // Create transaction to add
-            var transaction = new TransactionEntity
-            {
-                UserId = userId,
-                ProductId = productId.ProductId,
-                Quantity = transactionDto.Quantity,
-                Weights = transactionDto.Weights,
-                Currency = transactionDto.Currency,
-                TransactionDate = transactionDto.TransactionDate,
-                Paid = transactionDto.Weights * productId.Price
-            };
-
-            await _dataContext.AddAsync ( transaction );
-
-            return await _dataContext.SaveChangesAsync() > 0;
-        }
     }
 }

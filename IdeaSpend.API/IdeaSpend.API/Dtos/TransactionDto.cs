@@ -24,7 +24,6 @@ namespace IdeaSpend.API
         public string Currency { get; set; }
         public int Quantity { get; set; }
         public double Weights { get; set; }
-        public double Paid { get; set; }
         public DateTime TransactionDate { get; set; }
 
         #endregion

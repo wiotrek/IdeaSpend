@@ -8,15 +8,15 @@ namespace IdeaSpend.API
     {
         #region Private Members
 
-        private readonly IProductRepository _productRepository;
+        private readonly ProductService _productService;
 
         #endregion
 
         #region Constructor
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(ProductService productService)
         {
-            _productRepository = productRepository;
+            _productService = productService;
         }
 
         #endregion
@@ -27,7 +27,7 @@ namespace IdeaSpend.API
         [HttpPost("add/{userId}")]
         public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto, int userId)
         {
-            if (!await _productRepository.AddProductAsync(productDto, userId))
+            if (!await _productService.CreateProductAsync(productDto, userId))
                 return BadRequest("Nie udało się zapisać produktu");
 
             return StatusCode(201);

@@ -3,23 +3,11 @@ using System.Threading.Tasks;
 
 namespace IdeaSpend.API
 {
-    public class CatalogRepository : ICatalogRepository
+    public class CatalogRepository : BaseRepository, ICatalogRepository
     {
-        #region Private Members
-
-        /// <summary>
-        /// The scope application data context
-        /// </summary>
-        private readonly IdeaSpendContext _dataContext;
-
-        #endregion
-
         #region Constructor
 
-        public CatalogRepository(IdeaSpendContext dataContext)
-        {
-            _dataContext = dataContext;
-        }
+        public CatalogRepository(IdeaSpendContext dataContext) : base(dataContext) { }
 
         #endregion
 

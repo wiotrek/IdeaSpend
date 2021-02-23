@@ -8,15 +8,15 @@ namespace IdeaSpend.API
     {
         #region Private Members
 
-        private readonly ITransactionRepository _transactionRepository;
+        private readonly TransactionService _transactionService;
 
         #endregion
 
         #region Constructor
 
-        public TransactionController(ITransactionRepository transactionRepository)
+        public TransactionController(TransactionService transactionService)
         {
-            _transactionRepository = transactionRepository;
+            _transactionService = transactionService;
         }
 
         #endregion
@@ -24,7 +24,7 @@ namespace IdeaSpend.API
         [HttpPost("add/{userId}")]
         public async Task<IActionResult> AddTransaction( [FromBody] TransactionDto transactionDto, int userId )
         {
-            if( !await _transactionRepository.AddTransaction ( transactionDto, userId ) )
+            if( !await _transactionService.CreateTransaction ( transactionDto, userId ) )
                 return BadRequest ( "Nie udało się zarejestrować transakcji" );
 
             return StatusCode ( 201 );
