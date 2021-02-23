@@ -1,2 +1,72 @@
 <app-navigation></app-navigation>
-<p>transactions-overview works!</p>
+
+<div class="row col-12 container-fluid">
+
+
+  <!-- panel to sort elements -->
+  <section class="col-2">
+     <div class="category-list text-center mt-5">
+
+          <p class="dropdown-p" data-toggle="dropdown">
+            Sortuj
+          </p>
+
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">Data</li>
+            <li class="dropdown-item">Sprzedawca</li>
+          </ul>
+
+     </div>
+  </section>
+
+  <!-- empty section to make space between sections -->
+  <section class="col-1"></section>
+
+  <!-- main section on this transaction page -->
+  <section class="col-6">
+    <div class="mb-5">
+      <h1>Dokonane transakcje</h1>
+    </div>
+
+    <div class="transactions-all-results">
+
+      <ul class="list-group mt-2">
+
+        <!-- repeat elements to show view -->
+        <li class="list-group-item transaction-result mt-2" *ngFor="let n of numSequence(10)">
+
+          <button class="btn edit-product">
+            Edytuj
+          </button>
+
+          <p>Biedronka</p>
+          <p>290 zł</p>
+          <p>7 produktów</p>
+          <p>12.02.2020</p>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- pagination from bootstrap position on bottom page  -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center mt-5 transaction-overwiew-pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+  </section>
+
+
+</div>
