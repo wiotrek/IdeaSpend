@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
@@ -28,6 +31,15 @@ namespace IdeaSpend.API
                 .FirstOrDefault( n => n.CatalogName == catalogName ).CatalogId;
 
             return id;
+        }
+
+        /// <summary>
+        /// Get all catalogs which user have
+        /// </summary>
+        public IEnumerable<CatalogEntity> GetCatalogs(int userId)
+        {
+            return _dataContext.Catalogs
+                .Where(id => id.UserId == userId);
         }
 
         #endregion

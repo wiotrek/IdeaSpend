@@ -30,5 +30,14 @@ namespace IdeaSpend.API
 
             return StatusCode(201);
         }
+
+        [HttpGet("get/{userId}")]
+        public IActionResult GetCatalos(int userId)
+        {
+            // TODO: Return only names by automapper
+            var userCatalogs = _catalogService.Catalogs(userId);
+
+            return Ok( userCatalogs );
+        }
     }
 }

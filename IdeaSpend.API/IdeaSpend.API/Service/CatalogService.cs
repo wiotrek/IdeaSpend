@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace IdeaSpend.API
 {
@@ -36,6 +37,11 @@ namespace IdeaSpend.API
             };
 
             return await _catalogRepository.CreateCatalogAsync ( catalogEntity );
+        }
+
+        public IEnumerable<CatalogEntity> Catalogs(int userId)
+        {
+            return _catalogRepository.GetCatalogs(userId);
         }
 
         #endregion
