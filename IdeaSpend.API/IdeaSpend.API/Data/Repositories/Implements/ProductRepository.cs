@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
@@ -43,6 +45,20 @@ namespace IdeaSpend.API
                 .FirstOrDefault ( s => s.Seller == seller );
             
             return product;
+        }
+
+        /// <summary>
+        /// Get all products which user have with catalogs to which product are assigned
+        /// </summary>
+        public IEnumerable<ProductEntity> GetUserProducts(int userId)
+        {
+            return _dataContext.Products
+                    
+                    // Join Catalog table to get access catalog content
+                .Include(c => c.Catalog)
+                    
+                .Where(u => u.UserId == userId)
+                .ToList();
         }
 
         #endregion

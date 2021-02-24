@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace IdeaSpend.API
 {
@@ -22,5 +23,10 @@ namespace IdeaSpend.API
         /// <param name="seller">The seller from product was bought</param>
         /// <returns>Product id</returns>
         ProductEntity FindProductByNameAndSeller( string productName, string seller );
+
+        /// <summary>
+        /// Get all products which user have with catalogs to which product are assigned
+        /// </summary>
+        IEnumerable<ProductEntity> GetUserProducts(int userId);
     }
 }

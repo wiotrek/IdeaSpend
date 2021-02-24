@@ -28,7 +28,7 @@ namespace IdeaSpend.API
             services.AddDbContext<IdeaSpendContext> ( 
                 x => x.UseSqlite ( Configuration.GetConnectionString ( "DefaultConnection" ) ) );
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper();
             
             // Local request scope for access to database
             services.AddScoped<IAuthRepository, AuthRepository>();

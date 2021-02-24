@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace IdeaSpend.API
 {
@@ -9,14 +11,17 @@ namespace IdeaSpend.API
         #region Private Members
 
         private readonly ProductService _productService;
+        private readonly IMapper _mapper;
 
         #endregion
 
         #region Constructor
 
-        public ProductController(ProductService productService)
+        public ProductController(ProductService productService,
+                                 IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
 
         #endregion
@@ -31,6 +36,15 @@ namespace IdeaSpend.API
                 return BadRequest("Nie udało się zapisać produktu");
 
             return StatusCode(201);
+        }
+
+        [HttpGet("get/{userId}")]
+        public IActionResult GetProducts(int userId)
+        {
+            var userProducts = _productService.ReadProducts(userId);
+            var productsToReturn = _mapper.Map<IEnumerable<ProductDto>>(userProducts);
+
+            return Ok(productsToReturn);
         }
     }
 }

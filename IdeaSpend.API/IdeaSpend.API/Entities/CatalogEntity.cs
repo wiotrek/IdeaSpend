@@ -12,7 +12,7 @@ namespace IdeaSpend.API
     {
         #region Primary Key
 
-        [Key] public int CatalogId { get; set; }
+        [Key] public int CatalogId { get; private set; }
 
         #endregion
         

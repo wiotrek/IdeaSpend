@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace IdeaSpend.API
@@ -48,6 +49,11 @@ namespace IdeaSpend.API
             };
 
             return await _productRepository.AddProductAsync(product);
+        }
+
+        public IEnumerable<ProductEntity> ReadProducts(int userId)
+        {
+            return _productRepository.GetUserProducts(userId);
         }
 
         #endregion
