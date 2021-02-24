@@ -81,8 +81,8 @@
 }
 
 .search button {
-  background-color: #FFDE59;
-  border-radius: 5px;
+  background-color: var(--yellow);
+  border-radius: var(--border-radius);
 }
 
 
