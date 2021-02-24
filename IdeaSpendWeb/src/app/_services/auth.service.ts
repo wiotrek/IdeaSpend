@@ -5,22 +5,24 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { BaseService } from './base.service';
 
 @Injectable()
 
 // The service provides create as register and get of the create by login method personal information
 // NOTE: After create service put this class in app.module.ts inside provides
-export class AuthService {
+export class AuthService extends BaseService {
 
   //region Public Members
 
-  private backend =  environment.apiUrl;
   jwtHelper = new JwtHelperService();
   decodedToken;
 
   //endregion
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    super();
+  }
 
   // login received response from api request
   login(model: any): Observable<void>{
@@ -34,6 +36,7 @@ export class AuthService {
         if (user){
           localStorage.setItem(`${this.backend}/api/auth/token`, user.token);
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
+          console.log(this.decodedToken)
         }
 
       } ));

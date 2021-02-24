@@ -1,5 +1,8 @@
 /* tslint:disable */
 import { Component, OnInit } from '@angular/core';
+import { Catalog } from 'src/app/_model/catalog';
+import { AuthService } from 'src/app/_services/auth.service';
+import { CatalogService } from 'src/app/_services/catalog.service';
 
 @Component({
   selector: 'app-product-catalogs',
@@ -8,21 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCatalogsComponent implements OnInit {
 
-  catalogs: Array<string>;
+  catalogs: Catalog[];
 
-  constructor() { }
+  constructor(private catalogService: CatalogService, 
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadCatalogs();
-
-
   }
 
-  loadCatalogs(): void {
-    this.catalogs = new Array<string>(9);
+  loadCatalogs() {
+    if (this.authService.decodedToken){
 
-    for (let i = 0; i < this.catalogs.length; i++) {
-      this.catalogs[i] = `Katalog ${i+1}`;
+      this.catalogService.getUserCatalogs(this.authService.decodedToken.nameid)
+      .subscribe((catalog: Catalog[]) => {this.catalogs = catalog;})
+
     }
   }
+
 }

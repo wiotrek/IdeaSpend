@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
 import { AuthService } from './_services/auth.service';
+import { CatalogService } from './_services/catalog.service';
 import { AuthGuard } from './_guards/AuthGuard';
 import { AppComponent } from './app.component';
 
@@ -52,7 +53,8 @@ import { ProductAddComponent } from './product/product-add/product-add.component
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    CatalogService
   ],
   bootstrap: [AppComponent]
 })
