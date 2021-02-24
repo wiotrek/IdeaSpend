@@ -13,7 +13,7 @@ export class ProductCatalogsComponent implements OnInit {
 
   catalogs: Catalog[];
 
-  constructor(private catalogService: CatalogService, 
+  constructor(private catalogService: CatalogService,
               private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class ProductCatalogsComponent implements OnInit {
   }
 
   loadCatalogs() {
-    if (this.authService.decodedToken){
+    if (this.authService.loggedIn()){
 
       this.catalogService.getUserCatalogs(this.authService.decodedToken.nameid)
       .subscribe((catalog: Catalog[]) => {this.catalogs = catalog;})

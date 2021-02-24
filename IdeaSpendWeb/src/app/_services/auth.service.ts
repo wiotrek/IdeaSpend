@@ -34,9 +34,8 @@ export class AuthService extends BaseService {
         const user = response;
 
         if (user){
-          localStorage.setItem(`${this.backend}/api/auth/token`, user.token);
+          localStorage.setItem('token', user.token);
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
-          console.log(this.decodedToken)
         }
 
       } ));
