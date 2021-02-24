@@ -27,6 +27,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductOverviewComponent } from './product/product-overview/product-overview.component';
 import { ProductCatalogsComponent } from './product/product-catalogs/product-catalogs.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
+import {NgApexchartsModule} from 'ng-apexcharts';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ProductAddComponent } from './product/product-add/product-add.component
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    SimplebarAngularModule
+    SimplebarAngularModule,
+    NgApexchartsModule
   ],
   providers: [
     AuthGuard,

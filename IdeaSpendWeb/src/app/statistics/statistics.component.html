@@ -1,1 +1,12 @@
 <app-navigation></app-navigation>
+
+<!-- Statystyki -->
+<div id="chart" class="py-5 text-dark">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [legend]="chartOptions.legend"
+    [dataLabels]="chartOptions.dataLabels"
+  ></apx-chart>
+</div>
