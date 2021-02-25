@@ -17,22 +17,21 @@
         <h1>Dodaj produkt</h1>
         <select name="addProductCategory" id="addProductCategory">
           <option selected disabled>wybierz kategorie</option>
-          <option *ngFor="let category of productCategory" value="{{category}}">{{category.catalogName}}</option>
+          <option *ngFor="let category of productCategory" value="{{category.catalogName}}">{{category.catalogName}}</option>
         </select>
       </div>
 
       <!-- params to adding new product -->
-      <form>
         <div class="form-group product-add-input-div">
-          <input type="text" class="form-control" id="addProductName" placeholder="Nazwa">
+          <input type="text" class="form-control" id="addProductName" placeholder="Nazwa" name="productName" [(ngModel)]="product.productName">
         </div>
         <div class="form-group product-add-input-div">
-          <input type="text" class="form-control" id="addSellerName" placeholder="Sprzedawca">
+          <input type="text" class="form-control" id="addSellerName" placeholder="Sprzedawca" name="seller" [(ngModel)]="product.seller">
         </div>
 
         <div class="add-product-unity">
           <div class="form-group w-25 product-add-input-div">
-            <input type="number" class="form-control" id="addPriceName" placeholder="Cena">
+            <input type="number" class="form-control" id="addPriceName" placeholder="Cena" name="price" [(ngModel)]="product.price">
           </div>
             <select name="unity" id="addUnityName">
               <option selected disabled>Jednostka</option>
@@ -41,22 +40,30 @@
         </div>
 
         <div class="form-group">
-          <button class="btn w-25 product-add-button-add">Dodaj</button>
+          <button class="btn w-25 product-add-button-add" (click)="addProduct()">Dodaj</button>
         </div>
-      </form>
 
       <div class="mb-5 mt-5 product-add-title-done">
         <h1>Dodane</h1>
       </div>
 
-      <ul class="list-group">
-        <li class="add-product-already-element">
-          <p>Nazwa elementu</p>
-          <p>kategoria</p>
-          <p>cena</p>
-          <a class="add-product-delete"> X</a>
-        </li>
-      </ul>
+
+      <!-- <form> -->
+
+        <ul class="list-group">
+          <li class="add-product-already-element" *ngFor="let product of productToAdd">
+            <p>{{product.productName}}</p>
+            <p>{{product.catalog}}</p>
+            <p>{{product.price}}</p>
+            <a class="add-product-delete"> X</a>
+          </li>
+        </ul>
+
+        <div class="form-group text-right">
+          <button class="btn w-25 product-add-button-add">Zatwierdź</button>
+        </div>
+      <!-- </form> -->
+
 
     </div>
   </section>

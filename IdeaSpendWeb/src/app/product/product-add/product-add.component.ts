@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Catalog } from 'src/app/_model/catalog';
+import { Product } from 'src/app/_model/product';
 import { AuthService } from 'src/app/_services/auth.service';
 import { CatalogService } from 'src/app/_services/catalog.service';
-import { ProductCatalogsComponent } from '../product-catalogs/product-catalogs.component';
 
 @Component({
   selector: 'app-product-add',
@@ -11,7 +11,16 @@ import { ProductCatalogsComponent } from '../product-catalogs/product-catalogs.c
 })
 export class ProductAddComponent implements OnInit {
 
+  // list of category for product
   productCategory: Catalog[];
+
+  // model of product
+  product: Product = new Product();
+
+  // list of added product to save
+  productToAdd: Product[] = [];
+
+  UnitsValue: Array<string> = [ 'szt', 'kg', 'l', 'm' ];
 
   constructor(private authService: AuthService, private catalogService: CatalogService) {}
 
@@ -28,7 +37,17 @@ export class ProductAddComponent implements OnInit {
     }
   }
 
-  UnitsValue: Array<string> = [
-    "szt", "kg", "l", "m"
-  ];
+  /* 
+  * Product is adding to local products list before user submit created list
+  */
+  addProduct(): void {
+    if (this.authService.loggedIn()){
+
+      this.product.catalog = (<HTMLSelectElement>document.getElementById('addProductCategory')).value;
+      this.productToAdd.push(this.product);
+      this.product = new Product();
+
+    }
+  }
+
 }
