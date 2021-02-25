@@ -48,22 +48,21 @@
       </div>
 
 
-      <!-- <form> -->
-
+      <div class="catalog-list">
         <ul class="list-group mt-5">
-          <li class="add-product-already-element" *ngFor="let product of productToAdd">
+          <li class="add-product-already-element flex-row d-flex mt-1" *ngFor="let product of productToAdd;
+          index as indexInArray;">
             <p>{{product.productName}}</p>
             <p>{{product.catalog}}</p>
             <p>{{product.price}}</p>
-            <a class="add-product-delete"> X</a>
+            <a class="add-product-delete" (click)="kickProduct(indexInArray)"> X</a>
           </li>
         </ul>
+      </div>
 
-        <div class="form-group text-right mt-5" *ngIf="isConfirmButton">
-          <button class="btn w-25 product-add-button-add">Zatwierdź</button>
-        </div>
-      <!-- </form> -->
-
+      <div class="form-group text-right mt-5" *ngIf="this.productToAdd.length">
+        <button class="btn w-25 product-add-button-add">Zatwierdź</button>
+      </div>
 
     </div>
   </section>

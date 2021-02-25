@@ -62,6 +62,14 @@ a.add-product-delete {
   border: 0;
   cursor: pointer;
 }
+
+.catalog-list {
+  max-height: 300px;
+  overflow-y: scroll hidden;
+  overflow-x: hidden;
+}
+
+
 /*style to delete arrows in
 type=numbers and arrow in select */
 
@@ -88,4 +96,16 @@ select {
 /* For IE10 */
 select::-ms-expand {
   display: none;
+}
+
+::-webkit-scrollbar {
+  background-color: #282D45;
+  width: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--yellow);
+  border: 3px solid transparent;
+  border-radius: 7px;
+  background-clip: content-box;
 }
