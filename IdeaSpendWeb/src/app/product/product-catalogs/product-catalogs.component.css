@@ -2,20 +2,48 @@
   margin-top: 80px;
 }
 
-h1 {
+h1, h2 {
   color: var(--text-light);
+}
+
+.add-catalog {
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-catalog input {
+  background-color: var(--div-color);
+  color: var(--text-grey);
+  border: 0;
+  font-size: 2rem;
+  border-radius: var(--border-radius);
+  padding: 7px 0;
+  width: 85%;
+}
+
+.add-catalog input:active {
+  border: 1px white;
+}
+
+.add-catalog button {
+  width: 14%;
+  padding: 7px 0;
+  color: var(--div-color);
+  background-color: var(--yellow);
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .catalog-list {
   max-height: 300px;
-  width: 500px;
   overflow-y: scroll hidden;
   overflow-x: hidden;
 }
 
 .content {
   font-size: 2rem;
-  width: 470px;
   background-color: var(--div-color);
   border-radius: var(--border-radius);
 }
@@ -28,7 +56,7 @@ h1 {
   background: transparent;
   color: var(--text-light);
   border: 0;
-  width: 350px;
+  width: 90%;
 }
 
 .edit-catalog {
@@ -41,31 +69,7 @@ h1 {
   height: 30px;
 }
 
-.add-catalog {
-  color: var(--text-light);
-  padding-top: 50px;
-}
 
-.add-catalog input {
-  width: 95%;
-  background-color: var(--div-color);
-  color: var(--text-grey);
-  border: 0;
-  font-size: 1.2rem;
-  padding: 7px 9px;
-  border-radius: var(--border-radius);
-  margin: 8px 0;
-}
-
-.add-catalog button {
-  width: 12%;
-  padding: 3px;
-  color: var(--div-color);
-  background-color: var(--yellow);
-  font-size: 1.3rem;
-  text-align: center;
-  margin-left: 83%;
-}
 
 ::-webkit-scrollbar {
   background-color: #282D45;

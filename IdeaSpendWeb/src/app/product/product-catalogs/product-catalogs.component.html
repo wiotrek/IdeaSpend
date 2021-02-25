@@ -6,9 +6,24 @@
   <!-- Menu navigation for product subpage -->
   <app-product class="col-2"></app-product>
 
+  <section class="col-1"></section>
 
   <!-- List of products -->
-  <section class="col-7 d-flex flex-column align-items-center">
+  <section class="col-6">
+
+    <!-- Add new catalog -->
+    <form (ngSubmit)="saveCatalog()">
+
+      <h2>Dodaj kategorie</h2>
+
+      <div class="add-catalog">
+
+        <input type="text" placeholder="nazwa" name="catalogName" [(ngModel)]="catalog.catalogName"
+        class="my-5 text-center">
+        <button class="btn">Dodaj</button>
+
+      </div>
+    </form>
 
     <!-- Title and search button -->
     <div class="mb-5">
@@ -18,7 +33,7 @@
     <!-- Content list -->
     <div class="catalog-list">
 
-      <ul class="list-group flex-row text-center content mt-2" *ngFor="let catalog of catalogs">
+      <ul class="list-group flex-row content mt-2" *ngFor="let catalog of catalogs">
 
 
         <li class="list-group-item">{{catalog.catalogName}}</li>
@@ -39,15 +54,6 @@
       </ul>
 
     </div>
-
-    <!-- Add new catalog -->
-    <form (ngSubmit)="saveCatalog()">
-      <div class="align-items-start col-7 add-catalog">
-        <h3>Dodaj kategorie</h3>
-        <input type="text" placeholder="nazwa" name="catalogName" [(ngModel)]="catalog.catalogName">
-        <button class="btn">Dodaj</button>
-      </div>
-  </form>
 
   </section>
 
