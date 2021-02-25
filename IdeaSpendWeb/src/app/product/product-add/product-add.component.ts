@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Catalog } from 'src/app/_model/catalog';
+import { AuthService } from 'src/app/_services/auth.service';
+import { CatalogService } from 'src/app/_services/catalog.service';
+import { ProductCatalogsComponent } from '../product-catalogs/product-catalogs.component';
 
 @Component({
   selector: 'app-product-add',
@@ -7,17 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductAddComponent implements OnInit {
 
-  constructor() { }
+  productCategory: Catalog[];
+
+  constructor(private authService: AuthService, private catalogService: CatalogService) {}
 
   ngOnInit(): void {
+    this.loadCatalogs();
   }
 
+  loadCatalogs() {
+    if (this.authService.loggedIn()){
+      
+      this.catalogService.getUserCatalogs(this.authService.decodedToken.nameid)
+      .subscribe((catalog: Catalog[]) => {this.productCategory = catalog;})
 
-  public AvailableCategory: Array<string> = [
-    "ubrania", "paliwo", "książki", "gry"
-  ];
+    }
+  }
 
-  public UnitsValue: Array<string> = [
+  UnitsValue: Array<string> = [
     "szt", "kg", "l", "m"
   ];
 }

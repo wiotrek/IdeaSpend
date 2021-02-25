@@ -17,7 +17,7 @@
         <h1>Dodaj produkt</h1>
         <select name="addProductCategory" id="addProductCategory">
           <option selected disabled>wybierz kategorie</option>
-          <option *ngFor="let category of AvailableCategory" value="{{category}}">{{category}}</option>
+          <option *ngFor="let category of productCategory" value="{{category}}">{{category.catalogName}}</option>
         </select>
       </div>
 

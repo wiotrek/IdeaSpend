@@ -38,6 +38,7 @@ export class ProductCatalogsComponent implements OnInit {
 
   }
 
+  // TODO: Move common methods to base component
   loadCatalogs() {
     if (this.authService.loggedIn()){
 
