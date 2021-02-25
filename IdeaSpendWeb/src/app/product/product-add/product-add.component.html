@@ -50,7 +50,7 @@
 
       <!-- <form> -->
 
-        <ul class="list-group">
+        <ul class="list-group mt-5">
           <li class="add-product-already-element" *ngFor="let product of productToAdd">
             <p>{{product.productName}}</p>
             <p>{{product.catalog}}</p>
@@ -59,7 +59,7 @@
           </li>
         </ul>
 
-        <div class="form-group text-right">
+        <div class="form-group text-right mt-5" *ngIf="isConfirmButton">
           <button class="btn w-25 product-add-button-add">Zatwierdź</button>
         </div>
       <!-- </form> -->
