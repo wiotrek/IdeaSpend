@@ -12,6 +12,10 @@ export class CatalogService extends BaseService {
         super(); 
     }
 
+    addUserCatalog(userId: number, model: any): Observable<Catalog> {
+        return this.http.post<Catalog>(`${this.backend}/api/catalog/add/${userId}`, model);
+    }
+
     getUserCatalogs(userId: number): Observable<Catalog[]> {
         return this.http.get<Catalog[]>(`${this.backend}/api/catalog/get/${userId}`);
       }

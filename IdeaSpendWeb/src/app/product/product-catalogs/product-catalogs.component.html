@@ -41,11 +41,13 @@
     </div>
 
     <!-- Add new catalog -->
-    <div class="align-items-start col-7 add-catalog">
-      <h3>Dodaj kategorie</h3>
-      <input type="text" placeholder="nazwa">
-      <button class="btn">Dodaj</button>
-    </div>
+    <form (ngSubmit)="saveCatalog()">
+      <div class="align-items-start col-7 add-catalog">
+        <h3>Dodaj kategorie</h3>
+        <input type="text" placeholder="nazwa" name="catalogName" [(ngModel)]="catalog.catalogName">
+        <button class="btn">Dodaj</button>
+      </div>
+  </form>
 
   </section>
 
