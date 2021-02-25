@@ -22,6 +22,8 @@ export class ProductAddComponent implements OnInit {
 
   UnitsValue: Array<string> = [ 'szt', 'kg', 'l', 'm' ];
 
+  isConfirmButton: boolean = false;
+
   constructor(private authService: AuthService, private catalogService: CatalogService) {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class ProductAddComponent implements OnInit {
 
   loadCatalogs() {
     if (this.authService.loggedIn()){
-      
+
       this.catalogService.getUserCatalogs(this.authService.decodedToken.nameid)
       .subscribe((catalog: Catalog[]) => {this.productCategory = catalog;})
 
@@ -46,6 +48,7 @@ export class ProductAddComponent implements OnInit {
       this.product.catalog = (<HTMLSelectElement>document.getElementById('addProductCategory')).value;
       this.productToAdd.push(this.product);
       this.product = new Product();
+      this.isConfirmButton = true;
 
     }
   }
