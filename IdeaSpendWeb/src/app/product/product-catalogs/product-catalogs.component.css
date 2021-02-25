@@ -47,7 +47,7 @@ h1 {
 }
 
 .add-catalog input {
-  width: 95%;
+  /*width: 95%;*/
   background-color: var(--div-color);
   color: var(--text-grey);
   border: 0;
@@ -58,13 +58,12 @@ h1 {
 }
 
 .add-catalog button {
-  width: 12%;
-  padding: 3px;
+  padding: 3px 12px;
   color: var(--div-color);
   background-color: var(--yellow);
   font-size: 1.3rem;
   text-align: center;
-  margin-left: 83%;
+  margin-left: 55px;
 }
 
 ::-webkit-scrollbar {
