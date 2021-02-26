@@ -14,12 +14,18 @@ namespace IdeaSpend.API
         {
             CatalogForCatalogDto();
             ProductForProductDto();
+            UserForLoginUserDto();
         }
 
         #endregion
 
-        #region Private Members
+        #region Private Methods
 
+        private void UserForLoginUserDto()
+        {
+            CreateMap<UserEntity, LoginUserDto>();
+        }
+        
         private void CatalogForCatalogDto()
         {
             CreateMap<CatalogEntity, CatalogDto>();

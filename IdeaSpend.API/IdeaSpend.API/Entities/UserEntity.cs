@@ -44,9 +44,13 @@ namespace IdeaSpend.API
         [Column("utworzono")]   
         public DateTime Created { get; set; }
         
+        // TODO: change last login to last active
         [Column("ostatnie_logowanie")]        
         public DateTime LastLogin { get; set; }
 
+        /// <summary>
+        /// It's a total amount of the income from different source
+        /// </summary>
         [Column("dochód")]
         public double Income { get; set; }
 

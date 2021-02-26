@@ -1,3 +1,4 @@
+/* tslint:disable:no-trailing-whitespace */
 import { Component, OnInit } from '@angular/core';
 import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';
@@ -30,7 +31,7 @@ export class ProductAddComponent implements OnInit {
     this.loadCatalogs();
   }
 
-  loadCatalogs() {
+  loadCatalogs(): void {
     if (this.authService.loggedIn()){
 
       this.catalogService.getUserCatalogs(this.authService.decodedToken.nameid)
@@ -39,7 +40,7 @@ export class ProductAddComponent implements OnInit {
     }
   }
 
-  /* 
+  /*
   * Product is adding to local products list before user submit created list
   */
   addProduct(): void {

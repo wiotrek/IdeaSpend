@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,15 +18,19 @@ namespace IdeaSpend.API
         
         private readonly AuthService _authService;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
         
         #endregion
 
         #region Constructor
         
-        public AuthController( AuthService authService, IConfiguration config )
+        public AuthController( AuthService authService,
+                               IConfiguration config,
+                               IMapper mapper)
         {
             _authService = authService;
             _config = config;
+            _mapper = mapper;
         }
         
         #endregion
@@ -99,8 +104,10 @@ namespace IdeaSpend.API
             
             #endregion
 
+            var userToReturn = _mapper.Map<LoginUserDto> ( user );
+            userToReturn.Token = tokenHandler.WriteToken ( token );
             
-            return Ok(new { token = tokenHandler.WriteToken(token) });
+            return Ok(userToReturn);
         }
         
         #endregion
