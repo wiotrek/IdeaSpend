@@ -11,8 +11,18 @@ h1 {
   font-size: 2.2rem;
 }
 
-.search input, .search button {
+.search input {
   font-size: 1.8rem;
+}
+
+.search input {
+  padding: 4px;
+}
+
+.search button{
+  font-size: 1.7rem;
+  margin-left: 1px;
+  background-color: var(--yellow);
 }
 
 .content {
