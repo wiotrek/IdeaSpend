@@ -1,7 +1,7 @@
 /* tslint:disable */
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
-import { CatalogService } from 'src/app/_services/catalog.service';
+import { ProductService } from 'src/app/_services/product.service';
 import {Product} from '../../_model/product';
 
 @Component({
@@ -13,7 +13,7 @@ export class ProductOverviewComponent implements OnInit {
 
   products: Product[];
 
-  constructor(private catalogService: CatalogService,
+  constructor(private productService: ProductService,
     private authService: AuthService) {
   }
 
@@ -23,7 +23,7 @@ export class ProductOverviewComponent implements OnInit {
 
   loadProducts(): void {
     if (this.authService.loggedIn()){
-      this.catalogService.getUserProducts(this.authService.decodedToken.nameid)
+      this.productService.getUserProducts(this.authService.decodedToken.nameid)
       .subscribe((products: Product[]) => {this.products = products;})
     }
   }

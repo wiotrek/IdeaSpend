@@ -8,6 +8,7 @@ import { SimplebarAngularModule } from 'simplebar-angular';
 
 import { AuthService } from './_services/auth.service';
 import { CatalogService } from './_services/catalog.service';
+import { ProductService } from './_services/product.service';
 import { AuthGuard } from './_guards/AuthGuard';
 import { AppComponent } from './app.component';
 
@@ -57,7 +58,8 @@ import {NgApexchartsModule} from 'ng-apexcharts';
   providers: [
     AuthGuard,
     AuthService,
-    CatalogService
+    CatalogService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Catalog } from "../_model/catalog";
-import { Product } from "../_model/product";
 import { BaseService } from "./base.service";
 
 @Injectable()
@@ -20,9 +19,4 @@ export class CatalogService extends BaseService {
     getUserCatalogs(userId: number): Observable<Catalog[]> {
         return this.http.get<Catalog[]>(`${this.backend}/api/catalog/get/${userId}`);
       }
-
-    getUserProducts(userId: number): Observable<Array<Product>> {
-        return this.http.get<Array<Product>>(`${this.backend}/api/product/get/${userId}`);
-    }
-
 }
