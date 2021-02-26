@@ -29,7 +29,7 @@ namespace IdeaSpend.API
         /// <summary>
         /// The price in specific currency
         /// </summary>
-        [Column("cena")] [Required]        
+        [Column("cena")] [Required]
         public double Price { get; set; }
 
         /// <summary>

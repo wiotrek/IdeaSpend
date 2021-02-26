@@ -1,4 +1,6 @@
-﻿namespace IdeaSpend.API
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace IdeaSpend.API
 {
     /// <summary>
     /// The simplify object of the <see cref="ProductEntity"/> with extra property of the <see cref="CatalogEntity"/>
