@@ -14,16 +14,13 @@
 
         <!-- Title and search button -->
       <div class="mb-5 product-add-title">
+
         <h1>Dodaj produkt</h1>
+
         <select name="addProductCategory" id="addProductCategory">
           <option selected disabled>wybierz kategorie</option>
           <option *ngFor="let category of productCategory" value="{{category.catalogName}}">{{category.catalogName}}</option>
         </select>
-
-        <!-- <select class="addProductCategory" (change)="changeUnits($event)" [(ngModel)]="product.catalog">
-          <option value="" disabled>Kategoria</option>
-          <option *ngFor="let unit of UnitsValue" [ngValue]="unit">{{unit}}</option>
-       </select> -->
 
       </div>
 
@@ -39,8 +36,8 @@
           <div class="form-group w-25 product-add-input-div">
             <input type="number" class="form-control" id="addPriceName" placeholder="Cena" name="price" [(ngModel)]="product.price">
           </div>
-            <select name="unit" id="addUnityName">
-              <option selected disabled>Jednostka</option>
+            <select [(ngModel)]="product.unit" name="unit" id="addUnityName" >
+              <!-- <option selected disabled>Jednostka</option> -->
               <option *ngFor="let unity of UnitsValue" value="{{unity}}">{{unity}}</option>
             </select>
         </div>

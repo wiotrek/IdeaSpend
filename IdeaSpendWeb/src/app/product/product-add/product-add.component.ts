@@ -33,7 +33,6 @@ export class ProductAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCatalogs();
-    this.product.unit = "Jednostka";
   }
 
   loadCatalogs(): void {
