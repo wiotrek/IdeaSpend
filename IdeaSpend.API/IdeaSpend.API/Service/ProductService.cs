@@ -26,7 +26,7 @@ namespace IdeaSpend.API
 
         #region Public Methods
 
-        public async Task<bool> CreateProductAsync(ProductDto productDto, int userId)
+        private async Task<bool> CreateProductAsync(ProductDto productDto, int userId)
         {
             // Make default catalog name as empty space for id = 0
             var catalogId = default(int);
@@ -53,6 +53,15 @@ namespace IdeaSpend.API
             return await _productRepository.AddProductAsync(product);
         }
 
+        public async Task<bool> GetListThenCreateProductAsync(IEnumerable<ProductDto> allProductsDto, int userId)
+        {
+            foreach (var productDto in allProductsDto)
+            {
+                return await this.CreateProductAsync(productDto, userId);
+            }
+            return true;
+        }
+        
         public IEnumerable<ProductEntity> ReadProducts(int userId)
         {
             return _productRepository.GetUserProducts(userId);

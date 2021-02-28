@@ -30,9 +30,9 @@ namespace IdeaSpend.API
         /// NOTE: {userId} word inside HttpPost parameter must be the same as userId word inside AddProduct argument
         /// </summary>
         [HttpPost("add/{userId}")]
-        public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto, int userId)
+        public async Task<IActionResult> AddProduct([FromBody] IEnumerable<ProductDto> allProductsDto, int userId)
         {
-            if (!await _productService.CreateProductAsync(productDto, userId))
+            if (!await _productService.GetListThenCreateProductAsync(allProductsDto, userId))
                 return BadRequest("Nie udało się zapisać produktu");
 
             return StatusCode(201);
