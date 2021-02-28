@@ -7,7 +7,7 @@ namespace IdeaSpend.API
     {
         Task<bool> CreateCatalogAsync(CatalogEntity catalogEntity);
         int FindCatalogIdByName(string catalogName);
-        bool IsExistCatalog( string catalogName );
+        bool IsExistCatalog( string catalogName, int userId );
         IEnumerable<CatalogEntity> GetCatalogs(int userId);
     }
 }

@@ -30,7 +30,7 @@ namespace IdeaSpend.API
                 return false;
 
             // Only unique names for catalog
-            if( _catalogRepository.IsExistCatalog ( catalogDto.CatalogName ) )
+            if( _catalogRepository.IsExistCatalog ( catalogDto.CatalogName, userId ) )
                 return false;
             
             // new catalog to add with properties from view

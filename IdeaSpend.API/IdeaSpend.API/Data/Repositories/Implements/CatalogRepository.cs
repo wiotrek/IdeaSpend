@@ -33,9 +33,10 @@ namespace IdeaSpend.API
         }
 
         
-        public bool IsExistCatalog( string catalogName )
+        public bool IsExistCatalog( string catalogName, int userId )
         {
             return _dataContext.Catalogs
+                .Where(i => i.UserId == userId)
                 .Any ( n => n.CatalogName == catalogName );
         }
 
