@@ -1,9 +1,11 @@
 /* tslint:disable:no-trailing-whitespace */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';
 import { AuthService } from 'src/app/_services/auth.service';
 import { CatalogService } from 'src/app/_services/catalog.service';
+import { ProductService } from 'src/app/_services/product.service';
 
 @Component({
   selector: 'app-product-add',
@@ -17,16 +19,21 @@ export class ProductAddComponent implements OnInit {
 
   // model of product
   product: Product = new Product();
-
   // list of added product to save
   productToAdd: Product[] = [];
 
-  UnitsValue: Array<string> = [ 'szt', 'kg', 'l', 'm' ];
+  UnitsValue: any = [ 'szt', 'kg', 'l', 'm' ];
 
-  constructor(private authService: AuthService, private catalogService: CatalogService) {}
+  constructor(
+    private authService: AuthService,
+    private catalogService: CatalogService,
+    private productService: ProductService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.loadCatalogs();
+    this.product.unit = "Jednostka";
   }
 
   loadCatalogs(): void {
@@ -42,8 +49,8 @@ export class ProductAddComponent implements OnInit {
   */
   addProduct(): void {
     if (this.authService.loggedIn()){
-
-      this.product.catalog = (<HTMLSelectElement>document.getElementById('addProductCategory')).value;
+      this.product.catalogName = (document.getElementById('addProductCategory') as HTMLSelectElement).value;
+      this.product.unit = (document.getElementById('addUnityName') as HTMLSelectElement).value;
       this.productToAdd.push(this.product);
       this.product = new Product();
     }
@@ -53,5 +60,28 @@ export class ProductAddComponent implements OnInit {
   kickProduct(id: number): void {
     this.productToAdd.splice(id, 1);
   }
+
+  saveOneProductToApi(productToApi: Product) {
+    return this.productService.addUserProduct(this.authService.decodedToken.nameid, productToApi)
+    .subscribe(
+
+      // With success save product
+      () => {
+      // clear products list, then goes to overview
+        this.productToAdd = [];
+        this.router.navigate(['/products/overview']);
+      },
+
+      // TODO: add small textbox with error message (duplicate name or too short name)
+      error => console.log(error) );
+  }
+
+  saveProducts(): void{
+    this.productToAdd.forEach(element => {
+      this.saveOneProductToApi(element);
+    });
+
+  }
+
 
 }

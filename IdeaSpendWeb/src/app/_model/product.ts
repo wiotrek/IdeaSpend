@@ -7,7 +7,7 @@ export class Product {
   seller: string;
   price: number;
   unit: string;
-  catalog: string;
+  catalogName: string;
 
   constructor() {}
 

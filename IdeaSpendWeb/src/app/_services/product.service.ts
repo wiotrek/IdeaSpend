@@ -15,6 +15,9 @@ export class ProductService extends BaseService {
     return this.http.get<Array<Product>>(`${this.backend}/api/product/get/${userId}`);
   }
 
+  addUserProduct(userId: number, model: any): Observable<Product> {
+    return this.http.post<Product>(`${this.backend}/api/product/add/${userId}`, model);
+  }
 
 
 }

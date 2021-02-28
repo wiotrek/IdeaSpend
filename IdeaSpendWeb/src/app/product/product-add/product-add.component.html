@@ -19,6 +19,12 @@
           <option selected disabled>wybierz kategorie</option>
           <option *ngFor="let category of productCategory" value="{{category.catalogName}}">{{category.catalogName}}</option>
         </select>
+
+        <!-- <select class="addProductCategory" (change)="changeUnits($event)" [(ngModel)]="product.catalog">
+          <option value="" disabled>Kategoria</option>
+          <option *ngFor="let unit of UnitsValue" [ngValue]="unit">{{unit}}</option>
+       </select> -->
+
       </div>
 
       <!-- params to adding new product -->
@@ -33,7 +39,7 @@
           <div class="form-group w-25 product-add-input-div">
             <input type="number" class="form-control" id="addPriceName" placeholder="Cena" name="price" [(ngModel)]="product.price">
           </div>
-            <select name="unity" id="addUnityName">
+            <select name="unit" id="addUnityName">
               <option selected disabled>Jednostka</option>
               <option *ngFor="let unity of UnitsValue" value="{{unity}}">{{unity}}</option>
             </select>
@@ -53,7 +59,7 @@
           <li class="add-product-already-element flex-row d-flex mt-1" *ngFor="let product of productToAdd;
           index as indexInArray;">
             <p>{{product.productName}}</p>
-            <p>{{product.catalog}}</p>
+            <p>{{product.catalogName}}</p>
             <p>{{product.price}}</p>
             <a class="add-product-delete" (click)="kickProduct(indexInArray)"> X</a>
           </li>
@@ -61,7 +67,8 @@
       </div>
 
       <div class="form-group text-right mt-5" *ngIf="this.productToAdd.length">
-        <button class="btn w-25 product-add-button-add">Zatwierdź</button>
+        <button class="btn w-25 product-add-button-add"
+        (click)="saveProducts()">Zatwierdź</button>
       </div>
 
     </div>
