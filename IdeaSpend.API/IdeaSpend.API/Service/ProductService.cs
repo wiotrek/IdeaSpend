@@ -57,7 +57,7 @@ namespace IdeaSpend.API
         {
             foreach (var productDto in allProductsDto)
             {
-                return await this.CreateProductAsync(productDto, userId);
+                await CreateProductAsync(productDto, userId);
             }
             return true;
         }
