@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace IdeaSpend.API
 {
@@ -58,6 +59,11 @@ namespace IdeaSpend.API
             return await  _transactionRepository.AddTransaction(transaction);
         }
 
+        public IEnumerable<TransactionEntity> ReadTransaction(int userId)
+        {
+            return _transactionRepository.GetTransaction(userId);
+        }
+        
         #endregion
 
         #region Private Methods

@@ -15,6 +15,7 @@ namespace IdeaSpend.API
             CatalogForCatalogDto();
             ProductForProductDto();
             UserForLoginUserDto();
+            TransactionForTransactionDto();
         }
 
         #endregion
@@ -39,6 +40,16 @@ namespace IdeaSpend.API
                     opt => opt.MapFrom(src => src.Catalog.CatalogName));
         }
 
+        private void TransactionForTransactionDto()
+        {
+            CreateMap<TransactionEntity, TransactionDto>()
+                .ForMember(
+                    desc => desc.ProductNameFrom,
+                    opt => 
+                        opt.MapFrom(src => src.Product.ProductName + " - " + src.Product.Seller)
+                    );
+        }
+        
         #endregion
     }
 }

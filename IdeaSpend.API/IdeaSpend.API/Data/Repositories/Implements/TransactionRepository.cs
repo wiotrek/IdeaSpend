@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
@@ -24,6 +27,14 @@ namespace IdeaSpend.API
             return await _dataContext.SaveChangesAsync() > 0;
         }
 
+        public IEnumerable<TransactionEntity> GetTransaction(int userId)
+        {
+            return _dataContext.Transactions
+                .Include(x => x.Product)
+                .Where(x => x.UserId == userId)
+                .ToList();
+        }
+        
         #endregion
     }
 }

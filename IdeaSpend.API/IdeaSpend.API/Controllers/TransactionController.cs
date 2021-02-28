@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdeaSpend.API
@@ -9,14 +12,16 @@ namespace IdeaSpend.API
         #region Private Members
 
         private readonly TransactionService _transactionService;
+        private readonly IMapper _mapper;
 
         #endregion
 
         #region Constructor
 
-        public TransactionController(TransactionService transactionService)
+        public TransactionController(TransactionService transactionService, IMapper mapper)
         {
             _transactionService = transactionService;
+            _mapper = mapper;
         }
 
         #endregion
@@ -29,5 +34,14 @@ namespace IdeaSpend.API
 
             return StatusCode ( 201 );
         }
+
+        [HttpGet("get/{userId}")]
+        public IActionResult GetTransaction(int userId)
+        {
+            var result = _transactionService.ReadTransaction(userId);
+            var betterResult = _mapper.Map<IEnumerable<TransactionDto>>(result);
+            return Ok(betterResult);
+        }
+        
     }
 }
