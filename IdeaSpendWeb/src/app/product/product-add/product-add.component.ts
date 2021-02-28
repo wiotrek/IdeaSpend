@@ -61,8 +61,8 @@ export class ProductAddComponent implements OnInit {
     this.productToAdd.splice(id, 1);
   }
 
-  saveOneProductToApi(productToApi: Product) {
-    return this.productService.addUserProduct(this.authService.decodedToken.nameid, productToApi)
+  saveProducts() {
+    return this.productService.addUserProduct(this.authService.decodedToken.nameid, this.productToAdd)
     .subscribe(
 
       // With success save product
@@ -76,12 +76,12 @@ export class ProductAddComponent implements OnInit {
       error => console.log(error) );
   }
 
-  saveProducts(): void{
-    this.productToAdd.forEach(element => {
-      this.saveOneProductToApi(element);
-    });
+  // saveProducts(): void{
+  //   this.productToAdd.forEach(element => {
+  //     this.saveOneProductToApi(element);
+  //   });
 
-  }
+  // }
 
 
 }
