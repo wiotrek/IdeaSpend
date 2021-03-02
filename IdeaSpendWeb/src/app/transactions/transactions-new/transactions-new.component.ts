@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/_model/product';
+import { Transaction } from 'src/app/_model/transaction';
 import { AuthService } from 'src/app/_services/auth.service';
+import { TransactionService } from 'src/app/_services/transaction.service';
 import {ProductService} from '../../_services/product.service';
 
 @Component({
@@ -9,9 +11,11 @@ import {ProductService} from '../../_services/product.service';
   styleUrls: ['./transactions-new.component.css']
 })
 export class TransactionsNewComponent implements OnInit {
-  products: Product[];
+  products: Product[] = [];
+  transactions: Transaction[] = [];
 
   constructor(private productService: ProductService,
+                      private transactionService: TransactionService,
                       private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -25,4 +29,10 @@ export class TransactionsNewComponent implements OnInit {
     }
   }
 
+  // The transaction list of chosen products
+  onAddProductToLocalList(index: number) {
+    let transaction = new Transaction();
+    transaction = this.transactionService.addProductToLocalList(this.products[index])
+    this.transactions.push(transaction);
+  }
 }

@@ -52,11 +52,11 @@
     <!-- Content list -->
     <div class="content">
 
-      <ul class="list-group flex-row text-center mt-2" *ngFor="let product of products">
+      <ul class="list-group flex-row text-center mt-2" *ngFor="let product of products; index as poz">
 
         <!-- Add product to transaction button -->
         <li class="list-group-item d-flex pr-2" style="width: 100px">
-          <button class="btn edit-product">
+          <button class="btn edit-product" (click)="onAddProductToLocalList(poz)">
             Dodaj
           </button>
         </li>
@@ -96,7 +96,6 @@
 
   </section>
 
-
   <!-- List of transactions -->
   <section class="col-12 ml-4 transaction-list d-flex" >
 
@@ -119,7 +118,7 @@
       <!-- Content list -->
       <div class="content justify-content-start">
 
-        <ul class="list-group flex-row text-center mt-2 ">
+        <ul class="list-group flex-row text-center mt-2" *ngFor="let transaction of transactions">
 
           <!-- Edit button -->
           <li class="list-group-item d-flex pr-2" style="width: 55px">
@@ -135,37 +134,12 @@
             </button>
           </li>
 
-          <li class="list-group-item" style="width: 350px">Produkt - Sprzedawca</li>
-          <li class="list-group-item pl-5" style="width: 80px">3</li>
-          <li class="list-group-item pl-5" style="width: 80px">450</li>
-          <li class="list-group-item" style="width: 80px">PLN</li>
-          <li class="list-group-item pl-5 " style="width: 200px">2021.01.20</li>
-          <li class="list-group-item pl-5 " style="width: 120px">60 zł</li>
-
-        </ul>
-
-        <ul class="list-group flex-row text-center mt-2">
-
-          <!-- Edit button -->
-          <li class="list-group-item d-flex pr-2" style="width: 55px">
-            <button class="btn edit-product">
-              E
-            </button>
-          </li>
-
-          <!-- Cancel button -->
-          <li class="list-group-item d-flex pl-1" style="width: 55px">
-            <button class="btn edit-product">
-              X
-            </button>
-          </li>
-
-          <li class="list-group-item" style="width: 350px">inny Produkt - Sprzedawca</li>
-          <li class="list-group-item pl-5" style="width: 80px">2</li>
-          <li class="list-group-item pl-5" style="width: 80px">-</li>
-          <li class="list-group-item" style="width: 80px">PLN</li>
-          <li class="list-group-item pl-5 " style="width: 200px">2021.01.20</li>
-          <li class="list-group-item pl-5 " style="width: 120px">90 zł</li>
+          <li class="list-group-item" style="width: 350px">{{transaction.productNameFrom}}</li>
+          <li class="list-group-item pl-5" style="width: 80px">{{transaction.quantity}}</li>
+          <li class="list-group-item pl-5" style="width: 80px">{{transaction.weights}}</li>
+          <li class="list-group-item" style="width: 80px">{{transaction.currency}}</li>
+          <li class="list-group-item pl-5 " style="width: 200px">{{transaction.transactionDate}}</li>
+          <li class="list-group-item pl-5 " style="width: 120px">{{transaction.paid}} zł</li>
 
         </ul>
 

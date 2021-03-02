@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../_model/product';
 import { BaseService } from './base.service';

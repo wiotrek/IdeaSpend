@@ -1,5 +1,5 @@
 /* tslint:disable */
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Catalog } from 'src/app/_model/catalog';
 import { AuthService } from 'src/app/_services/auth.service';
 import { CatalogService } from 'src/app/_services/catalog.service';
@@ -13,8 +13,6 @@ export class ProductCatalogsComponent implements OnInit {
 
   catalogs: Catalog[];
   catalog: Catalog = new Catalog();
-
-  @Input() testCatalogs = new EventEmitter<void>();
 
   constructor(private catalogService: CatalogService,
               private authService: AuthService) { }
