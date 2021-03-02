@@ -27,11 +27,14 @@ namespace IdeaSpend.API
         #endregion
 
         [HttpPost("add/{userId}")]
-        public async Task<IActionResult> AddTransaction( [FromBody] TransactionDto transactionDto, int userId )
+        public async Task<IActionResult> AddTransaction( [FromBody] IEnumerable<TransactionDto> transactionDtos, int userId )
         {
-            if( !await _transactionService.CreateTransaction ( transactionDto, userId ) )
-                return BadRequest ( "Nie udało się zarejestrować transakcji" );
-
+            foreach ( var transactionDto in transactionDtos )
+            {
+                if( !await _transactionService.CreateTransaction ( transactionDto, userId ) )
+                    return BadRequest ( "Nie udało się zarejestrować transakcji" );
+            }
+            
             return StatusCode ( 201 );
         }
 
