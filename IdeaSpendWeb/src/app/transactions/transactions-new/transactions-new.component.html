@@ -118,7 +118,7 @@
       <!-- Content list -->
       <div class="content justify-content-start">
 
-        <ul class="list-group flex-row text-center mt-2" *ngFor="let transaction of transactions">
+        <ul class="list-group flex-row text-center mt-2" *ngFor="let transaction of transactionsToSave; index as poz">
 
           <!-- Edit button -->
           <li class="list-group-item d-flex pr-2" style="width: 55px">
@@ -129,7 +129,7 @@
 
           <!-- Cancel button -->
           <li class="list-group-item d-flex pl-1" style="width: 55px">
-            <button class="btn edit-product">
+            <button class="btn edit-product" (click)="onDeleteProductFromTransaction(poz)">
               X
             </button>
           </li>
@@ -139,7 +139,7 @@
           <li class="list-group-item pl-5" style="width: 80px">{{transaction.weights}}</li>
           <li class="list-group-item" style="width: 80px">{{transaction.currency}}</li>
           <li class="list-group-item pl-5 " style="width: 200px">{{transaction.transactionDate}}</li>
-          <li class="list-group-item pl-5 " style="width: 120px">{{transaction.paid}} zł</li>
+          <li class="list-group-item pl-5 " style="width: 120px">{{transaction.paid.toFixed(2)}} zł</li>
 
         </ul>
 

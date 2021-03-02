@@ -12,7 +12,7 @@ import {ProductService} from '../../_services/product.service';
 })
 export class TransactionsNewComponent implements OnInit {
   products: Product[] = [];
-  transactions: Transaction[] = [];
+  transactionsToSave: Transaction[] = [];
 
   constructor(private productService: ProductService,
                       private transactionService: TransactionService,
@@ -33,6 +33,23 @@ export class TransactionsNewComponent implements OnInit {
   onAddProductToLocalList(index: number) {
     let transaction = new Transaction();
     transaction = this.transactionService.addProductToLocalList(this.products[index])
-    this.transactions.push(transaction);
+
+    for (let i = 0; i < this.transactionsToSave.length; i++)
+      if (this.transactionsToSave[i].productNameFrom === transaction.productNameFrom) {
+        this.transactionsToSave[i].quantity++;
+        this.transactionsToSave[i].paid = (this.transactionsToSave[i].quantity * this.products[index].price);
+        return;
+      }
+
+    this.transactionsToSave.push(transaction);
+  }
+
+  onDeleteProductFromTransaction(index: number) {
+    if (this.transactionsToSave[index].quantity > 1) {
+      this.transactionsToSave[index].quantity--;
+      this.transactionsToSave[index].paid -= this.transactionsToSave[index].paid / (this.transactionsToSave[index].quantity+1);
+    }
+    else
+      this.transactionsToSave.splice(index, 1);
   }
 }

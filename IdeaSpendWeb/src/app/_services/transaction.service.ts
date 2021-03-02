@@ -7,19 +7,21 @@ import {Product} from '../_model/product';
 })
 export class TransactionService {
   currentAmountBoughtProduct: number = 1;
+  transaction: Transaction;
 
   constructor() { }
 
-  // adding single product to transaction list
+  // adding single product to transaction list (the list before submit to save)
   addProductToLocalList(products: Product) :Transaction{
-    let transaction = new Transaction();
-    transaction.productNameFrom = products.productName + ' - ' + products.seller;
-    transaction.quantity = this.currentAmountBoughtProduct;
-    transaction.weights = 1;
-    transaction.currency = 'PLN';
-    transaction.transactionDate = new Date().toLocaleDateString();
-    transaction.paid = transaction.quantity * products.price;
+    this.transaction = new Transaction();
+    this.transaction.productNameFrom = products.productName + ' - ' + products.seller;
+    this.transaction.quantity = this.currentAmountBoughtProduct;
+    this.transaction.weights = 1;
+    this.transaction.currency = 'PLN';
+    this.transaction.transactionDate = new Date().toLocaleDateString();
+    this.transaction.paid = this.transaction.quantity * products.price;
 
-    return transaction;
+    return this.transaction;
   }
+
 }
