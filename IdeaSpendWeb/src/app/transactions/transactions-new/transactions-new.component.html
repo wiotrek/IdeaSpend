@@ -148,17 +148,15 @@
     </section>
 
 
-    <!-- TODO: Summary section is auto updated after each added transaction -->
     <section class="col-2 summary d-flex align-items-center">
       <div class="text-center w-100 p-3 mb-5">
 
-        <p>Kwota łącznie: 150 zł</p>
-        <button class="btn">Zatwierdź</button>
+        <p>Kwota łącznie: {{totalPaid.toFixed(2)}} zł</p>
+        <button class="btn" (click)="addTransactions()">Zatwierdź</button>
 
       </div>
     </section>
 
   </section>
-
 
 </div>
