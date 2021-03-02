@@ -105,10 +105,14 @@
   background-color: transparent;
 }
 
+.product-list .content {
+  max-height: 220px;
+  overflow-y: hidden;
+}
+
 .content {
   font-size: 2rem;
   border-radius: var(--border-radius);
-  height: 220px;
 }
 
 .content li {
@@ -129,6 +133,7 @@
   background: transparent;
   color: var(--text-light);
   border: 0;
+  max-height: 220px;
 }
 
 .edit-product {

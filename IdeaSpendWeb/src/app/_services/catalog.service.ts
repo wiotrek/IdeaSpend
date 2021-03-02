@@ -1,15 +1,15 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Catalog } from "../_model/catalog";
-import { BaseService } from "./base.service";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Catalog } from '../_model/catalog';
+import { BaseService } from './base.service';
 
 @Injectable()
 
 export class CatalogService extends BaseService {
 
-    constructor(private http: HttpClient) { 
-        super(); 
+    constructor(private http: HttpClient) {
+        super();
     }
 
     addUserCatalog(userId: number, model: any): Observable<Catalog> {

@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import { Catalog } from 'src/app/_model/catalog';
 import { AuthService } from 'src/app/_services/auth.service';
 import { CatalogService } from 'src/app/_services/catalog.service';
@@ -12,7 +12,9 @@ import { CatalogService } from 'src/app/_services/catalog.service';
 export class ProductCatalogsComponent implements OnInit {
 
   catalogs: Catalog[];
-  catalog: any = {};
+  catalog: Catalog = new Catalog();
+
+  @Input() testCatalogs = new EventEmitter<void>();
 
   constructor(private catalogService: CatalogService,
               private authService: AuthService) { }
@@ -23,7 +25,7 @@ export class ProductCatalogsComponent implements OnInit {
 
   saveCatalog() {
     return this.catalogService.addUserCatalog(this.authService.decodedToken.nameid, this.catalog)
-    .subscribe( 
+    .subscribe(
 
       // With success save catalog..
       () => {

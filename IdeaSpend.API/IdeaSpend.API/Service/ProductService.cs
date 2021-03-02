@@ -26,14 +26,13 @@ namespace IdeaSpend.API
 
         #region Public Methods
 
-        private async Task<bool> CreateProductAsync(ProductDto productDto, int userId)
+        private async Task CreateProductAsync( ProductDto productDto, int userId )
         {
             // Make default catalog name as empty space for id = 0
             var catalogId = default(int);
 
             // Check differents constraints
-            if (!ProductPropertiesValidate(productDto))
-                return false;
+            if (!ProductPropertiesValidate(productDto)) return;
 
             // If user choose any catalog then get id of the catalog
             if (!string.IsNullOrWhiteSpace(productDto.CatalogName))
@@ -50,7 +49,7 @@ namespace IdeaSpend.API
                 UserId = userId
             };
 
-            return await _productRepository.AddProductAsync(product);
+            await _productRepository.AddProductAsync(product);
         }
 
         public async Task<bool> GetListThenCreateProductAsync(IEnumerable<ProductDto> allProductsDto, int userId)
@@ -76,9 +75,8 @@ namespace IdeaSpend.API
             if (productDto == null)
                 return false;
 
-            // Not allow to put digit anywhere in product name and must contain whatever
-            if( string.IsNullOrWhiteSpace ( productDto.ProductName ) ||
-                productDto.ProductName.Any ( char.IsDigit ) )
+            // Product name must contain whatever
+            if( string.IsNullOrWhiteSpace ( productDto.ProductName ) )
                 return false;
 
             // Only unique products for each seller can be saved

@@ -52,7 +52,7 @@
     <!-- Content list -->
     <div class="content">
 
-      <ul class="list-group flex-row text-center mt-2">
+      <ul class="list-group flex-row text-center mt-2" *ngFor="let product of products">
 
         <!-- Add product to transaction button -->
         <li class="list-group-item d-flex pr-2" style="width: 100px">
@@ -61,28 +61,11 @@
           </button>
         </li>
 
-        <li class="list-group-item" style="width: 350px">Produkt</li>
-        <li class="list-group-item pl-5" style="width: 180px">Sprzedawca</li>
-        <li class="list-group-item pl-5" style="width: 120px">20 zł</li>
-        <li class="list-group-item" style="width: 100px">szt</li>
-        <li class="list-group-item pl-5 text-right" style="width: 150px">Kategoria</li>
-
-      </ul>
-
-      <ul class="list-group flex-row text-center mt-2">
-
-        <!-- Add product to transaction button -->
-        <li class="list-group-item d-flex pr-2" style="width: 100px">
-          <button class="btn edit-product">
-            Dodaj
-          </button>
-        </li>
-
-        <li class="list-group-item" style="width: 350px">inny Produkt</li>
-        <li class="list-group-item pl-5" style="width: 180px">Sprzedawca</li>
-        <li class="list-group-item pl-5" style="width: 120px">45 zł</li>
-        <li class="list-group-item" style="width: 100px">szt</li>
-        <li class="list-group-item pl-5 text-right" style="width: 150px">Kategoria</li>
+        <li class="list-group-item" style="width: 350px">{{product.productName}}</li>
+        <li class="list-group-item pl-5" style="width: 180px">{{product.seller}}</li>
+        <li class="list-group-item pl-5" style="width: 120px">{{product.price}} zł</li>
+        <li class="list-group-item" style="width: 100px">{{product.unit}}</li>
+        <li class="list-group-item pl-5 text-right" style="width: 150px">{{product.catalogName}}</li>
 
       </ul>
 

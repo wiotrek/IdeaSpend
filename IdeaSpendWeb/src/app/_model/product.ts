@@ -1,6 +1,3 @@
-import { calcPossibleSecurityContexts } from "@angular/compiler/src/template_parser/binding_parser";
-
-/* tslint:disable */
 export class Product {
 
   productName: string;

@@ -36,8 +36,8 @@
           <div class="form-group w-25 product-add-input-div">
             <input type="number" class="form-control" id="addPriceName" placeholder="Cena" name="price" [(ngModel)]="product.price">
           </div>
-            <select [(ngModel)]="product.unit" name="unit" id="addUnityName" >
-              <!-- <option selected disabled>Jednostka</option> -->
+            <select name="unit" id="addUnityName" >
+              <option selected disabled>Jednostka</option>
               <option *ngFor="let unity of UnitsValue" value="{{unity}}">{{unity}}</option>
             </select>
         </div>

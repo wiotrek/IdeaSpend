@@ -1,5 +1,6 @@
-export interface Catalog {
+export class Catalog {
 
     catalogName: string;
-  
+
+    constructor() {}
   }
