@@ -18,7 +18,6 @@ export class TransactionsNewComponent implements OnInit {
   totalPaid: number = 0;
   selectedCatalog: string = '';
   products: Product[] = [];
-  filteredProducts: Product[] = [];
   transactionsToSave: Transaction[] = [];
   catalogs: Catalog[] = [];
 
@@ -58,8 +57,7 @@ export class TransactionsNewComponent implements OnInit {
     if (this.authService.loggedIn()){
       this.productService.getUserProducts(this.authService.decodedToken.nameid)
         .subscribe((products: Product[]) => {
-          this.products = products.slice();
-          this.filteredProducts = products.slice();
+          this.products = products;
         })
     }
   }
@@ -78,7 +76,7 @@ export class TransactionsNewComponent implements OnInit {
   onAddProductToLocalList(index: number) {
     let transaction = new Transaction();
     // initialize new transaction
-    transaction = this.transactionService.addProductToLocalList(this.filteredProducts[index])
+    transaction = this.transactionService.addProductToLocalList(this.products[index])
 
     // Check if just adding transaction isn't duplicate of exist local transaction list
     for (let i = 0; i < this.transactionsToSave.length; i++)
@@ -87,9 +85,9 @@ export class TransactionsNewComponent implements OnInit {
         // increase his quantity by 1
         this.transactionsToSave[i].quantity++;
         // update paid for this product as quantity * price
-        this.transactionsToSave[i].paid = (this.transactionsToSave[i].quantity * this.filteredProducts[index].price);
+        this.transactionsToSave[i].paid = (this.transactionsToSave[i].quantity * this.products[index].price);
         // and of course update total paid for whole local transaction list
-        this.totalPaid += this.filteredProducts[index].price;
+        this.totalPaid += this.products[index].price;
         return;
       }
 
@@ -122,17 +120,17 @@ export class TransactionsNewComponent implements OnInit {
  // Display filtered products ba category to list
   filterProductByCatalogName(index: number) {
     this.selectedCatalog = this.transactionService.getSelectedCatalog(index, this.catalogs);
-    // List of filtered products
-    this.filteredProducts = [];
 
-    // collect products which are assign to chosen catalog
+    // If category is selected then
     if (this.selectedCatalog !== 'Wybierz katalog')
-      for (let i = 0; i < this.products.length; i++) {
-        if (this.products[i].catalogName === this.selectedCatalog)
-          this.filteredProducts.push(this.products[i]);
-      }
+      // fill list with products which have this category
+      this.productService.getUserProducts(this.authService.decodedToken.nameid)
+        .subscribe((products: Product[]) => {
+          this.products = products.filter(c => c.catalogName == this.selectedCatalog);
+        });
+    // otherwise load all products
     else
-      this.filteredProducts = this.products;
+      this.loadProducts();
 
   }
 
