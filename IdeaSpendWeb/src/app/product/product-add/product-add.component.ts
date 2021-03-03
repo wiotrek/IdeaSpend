@@ -75,12 +75,4 @@ export class ProductAddComponent implements OnInit {
       error => console.log(error) );
   }
 
-  // saveProducts(): void{
-  //   this.productToAdd.forEach(element => {
-  //     this.saveOneProductToApi(element);
-  //   });
-
-  // }
-
-
 }

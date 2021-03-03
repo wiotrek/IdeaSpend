@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentChecked, Component, DoCheck, EventEmitter, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';
 import { Transaction } from 'src/app/_model/transaction';
 import { AuthService } from 'src/app/_services/auth.service';
+import { CatalogService } from 'src/app/_services/catalog.service';
 import { TransactionService } from 'src/app/_services/transaction.service';
 import {ProductService} from '../../_services/product.service';
 
@@ -11,20 +13,29 @@ import {ProductService} from '../../_services/product.service';
   styleUrls: ['./transactions-new.component.css']
 })
 export class TransactionsNewComponent implements OnInit {
+  // region Properties
+
   totalPaid: number = 0;
+  selectedCatalog: string = '';
   products: Product[] = [];
+  filteredProducts: Product[] = [];
   transactionsToSave: Transaction[] = [];
+  catalogs: Catalog[] = [];
+
+  // endregion
 
   // region Constructor
 
   constructor(private productService: ProductService,
                       private transactionService: TransactionService,
+                      private catalogService: CatalogService,
                       private authService: AuthService) { }
 
    // endregion
 
   ngOnInit(): void {
     this.loadProducts();
+    this.loadCatalogs();
   }
 
   // region API Request Methods
@@ -46,7 +57,17 @@ export class TransactionsNewComponent implements OnInit {
   loadProducts(): void {
     if (this.authService.loggedIn()){
       this.productService.getUserProducts(this.authService.decodedToken.nameid)
-        .subscribe((products: Product[]) => {this.products = products;})
+        .subscribe((products: Product[]) => {
+          this.products = products.slice();
+          this.filteredProducts = products.slice();
+        })
+    }
+  }
+
+  loadCatalogs(): void {
+    if (this.authService.loggedIn()){
+      this.catalogService.getUserCatalogs(this.authService.decodedToken.nameid)
+        .subscribe((catalogs: Catalog[]) => {this.catalogs = catalogs;})
     }
   }
 
@@ -54,12 +75,10 @@ export class TransactionsNewComponent implements OnInit {
 
   // region Local Request Methods
 
-  // TODO: Too much for this method. Extract updating function to other
-  // The transaction list of chosen products
   onAddProductToLocalList(index: number) {
     let transaction = new Transaction();
     // initialize new transaction
-    transaction = this.transactionService.addProductToLocalList(this.products[index])
+    transaction = this.transactionService.addProductToLocalList(this.filteredProducts[index])
 
     // Check if just adding transaction isn't duplicate of exist local transaction list
     for (let i = 0; i < this.transactionsToSave.length; i++)
@@ -68,9 +87,9 @@ export class TransactionsNewComponent implements OnInit {
         // increase his quantity by 1
         this.transactionsToSave[i].quantity++;
         // update paid for this product as quantity * price
-        this.transactionsToSave[i].paid = (this.transactionsToSave[i].quantity * this.products[index].price);
+        this.transactionsToSave[i].paid = (this.transactionsToSave[i].quantity * this.filteredProducts[index].price);
         // and of course update total paid for whole local transaction list
-        this.totalPaid += this.products[index].price;
+        this.totalPaid += this.filteredProducts[index].price;
         return;
       }
 
@@ -98,6 +117,23 @@ export class TransactionsNewComponent implements OnInit {
       // delete transaction from local list
       this.transactionsToSave.splice(index, 1);
     }
+  }
+
+ // Display filtered products ba category to list
+  filterProductByCatalogName(index: number) {
+    this.selectedCatalog = this.transactionService.getSelectedCatalog(index, this.catalogs);
+    // List of filtered products
+    this.filteredProducts = [];
+
+    // collect products which are assign to chosen catalog
+    if (this.selectedCatalog !== 'Wybierz katalog')
+      for (let i = 0; i < this.products.length; i++) {
+        if (this.products[i].catalogName === this.selectedCatalog)
+          this.filteredProducts.push(this.products[i]);
+      }
+    else
+      this.filteredProducts = this.products;
+
   }
 
   // endregion

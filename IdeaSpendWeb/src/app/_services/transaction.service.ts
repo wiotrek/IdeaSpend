@@ -5,11 +5,13 @@ import {AuthService} from './auth.service';
 import {Observable} from 'rxjs';
 import {BaseService} from './base.service';
 import {HttpClient} from '@angular/common/http';
+import {Catalog} from '../_model/catalog';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService extends BaseService {
+
   currentAmountBoughtProduct: number = 1;
   transaction: Transaction;
 
@@ -34,6 +36,18 @@ export class TransactionService extends BaseService {
     this.transaction.paid = this.transaction.quantity * products.price;
 
     return this.transaction;
+  }
+
+  // Return catalog name from dropdown list
+  getSelectedCatalog(index: number, catalog: Catalog[]): string {
+    let catalogName: string = '';
+
+    if (index === -1)
+      catalogName = 'Wybierz katalog';
+    else
+      catalogName = catalog[index].catalogName;
+
+    return catalogName;
   }
 
 }

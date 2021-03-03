@@ -9,17 +9,21 @@
     <!-- dropdown list category -->
     <div class="category-list text-center">
 
-      <p data-toggle="dropdown">
-        - Wybierz kategorie -
-      </p>
+      <div data-toggle="dropdown">
+<!--        <p> - Wybierz katalog - </p>-->
+        <p *ngIf="selectedCatalog != ''; else text">{{selectedCatalog}}</p>
+        <ng-template #text><p>Wybierz katalog</p></ng-template>
+      </div>
 
       <ul class="dropdown-menu">
-        <li class="dropdown-item"></li>
-        <li class="dropdown-item">kategoria 1</li>
-        <li class="dropdown-item">kategoria 2</li>
-        <li class="dropdown-item">kategoria 3</li>
-        <li class="dropdown-item">kategoria 4</li>
-        <li class="dropdown-item">kategoria 5</li>
+        <li class="dropdown-item" (click)="filterProductByCatalogName(-1)">Wszystkie</li>
+
+        <li class="dropdown-item" *ngFor="let catalog of catalogs; index as poz">
+          <a (click)="filterProductByCatalogName(poz)">
+            <p class="w-100">{{catalog.catalogName}}</p>
+          </a>
+        </li>
+
       </ul>
 
     </div>
@@ -52,7 +56,7 @@
     <!-- Content list -->
     <div class="content">
 
-      <ul class="list-group flex-row text-center mt-2" *ngFor="let product of products; index as poz">
+      <ul class="list-group flex-row text-center mt-2" *ngFor="let product of filteredProducts; index as poz">
 
         <!-- Add product to transaction button -->
         <li class="list-group-item d-flex pr-2" style="width: 100px">
