@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
@@ -50,6 +51,17 @@ namespace IdeaSpend.API
                 .Where ( id => id.UserId == userId );
         }
 
+        public bool DeleteCatalog(int catalogId)
+        {
+            var foundEntity = _dataContext.Catalogs.Find(catalogId);
+
+            if (foundEntity == null)
+                return false;
+            
+            _dataContext.Catalogs.Remove(foundEntity);
+            return _dataContext.SaveChanges() > 0;
+        }
+        
         #endregion
     }
 }

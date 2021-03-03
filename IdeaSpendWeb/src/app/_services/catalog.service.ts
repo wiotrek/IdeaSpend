@@ -18,5 +18,10 @@ export class CatalogService extends BaseService {
 
     getUserCatalogs(userId: number): Observable<Catalog[]> {
         return this.http.get<Catalog[]>(`${this.backend}/api/catalog/get/${userId}`);
-      }
+    }
+
+    deleteUserCatalog(catalogId: number): Observable<any>{
+        return this.http.post(`${this.backend}/api/catalog/del`, catalogId);
+    }
+
 }
