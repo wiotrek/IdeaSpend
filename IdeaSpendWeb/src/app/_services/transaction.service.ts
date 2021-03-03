@@ -20,7 +20,7 @@ export class TransactionService extends BaseService {
   }
 
   getTransactions(userId: number): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}`);
+    return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}`)
   }
 
   // adding single product to transaction list (the list before submit to save)
