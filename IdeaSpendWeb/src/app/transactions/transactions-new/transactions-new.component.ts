@@ -120,20 +120,18 @@ export class TransactionsNewComponent implements OnInit {
  // Display filtered products ba category to list
   filterProductByCatalogName(index: number) {
     this.selectedCatalog = this.transactionService.getSelectedCatalog(index, this.catalogs);
-    this.products = [];
 
-    // get products list from api
-    this.productService.getUserProducts(this.authService.decodedToken.nameid)
-      .subscribe((products: Product[])=> {
-        if (this.selectedCatalog !== 'Wybierz katalog')
-          // if any loaded product have the same category as selected then put to list
-          for (let i = 0; i < products.length; i++) {
-                if (products[i].catalogName === this.selectedCatalog)
-                  this.products.push(products[i]);
-              }
-        else
-          this.loadProducts();
-      })
+    // If category is selected then
+    if (this.selectedCatalog !== 'Wybierz katalog')
+      // fill list with products which have this category
+      this.productService.getUserProducts(this.authService.decodedToken.nameid)
+        .subscribe((products: Product[]) => {
+          this.products = products.filter(c => c.catalogName == this.selectedCatalog);
+        });
+    // otherwise load all products
+    else
+      this.loadProducts();
+
   }
 
   // endregion
