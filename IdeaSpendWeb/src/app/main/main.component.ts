@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../_services/auth.service';
+import {TransactionService} from '../_services/transaction.service';
+import {Transaction} from '../_model/transaction';
 
 @Component({
   selector: 'app-main',
@@ -7,14 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  transactions: Transaction[];
+
   // TODO: change font family for information inside square
 
   greenTriangleImage = '../assets/main/green-triangle.png';
   redTriangleImage = '../assets/main/red-triangle.png';
 
-  constructor() { }
+  constructor(private authService: AuthService,
+              private transactionService: TransactionService) { }
 
   ngOnInit(): void {
+    this.loadLastTransaction();
+  }
+
+  loadLastTransaction() {
+    this.transactionService.getTransactions(this.authService.decodedToken.nameid)
+      .subscribe((transactions: Transaction[]) => {
+
+        transactions.sort((d, d1) => (d.transactionDate > d1.transactionDate ? -1 : 1));
+        this.transactions = transactions .slice(0, 5);
+
+    })
   }
 
   public months: Array<string> = [

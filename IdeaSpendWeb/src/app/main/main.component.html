@@ -98,45 +98,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Bułka pszenna</td>
-            <td>Rena</td>
-            <td>3,00</td>
-            <td>3</td>
-            <td>01.24.21</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Cukier</td>
-            <td>Iloneczka</td>
-            <td>11,00</td>
-            <td>1</td>
-            <td>11.29.19</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Worek ziemniaków</td>
-            <td>Zinambwe</td>
-            <td>30,00</td>
-            <td>12</td>
-            <td>11.29.19</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Musztarda</td>
-            <td>Jarek</td>
-            <td>9,00</td>
-            <td>1</td>
-            <td>11.29.19</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Produkt z bardzo dlugo nazwa będzie kropko...</td>
-            <td>Iloneczka</td>
-            <td>1,00</td>
-            <td>1</td>
-            <td>11.29.19</td>
+          <tr *ngFor="let transaction of transactions; index as poz">
+            <td>{{poz+1}}.</td>
+            <td>{{transaction.productNameFrom.split(" - ")[0]}}</td>
+            <td>{{transaction.productNameFrom.split(" - ")[1]}}</td>
+            <td>{{transaction.paid}} zł</td>
+            <td>{{transaction.quantity}}</td>
+            <td>{{transaction.transactionDate | date: 'yyyy-MM-dd'}}</td>
           </tr>
           </tbody>
         </table>
