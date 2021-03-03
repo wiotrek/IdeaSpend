@@ -42,16 +42,16 @@
       <ul class="list-group mt-2">
 
         <!-- repeat elements to show view -->
-        <li class="list-group-item transaction-result mt-2" *ngFor="let n of numSequence(10)">
+        <li class="list-group-item transaction-result mt-2" *ngFor="let transaction of transactions">
 
           <button class="btn edit-product">
             Edytuj
           </button>
 
-          <p>Biedronka</p>
-          <p>290 zł</p>
-          <p>7 produktów</p>
-          <p>12.02.2020</p>
+          <p>{{transaction.productNameFrom}}</p>
+          <p>{{transaction.paid}} zł</p>
+          <p>{{transaction.quantity}} produktów</p>
+          <p>{{transaction.transactionDate | date: 'yyyy-MM-dd'}}</p>
 
         </li>
 
