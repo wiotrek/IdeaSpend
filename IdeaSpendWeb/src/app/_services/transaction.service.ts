@@ -15,8 +15,12 @@ export class TransactionService extends BaseService {
 
   constructor(private authService: AuthService, private http: HttpClient) { super(); }
 
-  addUserTransactions(userId: number, model: any): Observable<Array<Product>> {
-    return this.http.post<Array<Product>>(`${this.backend}/api/transaction/add/${userId}`, model);
+  addUserTransactions(userId: number, model: any): Observable<Array<Transaction>> {
+    return this.http.post<Array<Transaction>>(`${this.backend}/api/transaction/add/${userId}`, model);
+  }
+
+  getTransactions(userId: number): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}`);
   }
 
   // adding single product to transaction list (the list before submit to save)
