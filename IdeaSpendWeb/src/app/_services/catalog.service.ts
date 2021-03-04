@@ -21,7 +21,7 @@ export class CatalogService extends BaseService {
     }
 
     deleteUserCatalog(catalogId: number): Observable<any>{
-        return this.http.post(`${this.backend}/api/catalog/del`, catalogId);
+        return this.http.delete(`${this.backend}/api/catalog/del/${catalogId}`);
     }
 
 }
