@@ -53,7 +53,7 @@ namespace IdeaSpend.API
 
         public bool DeleteCatalog(int catalogId)
         {
-            var foundEntity = _dataContext.Catalogs.Find(catalogId);
+            var foundEntity = _dataContext.Catalogs.SingleOrDefault(x => x.CatalogId == catalogId);
 
             if (foundEntity == null)
                 return false;

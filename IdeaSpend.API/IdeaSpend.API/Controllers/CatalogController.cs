@@ -44,10 +44,10 @@ namespace IdeaSpend.API
             return Ok( userCatalogsName );
         }
 
-        [HttpPost("del")]
-        public async Task<IActionResult> DeleteCatalog([FromBody] int catalogId)
+        [HttpDelete("del/{catalogId}")]
+        public IActionResult DeleteCatalog(int catalogId)
         {
-            if (!await _catalogService.DeleteCatalog(catalogId))
+            if (!_catalogService.DeleteCatalog(catalogId))
                 return BadRequest("catalog hasn't been deleted");
 
             return StatusCode(201);
