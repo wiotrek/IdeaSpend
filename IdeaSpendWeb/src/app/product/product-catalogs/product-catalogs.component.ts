@@ -48,4 +48,15 @@ export class ProductCatalogsComponent implements OnInit {
     }
   }
 
+  deleteCatalog(id: number) {
+    this.catalogService.deleteUserCatalog(id)
+    .subscribe(
+      () => {
+        this.loadCatalogs();
+      },
+      error => console.log("nie udalo sie")
+    )
+  }
+
+
 }

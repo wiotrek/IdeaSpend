@@ -36,12 +36,21 @@ namespace IdeaSpend.API
         }
 
         [HttpGet("get/{userId}")]
-        public IActionResult GetCatalos(int userId)
+        public IActionResult GetCatalogs(int userId)
         {
             var userCatalogs = _catalogService.Catalogs(userId);
             var userCatalogsName = _mapper.Map<IEnumerable<CatalogDto>> ( userCatalogs );
 
             return Ok( userCatalogsName );
+        }
+
+        [HttpDelete("del/{catalogId}")]
+        public IActionResult DeleteCatalog(int catalogId)
+        {
+            if (!_catalogService.DeleteCatalog(catalogId))
+                return BadRequest("catalog hasn't been deleted");
+
+            return StatusCode(201);
         }
         
     }

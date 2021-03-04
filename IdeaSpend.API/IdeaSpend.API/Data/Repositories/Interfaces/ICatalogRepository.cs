@@ -9,5 +9,6 @@ namespace IdeaSpend.API
         int FindCatalogIdByName(string catalogName);
         bool IsExistCatalog( string catalogName, int userId );
         IEnumerable<CatalogEntity> GetCatalogs(int userId);
+        bool DeleteCatalog(int catalogId);
     }
 }

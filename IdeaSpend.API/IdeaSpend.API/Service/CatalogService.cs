@@ -48,6 +48,11 @@ namespace IdeaSpend.API
             return _catalogRepository.GetCatalogs(userId);
         }
 
+        public bool DeleteCatalog(int catalogId)
+        {
+            return _catalogRepository.DeleteCatalog(catalogId);
+        }
+        
         #endregion
     }
 }

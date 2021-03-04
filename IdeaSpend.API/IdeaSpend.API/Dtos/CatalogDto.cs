@@ -5,6 +5,7 @@
     /// </summary>
     public class CatalogDto
     {
+        public int CatalogId { get; private set; }
         public string CatalogName { get; set; }
     }
 }

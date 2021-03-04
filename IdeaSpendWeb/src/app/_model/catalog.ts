@@ -1,6 +1,7 @@
 export class Catalog {
 
-    catalogName: string;
+  catalogId: number;
+  catalogName: string;
 
-    constructor() {}
-  }
+  constructor() { }
+}
