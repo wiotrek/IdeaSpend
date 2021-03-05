@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IdeaSpend.API
 {
@@ -62,6 +63,7 @@ namespace IdeaSpend.API
         /// <summary>
         /// The foreign product id
         /// </summary>
+        [AllowNull]
         public int ProductId { get; set; }
         
         /// <summary>

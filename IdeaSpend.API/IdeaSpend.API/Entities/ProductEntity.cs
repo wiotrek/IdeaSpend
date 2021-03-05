@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IdeaSpend.API
 {
@@ -45,6 +46,7 @@ namespace IdeaSpend.API
         /// <summary>
         /// The foreign catalog id for Produkty table. Catalog with id = 0 means that product is without catalog
         /// </summary>
+        [AllowNull]
         public int CatalogId { get; set; }
         
         /// <summary>
@@ -61,6 +63,9 @@ namespace IdeaSpend.API
         /// One of many products are assign to specify user
         /// </summary>
         public UserEntity User { get; set; }
+        
+        public TransactionEntity Transaction { get; set; }
+
 
         #endregion
     }
