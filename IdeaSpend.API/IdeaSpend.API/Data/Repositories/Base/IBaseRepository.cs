@@ -30,5 +30,11 @@ namespace IdeaSpend.API
         /// </summary>
         /// <returns></returns>
         Task<bool> SaveAllAsync ();
+
+        /// <summary>
+        /// Adding entity from repository to database
+        /// </summary>
+        /// <returns></returns>
+        bool SaveAll();
     }
 }

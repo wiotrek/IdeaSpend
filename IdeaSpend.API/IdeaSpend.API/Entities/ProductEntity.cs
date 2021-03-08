@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Components;
 
 namespace IdeaSpend.API
 {
@@ -47,11 +48,12 @@ namespace IdeaSpend.API
         /// The foreign catalog id for Produkty table. Catalog with id = 0 means that product is without catalog
         /// </summary>
         [AllowNull]
-        public int CatalogId { get; set; }
+        public int? CatalogId { get; set; }
         
         /// <summary>
         /// One of many products are assign to specify catalog
         /// </summary>
+        // [AllowNull]
         public CatalogEntity Catalog { get; set; }
 
         /// <summary>
@@ -65,8 +67,7 @@ namespace IdeaSpend.API
         public UserEntity User { get; set; }
         
         public TransactionEntity Transaction { get; set; }
-
-
+        
         #endregion
     }
 }

@@ -54,10 +54,18 @@ namespace IdeaSpend.API
         {
             return _dataContext.Products
                     
-                    // Join Catalog table to get access catalog content
+                // Join Catalog table to get access catalog content
                 .Include(c => c.Catalog)
                     
                 .Where(u => u.UserId == userId)
+                .ToList();
+        }
+
+        public IEnumerable<ProductEntity> GetUserProductsByCatalogId( int userId, int? catalogId )
+        {
+            return _dataContext.Products
+                .Where(i => i.CatalogId == catalogId)
+                .Where(i => i.UserId == userId)
                 .ToList();
         }
 

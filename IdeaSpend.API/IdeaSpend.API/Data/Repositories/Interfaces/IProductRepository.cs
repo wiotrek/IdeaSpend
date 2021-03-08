@@ -6,13 +6,12 @@ namespace IdeaSpend.API
     /// <summary>
     /// CRUD operation for Produkty table
     /// </summary>
-    public interface IProductRepository
+    public interface IProductRepository : IBaseRepository
     {
         /// <summary>
         /// Create new product to list of all products for transactions
         /// </summary>
-        /// <param name="productDto">Object contain information for product</param>
-        /// <param name="userId">Decoded token current login user id</param>
+        /// <param name="product">Object contain information for product</param>
         /// <returns></returns>
         Task<bool> AddProductAsync(ProductEntity product);
 
@@ -28,5 +27,7 @@ namespace IdeaSpend.API
         /// Get all products which user have with catalogs to which product are assigned
         /// </summary>
         IEnumerable<ProductEntity> GetUserProducts(int userId);
+
+        IEnumerable<ProductEntity> GetUserProductsByCatalogId( int userId, int? catalogId );
     }
 }

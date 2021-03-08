@@ -20,8 +20,8 @@ export class CatalogService extends BaseService {
         return this.http.get<Catalog[]>(`${this.backend}/api/catalog/get/${userId}`);
     }
 
-    deleteUserCatalog(catalogId: number): Observable<any>{
-        return this.http.delete(`${this.backend}/api/catalog/del/${catalogId}`);
+    deleteUserCatalog(userId: number, catalogName): Observable<any>{
+        return this.http.delete(`${this.backend}/api/catalog/del/${userId}/${catalogName}`);
     }
 
 }

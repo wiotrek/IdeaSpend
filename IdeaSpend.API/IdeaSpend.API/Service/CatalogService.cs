@@ -8,15 +8,18 @@ namespace IdeaSpend.API
         #region Private Members
 
         private readonly ICatalogRepository _catalogRepository;
+        private readonly IProductRepository _productRepository;
 
         #endregion
 
         
         #region Constructor
 
-        public CatalogService(ICatalogRepository catalogRepository)
+        public CatalogService(ICatalogRepository catalogRepository,
+                              IProductRepository productRepository)
         {
             _catalogRepository = catalogRepository;
+            _productRepository = productRepository;
         }
 
         #endregion
@@ -45,12 +48,39 @@ namespace IdeaSpend.API
 
         public IEnumerable<CatalogEntity> Catalogs(int userId)
         {
-            return _catalogRepository.GetCatalogs(userId);
+            return _catalogRepository.GetCatalogs( userId );
         }
 
-        public bool DeleteCatalog(int catalogId)
+        /// <summary>
+        /// All products which assigned to deleting category are moved to default category
+        /// </summary>
+        public bool DeleteCatalog(int userId, string catalogName)
         {
-            return _catalogRepository.DeleteCatalog(catalogId);
+            // Get result of the delete action
+            var result = catalogName != "Domyślny" && 
+                         _catalogRepository.DeleteCatalog( userId, catalogName );
+
+            // If something was wrong return false;
+            if( !result ) 
+                return false;
+            
+            // Otherwise
+            // Get products of the deleted category
+            var products = _productRepository.GetUserProductsByCatalogId ( userId, null );
+            
+            // Get id of the default category
+            var defaultCatalogId = _catalogRepository.FindCatalogIdByName ( "Domyślny", userId );
+
+            // For every product without category...
+            foreach ( var product in products )
+            {
+                // assign default category
+                product.CatalogId = defaultCatalogId;
+                _productRepository.Update ( product );
+                _productRepository.SaveAll();
+            }
+
+            return true;
         }
         
         #endregion

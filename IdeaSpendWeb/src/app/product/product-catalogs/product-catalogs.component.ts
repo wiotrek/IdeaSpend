@@ -48,8 +48,8 @@ export class ProductCatalogsComponent implements OnInit {
     }
   }
 
-  deleteCatalog(id: number) {
-    this.catalogService.deleteUserCatalog(id)
+  deleteCatalog(catalogName: string) {
+    this.catalogService.deleteUserCatalog(this.authService.decodedToken.nameid, catalogName)
     .subscribe(
       () => {
         this.loadCatalogs();

@@ -28,15 +28,15 @@ namespace IdeaSpend.API
 
         private async Task CreateProductAsync( ProductDto productDto, int userId )
         {
-            // Make default catalog name as empty space for id = 0
-            var catalogId = default(int);
-
             // Check differents constraints
             if (!ProductPropertiesValidate(productDto)) return;
 
             // If user choose any catalog then get id of the catalog
-            if (!string.IsNullOrWhiteSpace(productDto.CatalogName))
-                catalogId = _catalogRepository.FindCatalogIdByName(productDto.CatalogName);
+            // otherwise assing product to default category
+            var catalogId = _catalogRepository.FindCatalogIdByName ( 
+                    productDto.CatalogName != "wybierz kategorie" ? 
+                    productDto.CatalogName : "Domyślny" 
+                );
 
             // Create product to add
             var product = new ProductEntity

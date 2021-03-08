@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
@@ -22,18 +21,24 @@ namespace IdeaSpend.API
         }
 
         
-        public int FindCatalogIdByName( string catalogName )
+        public int FindCatalogIdByName( string catalogName, int userId = default )
         {
-            // Go to catalog table
-            var id = _dataContext.Catalogs
-
-                // Get first match catalog id filtered by catalog name
-                .FirstOrDefault ( n => n.CatalogName == catalogName ).CatalogId;
+            int id;
+            if (userId == default)
+                // Go to catalog table
+                id = _dataContext.Catalogs
+                        
+                    // Get first match catalog id filtered by catalog name
+                    .FirstOrDefault ( n => n.CatalogName == catalogName ).CatalogId;
+            else
+                id = _dataContext.Catalogs
+                    .Where ( i => i.UserId == userId )
+                    .FirstOrDefault ( n => n.CatalogName == catalogName ).CatalogId;
 
             return id;
         }
 
-        
+
         public bool IsExistCatalog( string catalogName, int userId )
         {
             return _dataContext.Catalogs
@@ -51,9 +56,11 @@ namespace IdeaSpend.API
                 .Where ( id => id.UserId == userId );
         }
 
-        public bool DeleteCatalog(int catalogId)
+        public bool DeleteCatalog(int userId, string catalogName)
         {
-            var foundEntity = _dataContext.Catalogs.SingleOrDefault(x => x.CatalogId == catalogId);
+            var foundEntity = _dataContext.Catalogs
+                .Where(i => i.UserId == userId)
+                .SingleOrDefault(x => x.CatalogName == catalogName);
 
             if (foundEntity == null)
                 return false;

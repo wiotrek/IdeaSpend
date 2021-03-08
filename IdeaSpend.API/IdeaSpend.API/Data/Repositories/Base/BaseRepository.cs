@@ -71,6 +71,11 @@ namespace IdeaSpend.API
             return await _dataContext.SaveChangesAsync() > 0;
         }
 
+        public bool SaveAll ()
+        {
+            return _dataContext.SaveChanges() > 0;
+        }
+
         #endregion
     }
 }

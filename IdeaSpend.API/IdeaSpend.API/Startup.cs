@@ -26,7 +26,7 @@ namespace IdeaSpend.API
         {
             // Create connection string for database to use by application
             services.AddDbContext<IdeaSpendContext> ( 
-                x => x.UseSqlite ( Configuration.GetConnectionString ( "DefaultConnection" ) ) );
+                x => x.UseSqlite ( Configuration.GetConnectionString ( "DefaultConnection" )) );
 
             services.AddAutoMapper();
             

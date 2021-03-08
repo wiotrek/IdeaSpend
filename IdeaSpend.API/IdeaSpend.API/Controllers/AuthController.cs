@@ -56,6 +56,7 @@ namespace IdeaSpend.API
             user.LastName = registerDto.LastName;
             user.Email = registerDto.Email;
             user.Created = DateTime.Now;
+            user.Catalogs = new[] {new CatalogEntity { CatalogName = "Domyślny" }};
 
             
             // Save user to database

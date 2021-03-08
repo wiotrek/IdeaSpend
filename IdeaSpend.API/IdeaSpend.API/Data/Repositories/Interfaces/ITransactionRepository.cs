@@ -6,7 +6,7 @@ namespace IdeaSpend.API
     /// <summary>
     /// CRUD operation for Płatności table
     /// </summary>
-    public interface ITransactionRepository
+    public interface ITransactionRepository : IBaseRepository
     {
         /// <summary>
         /// Saving transaction to db
