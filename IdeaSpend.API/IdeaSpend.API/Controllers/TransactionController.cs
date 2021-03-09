@@ -45,5 +45,13 @@ namespace IdeaSpend.API
             return Ok(betterResult);
         }
         
+        [HttpGet("get/last/{userId}")]
+        public IActionResult GetLast5Transaction(int userId)
+        {
+            var result = _transactionService.ReadTransaction(userId, 5);
+            var betterResult = _mapper.Map<IEnumerable<TransactionDto>>(result);
+            return Ok(betterResult);
+        }
+        
     }
 }

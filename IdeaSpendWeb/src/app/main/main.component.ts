@@ -25,12 +25,9 @@ export class MainComponent implements OnInit {
   }
 
   loadLastTransaction() {
-    this.transactionService.getTransactions(this.authService.decodedToken.nameid)
+    this.transactionService.getLast5Transactions(this.authService.decodedToken.nameid)
       .subscribe((transactions: Transaction[]) => {
-
-        transactions.sort((d, d1) => (d.transactionDate > d1.transactionDate ? -1 : 1));
-        this.transactions = transactions .slice(0, 5);
-
+        this.transactions = transactions;
     })
   }
 

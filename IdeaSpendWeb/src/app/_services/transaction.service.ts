@@ -25,6 +25,10 @@ export class TransactionService extends BaseService {
     return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}`);
   }
 
+  getLast5Transactions(userId: number): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/last/${userId}`)
+  }
+
   // adding single product to transaction list (the list before submit to save)
   addProductToLocalList(products: Product) :Transaction{
     this.transaction = new Transaction();

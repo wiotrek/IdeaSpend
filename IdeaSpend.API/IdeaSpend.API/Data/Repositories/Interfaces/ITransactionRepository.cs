@@ -13,5 +13,12 @@ namespace IdeaSpend.API
         /// </summary>
         Task<bool> AddTransaction(TransactionEntity transaction);
         IQueryable GetTransaction(int userId);
+        
+        /// <summary>
+        /// Read specify amount of the transactions
+        /// </summary>
+        /// <param name="amount">The specify number of the transactions to return</param>
+        /// <returns></returns>
+        IQueryable GetTopNTransactions( int userId, int amount );
     }
 }

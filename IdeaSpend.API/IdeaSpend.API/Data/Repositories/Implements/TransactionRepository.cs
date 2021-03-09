@@ -30,6 +30,7 @@ namespace IdeaSpend.API
             var sqlQuery = 
                 from transaction in _dataContext.Set<TransactionEntity>()
                     .Where(i => i.UserId == userId)
+                    .OrderByDescending ( d => d.TransactionDate )
                 join product in _dataContext.Set<ProductEntity>()
                     on transaction.ProductId equals product.ProductId into grouping
                 from product in grouping.DefaultIfEmpty()
@@ -46,7 +47,30 @@ namespace IdeaSpend.API
             return sqlQuery;
 
         }
-        
+
+        public IQueryable GetTopNTransactions( int userId, int amount )
+        {
+            var sqlQuery = 
+                from transaction in _dataContext.Set<TransactionEntity>()
+                    .Where(i => i.UserId == userId)
+                    .OrderByDescending ( d => d.TransactionDate )
+                    .Take(amount)
+                join product in _dataContext.Set<ProductEntity>()
+                    on transaction.ProductId equals product.ProductId into grouping
+                from product in grouping.DefaultIfEmpty()
+                select new
+                {
+                    productNameFrom = transaction.ProductId.HasValue == false ? "Usunięty" : product.ProductName + " - " + product.Seller,
+                    transaction.Currency,
+                    transaction.Quantity,
+                    transaction.Weights,
+                    transaction.TransactionDate,
+                    transaction.Paid
+                };
+
+            return sqlQuery;
+        }
+
         #endregion
     }
 }

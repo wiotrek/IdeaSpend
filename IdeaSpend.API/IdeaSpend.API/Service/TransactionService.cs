@@ -59,9 +59,18 @@ namespace IdeaSpend.API
             return await  _transactionRepository.AddTransaction(transaction);
         }
 
-        public IQueryable ReadTransaction(int userId)
+        /// <summary>
+        /// Read specify amount of the transactions
+        /// </summary>
+        /// <param name="amount">The specify number of the transactions to return</param>
+        /// <returns></returns>
+        public IQueryable ReadTransaction(int userId, int amount = 0)
         {
-            return _transactionRepository.GetTransaction(userId);
+            var transactions = amount != 0 ? 
+                _transactionRepository.GetTopNTransactions( userId, amount ) : 
+                _transactionRepository.GetTransaction(userId);
+
+            return transactions;
         }
         
         #endregion
@@ -73,7 +82,7 @@ namespace IdeaSpend.API
         /// <param name="unit">The unit of the product</param>
         /// <param name="weight">Total weight of the bought specific product</param>
         /// <param name="quantity">Total quantity of the bought specific product</param>
-        public double TotalSingleTransactionPaid(double price, string unit, double weight = 0, int quantity = 0)
+        private double TotalSingleTransactionPaid(double price, string unit, double weight = 0, int quantity = 0)
         {
             double totalPrice;
             
