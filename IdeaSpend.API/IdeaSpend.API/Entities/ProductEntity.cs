@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Components;
 
 namespace IdeaSpend.API
 {
@@ -10,7 +9,7 @@ namespace IdeaSpend.API
     {
         #region Primary Key
 
-        [Key] public int ProductId { get; set; }
+        [Key] public int ProductId { get; init; }
 
         #endregion
 
@@ -53,7 +52,6 @@ namespace IdeaSpend.API
         /// <summary>
         /// One of many products are assign to specify catalog
         /// </summary>
-        // [AllowNull]
         public CatalogEntity Catalog { get; set; }
 
         /// <summary>

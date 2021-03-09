@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdeaSpend.API
@@ -12,6 +12,6 @@ namespace IdeaSpend.API
         /// Saving transaction to db
         /// </summary>
         Task<bool> AddTransaction(TransactionEntity transaction);
-        IEnumerable<TransactionEntity> GetTransaction(int userId);
+        IQueryable GetTransaction(int userId);
     }
 }

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace IdeaSpend.API
 {
@@ -27,12 +25,26 @@ namespace IdeaSpend.API
             return await _dataContext.SaveChangesAsync() > 0;
         }
 
-        public IEnumerable<TransactionEntity> GetTransaction(int userId)
+        public IQueryable GetTransaction(int userId)
         {
-            return _dataContext.Transactions
-                .Include(x => x.Product)
-                .Where(x => x.UserId == userId)
-                .ToList();
+            var sqlQuery = 
+                from transaction in _dataContext.Set<TransactionEntity>()
+                    .Where(i => i.UserId == userId)
+                join product in _dataContext.Set<ProductEntity>()
+                    on transaction.ProductId equals product.ProductId into grouping
+                from product in grouping.DefaultIfEmpty()
+                select new
+                {
+                    productNameFrom = transaction.ProductId.HasValue == false ? "Usunięty" : product.ProductName + " - " + product.Seller,
+                    transaction.Currency,
+                    transaction.Quantity,
+                    transaction.Weights,
+                    transaction.TransactionDate,
+                    transaction.Paid
+                };
+
+            return sqlQuery;
+
         }
         
         #endregion

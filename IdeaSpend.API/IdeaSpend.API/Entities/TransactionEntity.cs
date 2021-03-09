@@ -10,7 +10,7 @@ namespace IdeaSpend.API
     {
         #region Primary Key
 
-        [Key] public int TransactionId { get; set; }
+        [Key] public int TransactionId { get; init; }
 
         #endregion
 
@@ -64,7 +64,7 @@ namespace IdeaSpend.API
         /// The foreign product id
         /// </summary>
         [AllowNull]
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         
         /// <summary>
         /// One of many transactions are assign to specify product
