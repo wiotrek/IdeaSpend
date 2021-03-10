@@ -20,5 +20,7 @@ namespace IdeaSpend.API
         /// <param name="amount">The specify number of the transactions to return</param>
         /// <returns></returns>
         IQueryable GetTopNTransactions( int userId, int amount );
+
+        IQueryable GetTransactionBySeller( int userId, string seller );
     }
 }

@@ -25,4 +25,11 @@ export class TransactionsOverviewComponent implements OnInit {
     }
   }
 
+  loadTransactionsBySeller(seller: HTMLInputElement){
+    if (this.authService.loggedIn()){
+      this.transactionService.getTransactionsBySeller(this.authService.decodedToken.nameid, seller.value)
+        .subscribe((transactions: Transaction[]) => {this.transactions = transactions;})
+    }
+  }
+
 }
