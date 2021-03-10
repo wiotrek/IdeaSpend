@@ -68,6 +68,21 @@ namespace IdeaSpend.API
                 .Where(i => i.UserId == userId)
                 .ToList();
         }
+        
+
+        public bool DeleteProduct(int userId, int productId) 
+        {
+            var foundEntity = _dataContext.Products
+                .Where(i => i.UserId == userId)
+                .SingleOrDefault(x => x.ProductId == productId);
+
+            if (foundEntity == null)
+                return false;
+            
+            _dataContext.Products.Remove(foundEntity);
+            return _dataContext.SaveChanges() > 0;
+        }
+        
 
         #endregion
     }

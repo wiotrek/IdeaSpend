@@ -29,7 +29,9 @@ import { ProductOverviewComponent } from './product/product-overview/product-ove
 import { ProductCatalogsComponent } from './product/product-catalogs/product-catalogs.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import {NgApexchartsModule} from 'ng-apexcharts';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,12 @@ import {NgApexchartsModule} from 'ng-apexcharts';
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     SimplebarAngularModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
   ],
   providers: [
     AuthGuard,
