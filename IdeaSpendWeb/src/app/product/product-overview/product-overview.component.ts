@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import { ProductService } from 'src/app/_services/product.service';
 import {Product} from '../../_model/product';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-overview',
@@ -14,7 +15,8 @@ export class ProductOverviewComponent implements OnInit {
   products: Product[];
 
   constructor(private productService: ProductService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -34,9 +36,10 @@ export class ProductOverviewComponent implements OnInit {
       () => {
         this.loadProducts();
       },
-      error => console.log("nie udalo sie")
+      error => {
+        this.toastr.error("Produkt przypisany do transakcji");
+      }
     )
-    
   }
 
 }
