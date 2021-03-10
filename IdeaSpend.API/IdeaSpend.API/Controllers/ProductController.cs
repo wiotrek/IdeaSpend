@@ -46,5 +46,14 @@ namespace IdeaSpend.API
 
             return Ok(productsToReturn);
         }
+        
+        [HttpDelete("del/{userId}/{productName}")]
+        public IActionResult DeleteCatalog(int userId, string productName)
+        {
+            if (!_productService.DeleteProduct(userId, productName))
+                return BadRequest("product hasn't been deleted");
+
+            return StatusCode(201);
+        }
     }
 }

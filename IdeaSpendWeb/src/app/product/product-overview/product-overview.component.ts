@@ -28,4 +28,15 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
+  deleteProduct(productName: string): void {
+    this.productService.deleteUserPrdocut(this.authService.decodedToken.nameid, productName)
+    .subscribe(
+      () => {
+        this.loadProducts();
+      },
+      error => console.log("nie udalo sie")
+    )
+    
+  }
+
 }

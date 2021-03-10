@@ -19,4 +19,8 @@ export class ProductService extends BaseService {
     return this.http.post<Array<Product>>(`${this.backend}/api/product/add/${userId}`, model);
   }
 
+  deleteUserPrdocut(userId: number, productName: string): Observable<any>{
+    return this.http.delete(`${this.backend}/api/product/del/${userId}/${productName}`);
+  }
+
 }
