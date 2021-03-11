@@ -65,6 +65,37 @@ namespace IdeaSpend.API
         {
             return _productRepository.GetUserProducts(userId);
         }
+
+        /// <summary>
+        /// Get products which contain product name or seller
+        /// </summary>
+        /// <param name="productProperty">product name or seller</param>
+        /// <returns>Prodcuts which contain at least one matching sign of the property</returns>
+        public IEnumerable<ProductEntity> ReadProductsByNameOrSeller( int userId, string productProperty )
+        {
+            // Initialazing
+            var productsContainingName = _productRepository.FindProductByName ( userId, productProperty );
+            var productsContainingSeller = _productRepository.FindProductBySeller ( userId, productProperty );
+
+            
+            // List for collect matching product
+            IEnumerable<ProductEntity> productsToReturn = new List<ProductEntity>();
+            
+            
+            // If any copy content
+            if (productsContainingName != null)
+                productsToReturn = productsContainingName;
+
+            
+            // copy missing product with matching seller property
+            foreach ( var productEntity in productsContainingSeller )
+                foreach ( var product in productsToReturn )
+                    if( product.ProductId != productEntity.ProductId )
+                        productsToReturn = productsToReturn.Append ( productEntity );
+                
+            
+            return productsToReturn;
+        }
         
         public bool DeleteProduct(int userId, int productId)
         {

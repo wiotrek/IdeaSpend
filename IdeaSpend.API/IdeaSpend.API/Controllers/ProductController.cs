@@ -46,6 +46,15 @@ namespace IdeaSpend.API
 
             return Ok(productsToReturn);
         }
+
+        [HttpGet("get/{userId}/property:{property}")]
+        public IActionResult GetProductsByProperty( int userId, string property )
+        {
+            var userFilterProducts = _productService.ReadProductsByNameOrSeller ( userId, property );
+            var filterProductsToReturn = _mapper.Map<IEnumerable<ProductDto>> ( userFilterProducts );
+
+            return Ok ( filterProductsToReturn );
+        }
         
         [HttpDelete("del/{userId}/product:{productId}")]
         public IActionResult DeleteCatalog(int userId, int productId)
