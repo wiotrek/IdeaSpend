@@ -15,8 +15,8 @@
     <div class="text-light d-flex justify-content-between">
       <h1>Lista produktów</h1>
       <div class="flex-row form-inline search">
-        <input type="text" placeholder="Nazwa...">
-        <button class="btn text-dark">Szukaj</button>
+        <input #propertyName type="text" placeholder="Nazwa...">
+        <button class="btn text-dark" (click)="loadProductsByProperty(propertyName)">Szukaj</button>
       </div>
     </div>
 

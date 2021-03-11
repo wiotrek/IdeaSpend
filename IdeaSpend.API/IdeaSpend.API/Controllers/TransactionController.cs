@@ -57,8 +57,6 @@ namespace IdeaSpend.API
         [HttpGet("get/{userId}/{seller}")]
         public IActionResult GetTransactionBySeller( int userId, string seller )
         {
-            if( string.IsNullOrWhiteSpace ( seller ) )
-                return BadRequest ( " " );
 
             var transactions = _transactionService.ReadTransactionBySeller ( userId, seller );
             var transactionsToReturn = _mapper.Map<IEnumerable<TransactionDto>> ( transactions );

@@ -47,6 +47,29 @@ namespace IdeaSpend.API
             return product;
         }
 
+        public IEnumerable<ProductEntity> FindProductByName( int userId, string productName )
+        {
+            var products = _dataContext.Products
+                .Where ( i => i.UserId == userId )
+                .Where ( p => p.ProductName.Contains ( productName ) )
+                .OrderBy(i => i.ProductId)
+                .ToList();
+
+            return products;
+        }
+        
+        public IEnumerable<ProductEntity> FindProductBySeller( int userId, string seller )
+        {
+            var products = _dataContext.Products
+                .Where ( i => i.UserId == userId )
+                .Where ( p => p.Seller.Contains ( seller ) )
+                .OrderBy(i => i.ProductId)
+                .ToList();
+
+            return products;
+        }
+        
+
         /// <summary>
         /// Get all products which user have with catalogs to which product are assigned
         /// </summary>

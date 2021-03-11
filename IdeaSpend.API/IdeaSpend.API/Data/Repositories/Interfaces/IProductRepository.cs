@@ -23,6 +23,10 @@ namespace IdeaSpend.API
         /// <returns>Product id</returns>
         ProductEntity FindProductByNameAndSeller( string productName, string seller );
 
+        IEnumerable<ProductEntity> FindProductByName( int userId, string productName );
+
+        IEnumerable<ProductEntity> FindProductBySeller( int userId, string seller );
+
         /// <summary>
         /// Get all products which user have with catalogs to which product are assigned
         /// </summary>
