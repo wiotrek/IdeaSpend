@@ -72,6 +72,14 @@ namespace IdeaSpend.API
 
             return transactions;
         }
+
+        public IQueryable ReadTransactionBySeller( int userId, string seller )
+        {
+            if( string.IsNullOrWhiteSpace ( seller ) )
+                return _transactionRepository.GetTransaction ( userId );
+            
+            return _transactionRepository.GetTransactionBySeller ( userId, seller );
+        }
         
         #endregion
 

@@ -30,8 +30,8 @@
       <!-- Search product button -->
       <div class="form-inline search">
 
-        <input class="border-0 text-center" type="text" placeholder="sprzedawca">
-        <button class="btn">Szukaj</button>
+        <input #seller class="border-0 text-center" type="text" placeholder="sprzedawca">
+        <button class="btn" (click)="loadTransactionsBySeller(seller)">Szukaj</button>
 
       </div>
 

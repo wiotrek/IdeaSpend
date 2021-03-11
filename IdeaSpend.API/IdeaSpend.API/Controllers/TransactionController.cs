@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +52,18 @@ namespace IdeaSpend.API
             var result = _transactionService.ReadTransaction(userId, 5);
             var betterResult = _mapper.Map<IEnumerable<TransactionDto>>(result);
             return Ok(betterResult);
+        }
+
+        [HttpGet("get/{userId}/{seller}")]
+        public IActionResult GetTransactionBySeller( int userId, string seller )
+        {
+            if( string.IsNullOrWhiteSpace ( seller ) )
+                return BadRequest ( " " );
+
+            var transactions = _transactionService.ReadTransactionBySeller ( userId, seller );
+            var transactionsToReturn = _mapper.Map<IEnumerable<TransactionDto>> ( transactions );
+            
+            return Ok(transactionsToReturn);
         }
         
     }
