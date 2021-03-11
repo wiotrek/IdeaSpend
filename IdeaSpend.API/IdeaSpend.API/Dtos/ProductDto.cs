@@ -8,7 +8,8 @@ namespace IdeaSpend.API
     public class ProductDto
     {
         #region Product Entity Properties
-
+        
+        public int ProductId { get; private set; }
         public string ProductName { get; set; }
         public string Seller { get; set; }
         public double Price { get; set; }

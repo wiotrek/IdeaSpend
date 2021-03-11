@@ -70,11 +70,11 @@ namespace IdeaSpend.API
         }
         
 
-        public bool DeleteProduct(int userId, string productName) 
+        public bool DeleteProduct(int userId, int productId) 
         {
             var foundEntity = _dataContext.Products
                 .Where(i => i.UserId == userId)
-                .SingleOrDefault(x => x.ProductName == productName);
+                .SingleOrDefault(x => x.ProductId == productId);
 
             if (foundEntity == null)
                 return false;

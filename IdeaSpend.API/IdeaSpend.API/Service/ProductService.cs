@@ -66,9 +66,9 @@ namespace IdeaSpend.API
             return _productRepository.GetUserProducts(userId);
         }
         
-        public bool DeleteProduct(int userId, string productName)
+        public bool DeleteProduct(int userId, int productId)
         {
-            return _productRepository.DeleteProduct(userId, productName);
+            return _productRepository.DeleteProduct(userId, productId);
         }
 
         #endregion

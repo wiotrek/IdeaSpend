@@ -30,8 +30,8 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
-  deleteProduct(productName: string): void {
-    this.productService.deleteUserPrdocut(this.authService.decodedToken.nameid, productName)
+  deleteProduct(id: number): void {
+    this.productService.deleteUserPrdocut(this.authService.decodedToken.nameid, id)
     .subscribe(
       () => {
         this.loadProducts();

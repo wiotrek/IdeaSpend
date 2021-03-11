@@ -29,6 +29,6 @@ namespace IdeaSpend.API
         IEnumerable<ProductEntity> GetUserProducts(int userId);
 
         IEnumerable<ProductEntity> GetUserProductsByCatalogId( int userId, int? catalogId );
-        bool DeleteProduct(int userId, string productName);
+        bool DeleteProduct(int userId, int productId);
     }
 }
