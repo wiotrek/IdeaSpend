@@ -74,27 +74,30 @@ namespace IdeaSpend.API
         public IEnumerable<ProductEntity> ReadProductsByNameOrSeller( int userId, string productProperty )
         {
             // Initialazing
-            var productsContainingName = _productRepository.FindProductByName ( userId, productProperty );
-            var productsContainingSeller = _productRepository.FindProductBySeller ( userId, productProperty );
+            var productsContainingName = _productRepository.FindProductByName ( userId, productProperty ).ToList();
+            var productsContainingSeller = _productRepository.FindProductBySeller ( userId, productProperty ).ToList();
 
             
             // List for collect matching product
-            IEnumerable<ProductEntity> productsToReturn = new List<ProductEntity>();
+            var productsToReturn = new List<ProductEntity>();
             
             
-            // If any copy content
-            if (productsContainingName != null)
-                productsToReturn = productsContainingName;
+            // Eliminate duplicate products from seller list
+            for(var i = 0; i < productsContainingName.Count; i++)
+                for(var j = i; j < productsContainingSeller.Count; j++)
+                    if (productsContainingName[i].ProductId == productsContainingSeller[j].ProductId)
+                        productsContainingSeller.RemoveAt ( j );
+            
+            
+            // If any in with name then copy content
+            productsToReturn = productsContainingName.ToList();
 
             
             // copy missing product with matching seller property
-            foreach ( var productEntity in productsContainingSeller )
-                foreach ( var product in productsToReturn )
-                    if( product.ProductId != productEntity.ProductId )
-                        productsToReturn = productsToReturn.Append ( productEntity );
-                
-            
-            return productsToReturn;
+            productsToReturn.AddRange ( productsContainingSeller );
+
+
+            return productsToReturn.OrderBy(d => d.ProductName);
         }
         
         public bool DeleteProduct(int userId, int productId)

@@ -30,6 +30,16 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
+  loadProductsByProperty(property: HTMLInputElement) {
+    if (this.authService.loggedIn()){
+      if (property.value === null || property.value === '')
+        this.loadProducts();
+
+      this.productService.getUserProductsByProperty(this.authService.decodedToken.nameid, property.value)
+        .subscribe((products: Product[]) => {this.products = products;})
+    }
+  }
+
   deleteProduct(id: number): void {
     this.productService.deleteUserPrdocut(this.authService.decodedToken.nameid, id)
     .subscribe(
