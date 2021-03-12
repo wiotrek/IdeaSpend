@@ -86,11 +86,21 @@ button.edit-product {
      font-size: 1.4rem;
 }
 
+ul.group-transaction-result {
+     min-height: 400px;
+}
 
-/* pagination bottom side */
-.transaction-overwiew-pagination li a{
-     background-color: var(--div-color);
-     color: var(--text-light);
+.transaction-pagination {
+     display: flex;
+     justify-content: center;
+}
+
+ngb-pagination ::ng-deep a {
+     background-color: var(--div-color) !important;
      border: 0;
-     font-size: 1.4rem;
+     color: var(--text-light);
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+     color: var(--yellow);
 }

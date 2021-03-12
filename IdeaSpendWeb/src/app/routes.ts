@@ -25,7 +25,7 @@ export const appRoutes: Routes = [
   { path: 'products/categories', component: ProductCatalogsComponent },
   { path: 'products/add', component: ProductAddComponent },
 
-  { path: 'statistics', component: StatisticsComponent },
+  { path: 'statistics', component: MainComponent },
 
   { path: 'transactions/new', component: TransactionsNewComponent },
   { path: 'transactions/overview', component: TransactionsOverviewComponent },

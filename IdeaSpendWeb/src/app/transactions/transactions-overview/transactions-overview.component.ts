@@ -10,25 +10,32 @@ import {Transaction} from '../../_model/transaction';
 })
 export class TransactionsOverviewComponent implements OnInit {
   transactions: Transaction[];
+  page = 1;
+  pageSize = 6;
 
   constructor(private authService: AuthService,
-                      private transactionService: TransactionService) { }
+              private transactionService: TransactionService
+    ) { }
 
   ngOnInit(): void {
     this.loadTransactions();
   }
 
-  loadTransactions() {
+  loadTransactions(): void {
     if (this.authService.loggedIn()){
       this.transactionService.getTransactions(this.authService.decodedToken.nameid)
-        .subscribe((transactions: Transaction[]) => {this.transactions = transactions;})
+        .subscribe((transactions: Transaction[]) => {
+          this.transactions = transactions;
+        });
     }
   }
 
-  loadTransactionsBySeller(seller: HTMLInputElement){
+  loadTransactionsBySeller(seller: HTMLInputElement): void{
     if (this.authService.loggedIn()){
       this.transactionService.getTransactionsBySeller(this.authService.decodedToken.nameid, seller.value)
-        .subscribe((transactions: Transaction[]) => {this.transactions = transactions;})
+        .subscribe((transactions: Transaction[]) => {
+          this.transactions = transactions;
+        });
     }
   }
 
