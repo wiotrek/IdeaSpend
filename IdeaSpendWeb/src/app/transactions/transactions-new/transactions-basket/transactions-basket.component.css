@@ -1,0 +1,72 @@
+/* left panel */
+
+.left-panel ul {
+     list-style: none;
+}
+
+.left-panel ul li button{
+     padding: 10px;
+     font-size: 2rem;
+     color: var(--yellow);
+     background-color: var(--div-color-dark);
+     border: 0;
+     cursor: pointer;
+     transform: scale(1, 1);
+     transition-duration: 500ms;
+     transition-timing-function: ease-out;
+}
+
+.left-panel ul li button:hover {
+     transform: scale(1.1, 1.1);
+     transition-duration: 500ms;
+     transition-timing-function: ease-out;
+     color: green;
+}
+
+/* Main section */
+
+.content {
+     font-size: 2rem;
+}
+
+.content ul li {
+     background-color: transparent;
+     border: 0;
+     opacity: 1;
+}
+
+.transaction-list {
+     min-height: 400px;
+}
+
+.transaction-list ul {
+     background-color: var(--div-color);
+     border-radius: var(--border-radius);
+}
+
+.edit-product {
+     text-align: center;
+     background-color: var(--div-color-dark);
+     color: var(--yellow);
+     font-size: 1.2rem;
+     padding: 0 12px;
+     height: 30px;
+}
+
+/* pagination */
+
+.transaction-pagination{
+     display: flex;
+     justify-content: center;
+     margin-top: 5px;
+}
+
+ngb-pagination ::ng-deep a {
+     background-color: var(--div-color) !important;
+     border: 0;
+     color: var(--text-light);
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+color: var(--yellow);
+}

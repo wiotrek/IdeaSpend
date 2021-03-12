@@ -1,162 +1,116 @@
 <app-navigation></app-navigation>
 
-<div class="row container-fluid">
+<div class="container-fluid">
 
+  <div class="row">
 
-  <!-- Category filter & search -->
-  <section class="col-10 d-flex justify-content-between">
+    <!-- Category filter & search -->
+    <section class="col-10 d-flex justify-content-between">
 
-    <!-- dropdown list category -->
-    <div class="category-list text-center">
+      <!-- dropdown list category -->
+      <div class="category-list text-center" *ngIf="!basketMode">
 
-      <div data-toggle="dropdown">
-<!-- <p> - Wybierz katalog - </p>-->
-        <p *ngIf="selectedCatalog != ''; else text">{{selectedCatalog}}</p>
-        <ng-template #text><p>Wybierz katalog</p></ng-template>
-      </div>
+        <div data-toggle="dropdown">
+          <!-- <p> - Wybierz katalog - </p>-->
+          <p *ngIf="selectedCatalog != ''; else text">{{selectedCatalog}}</p>
+          <ng-template #text>
+            <p>Wybierz katalog</p>
+          </ng-template>
+        </div>
 
-      <ul class="dropdown-menu">
-        <li class="dropdown-item" (click)="filterProductByCatalogName(-1)">Wszystkie</li>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item" (click)="filterProductByCatalogName(-1)">Wszystkie</li>
 
-        <li class="dropdown-item" *ngFor="let catalog of catalogs; index as poz">
-          <a (click)="filterProductByCatalogName(poz)">
-            <p class="w-100">{{catalog.catalogName}}</p>
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-    <!-- Search product button -->
-    <div class="form-inline search">
-
-      <input class="h-100 py-3 pl-4 border-0" type="text" placeholder="nazwa / sprzedawca">
-      <button class="btn ml-2 py-3 px-5">Szukaj</button>
-
-    </div>
-
-  </section>
-
-  <section class="col-1"></section>
-
-  <section class="col-1">
-    <div class="basket-logo">
-      <i class="fa fa-shopping-basket"></i>
-      <span class="badge badge-light" *ngIf="transactionsToSave.length > 0"
-      >{{transactionsToSave.length}}</span>
-    </div>
-  </section>
-
-  <!-- List of products -->
-  <section class="col ml-4 product-list d-flex flex-column align-items-center" >
-
-    <!-- Header list -->
-    <ul class="list-group flex-row text-center mt-5 header">
-      <li class="list-group-item" style="width: 100px"></li>
-      <li class="list-group-item" style="width: 350px">Nazwa</li>
-      <li class="list-group-item" style="width: 180px">Sprzedawca</li>
-      <li class="list-group-item" style="width: 120px">Cena</li>
-      <li class="list-group-item" style="width: 100px">Jednostka</li>
-      <li class="list-group-item" style="width: 200px">Kategoria</li>
-    </ul>
-
-    <!-- Content list -->
-    <div class="content">
-
-      <ul class="list-group flex-row text-center mt-2" 
-      *ngFor="let product of products| slice: (page-1) * pageSize : page * pageSize; index as poz">
-
-        <!-- Add product to transaction button -->
-        <li class="list-group-item d-flex pr-2" style="width: 100px">
-          <button class="btn edit-product" (click)="onAddProductToLocalList(poz)">
-            Dodaj
-          </button>
-        </li>
-
-        <li class="list-group-item" style="width: 350px">{{product.productName}}</li>
-        <li class="list-group-item pl-5" style="width: 180px">{{product.seller}}</li>
-        <li class="list-group-item pl-5" style="width: 120px">{{product.price}} zł</li>
-        <li class="list-group-item" style="width: 100px">{{product.unit}}</li>
-        <li class="list-group-item pl-5 text-right" style="width: 150px">{{product.catalogName}}</li>
-
-      </ul>
-
-    </div>
-
-    <div class="transaction-pagination" *ngIf="products?.length > 6">
-
-      <ngb-pagination [collectionSize]="products?.length"
-                      [(page)]="page"
-                      [pageSize]="pageSize"
-                      aria-label="Default pagination"
-                      size="lg"
-      ></ngb-pagination>
-    </div>
-
-  </section>
-
-  <!-- List of transactions -->
-  <section class="col-12 ml-4 transaction-list d-flex" >
-
-    <section class="col-1"></section>
-
-    <!-- Current transactions to accept -->
-    <section class="col-9 d-flex flex-column align-items-end justify-content-end mx-4">
-
-        <!-- Header list -->
-        <!-- <ul class="list-group flex-row text-center mt-5 header">
-          <li class="list-group-item" style="width: 110px"></li>
-          <li class="list-group-item" style="width: 350px">Produkt</li>
-          <li class="list-group-item" style="width: 80px">Ilość</li>
-          <li class="list-group-item" style="width: 80px">Waga</li>
-          <li class="list-group-item" style="width: 80px">Waluta</li>
-          <li class="list-group-item" style="width: 200px">Data kupna</li>
-          <li class="list-group-item" style="width: 120px">Suma</li>
-        </ul> -->
-
-      <!-- Content list -->
-      <div class="content justify-content-start">
-
-        <ul class="list-group flex-row text-center mt-2" *ngFor="let transaction of transactionsToSave; index as poz">
-
-          <!-- Edit button -->
-          <li class="list-group-item d-flex pr-2" style="width: 55px">
-            <button class="btn edit-product">
-              E
-            </button>
+          <li class="dropdown-item" *ngFor="let catalog of catalogs; index as poz">
+            <a (click)="filterProductByCatalogName(poz)">
+              <p class="w-100">{{catalog.catalogName}}</p>
+            </a>
           </li>
-
-          <!-- Cancel button -->
-          <li class="list-group-item d-flex pl-1" style="width: 55px">
-            <button class="btn edit-product" (click)="onDeleteProductFromTransaction(poz)">
-              X
-            </button>
-          </li>
-
-          <li class="list-group-item" style="width: 350px">{{transaction.productNameFrom}}</li>
-          <li class="list-group-item pl-5" style="width: 80px">{{transaction.quantity}}</li>
-          <li class="list-group-item pl-5" style="width: 80px">{{transaction.weights}}</li>
-          <li class="list-group-item" style="width: 80px">{{transaction.currency}}</li>
-          <li class="list-group-item pl-5 " style="width: 200px">{{transaction.transactionDate | date: 'yyyy-MM-dd'}}</li>
-          <li class="list-group-item pl-5 " style="width: 120px">{{transaction.paid.toFixed(2)}} zł</li>
 
         </ul>
 
       </div>
 
+      <!-- Search product button -->
+      <div class="form-inline search" *ngIf="!basketMode">
+
+        <input class="h-100 py-3 pl-4 border-0" type="text" placeholder="nazwa / sprzedawca">
+        <button class="btn ml-2 py-3 px-5">Szukaj</button>
+
+      </div>
+
     </section>
 
 
-    <section class="col-2 summary d-flex align-items-center">
-      <div class="text-center w-100 p-3 mb-5">
+    <section class="col-1"></section>
 
-        <p>Kwota łącznie: {{totalPaid.toFixed(2)}} zł</p>
-        <button class="btn" (click)="addTransactions()">Zatwierdź</button>
+    <section class="col-1">
+      <div class="basket-logo">
 
+        <!-- if you dont add any item, you can't open basket -->
+        <i class="fa fa-shopping-basket" (click)="transactionsToSave.length > 0 ? basketToggle() : false"
+        [ngStyle]="{'color': basketMode ? 'var(--yellow)' : 'white'}"></i>
+        <span class="badge badge-light" *ngIf="transactionsToSave.length > 0">{{transactionsToSave.length}}</span>
       </div>
     </section>
 
-  </section>
+
+  </div>
+
+  <div class="row">
+
+    <!-- List of products -->
+    <section class="col-12 ml-4 product-list d-flex flex-column align-items-center"
+    *ngIf="!basketMode" >
+
+      <!-- Header list -->
+      <ul class="list-group flex-row text-center mt-5 header">
+        <li class="list-group-item" style="width: 100px"></li>
+        <li class="list-group-item" style="width: 350px">Nazwa</li>
+        <li class="list-group-item" style="width: 180px">Sprzedawca</li>
+        <li class="list-group-item" style="width: 120px">Cena</li>
+        <li class="list-group-item" style="width: 100px">Jednostka</li>
+        <li class="list-group-item" style="width: 200px">Kategoria</li>
+      </ul>
+
+      <!-- Content list -->
+      <div class="content">
+
+        <ul class="list-group flex-row text-center mt-2"
+          *ngFor="let product of products| slice: (page-1) * pageSize : page * pageSize; index as poz">
+
+          <!-- Add product to transaction button -->
+          <li class="list-group-item d-flex pr-2" style="width: 100px">
+            <button class="btn edit-product" (click)="onAddProductToLocalList(poz)">
+              Dodaj
+            </button>
+          </li>
+
+          <li class="list-group-item" style="width: 350px">{{product.productName}}</li>
+          <li class="list-group-item pl-5" style="width: 180px">{{product.seller}}</li>
+          <li class="list-group-item pl-5" style="width: 120px">{{product.price}} zł</li>
+          <li class="list-group-item" style="width: 100px">{{product.unit}}</li>
+          <li class="list-group-item pl-5 text-right" style="width: 150px">{{product.catalogName}}</li>
+
+        </ul>
+
+      </div>
+
+      <div class="transaction-pagination" *ngIf="products?.length > 8">
+
+        <ngb-pagination [collectionSize]="products?.length" [(page)]="page" [pageSize]="pageSize"
+          aria-label="Default pagination" size="lg"></ngb-pagination>
+      </div>
+
+    </section>
+
+    <section *ngIf="basketMode">
+      <app-transactions-basket [(transactionToBasket)]="transactionsToSave"
+      (mode)="basketToggle($event)"
+      ></app-transactions-basket>
+    </section>
+
+  </div>
+
 
 </div>
