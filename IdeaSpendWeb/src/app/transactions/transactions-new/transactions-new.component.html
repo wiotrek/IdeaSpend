@@ -4,13 +4,13 @@
 
 
   <!-- Category filter & search -->
-  <section class="col-9 d-flex justify-content-between">
+  <section class="col-10 d-flex justify-content-between">
 
     <!-- dropdown list category -->
     <div class="category-list text-center">
 
       <div data-toggle="dropdown">
-<!--        <p> - Wybierz katalog - </p>-->
+<!-- <p> - Wybierz katalog - </p>-->
         <p *ngIf="selectedCatalog != ''; else text">{{selectedCatalog}}</p>
         <ng-template #text><p>Wybierz katalog</p></ng-template>
       </div>
@@ -38,7 +38,15 @@
 
   </section>
 
-  <section class="col-3 text-light text-right basket-logo">Logo koszyk</section>
+  <section class="col-1"></section>
+
+  <section class="col-1">
+    <div class="basket-logo">
+      <i class="fa fa-shopping-basket"></i>
+      <span class="badge badge-light" *ngIf="transactionsToSave.length > 0"
+      >{{transactionsToSave.length}}</span>
+    </div>
+  </section>
 
   <!-- List of products -->
   <section class="col ml-4 product-list d-flex flex-column align-items-center" >
@@ -56,7 +64,8 @@
     <!-- Content list -->
     <div class="content">
 
-      <ul class="list-group flex-row text-center mt-2" *ngFor="let product of products; index as poz">
+      <ul class="list-group flex-row text-center mt-2" 
+      *ngFor="let product of products| slice: (page-1) * pageSize : page * pageSize; index as poz">
 
         <!-- Add product to transaction button -->
         <li class="list-group-item d-flex pr-2" style="width: 100px">
@@ -75,28 +84,15 @@
 
     </div>
 
-    <!-- Pagination will be visible only if item numbers will above 5 -->
-    <nav aria-label="Page navigation" class="mt-2" >
-      <ul class="pagination">
+    <div class="transaction-pagination" *ngIf="products?.length > 6">
 
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-
-        <li class="page-item"><a class="page-link" href="/transactions/new">1</a></li>
-        <li class="page-item"><a class="page-link" href="/transactions/new">2</a></li>
-        <li class="page-item"><a class="page-link" href="/transactions/new">3</a></li>
-
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-
-      </ul>
-    </nav>
+      <ngb-pagination [collectionSize]="products?.length"
+                      [(page)]="page"
+                      [pageSize]="pageSize"
+                      aria-label="Default pagination"
+                      size="lg"
+      ></ngb-pagination>
+    </div>
 
   </section>
 
@@ -109,7 +105,7 @@
     <section class="col-9 d-flex flex-column align-items-end justify-content-end mx-4">
 
         <!-- Header list -->
-        <ul class="list-group flex-row text-center mt-5 header">
+        <!-- <ul class="list-group flex-row text-center mt-5 header">
           <li class="list-group-item" style="width: 110px"></li>
           <li class="list-group-item" style="width: 350px">Produkt</li>
           <li class="list-group-item" style="width: 80px">Ilość</li>
@@ -117,7 +113,7 @@
           <li class="list-group-item" style="width: 80px">Waluta</li>
           <li class="list-group-item" style="width: 200px">Data kupna</li>
           <li class="list-group-item" style="width: 120px">Suma</li>
-        </ul>
+        </ul> -->
 
       <!-- Content list -->
       <div class="content justify-content-start">

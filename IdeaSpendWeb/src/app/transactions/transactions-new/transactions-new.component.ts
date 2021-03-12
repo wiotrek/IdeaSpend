@@ -1,4 +1,5 @@
-import {AfterContentChecked, Component, DoCheck, EventEmitter, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';
 import { Transaction } from 'src/app/_model/transaction';
@@ -15,20 +16,25 @@ import {ProductService} from '../../_services/product.service';
 export class TransactionsNewComponent implements OnInit {
   // region Properties
 
-  totalPaid: number = 0;
-  selectedCatalog: string = '';
+  totalPaid = 0;
+  selectedCatalog = '';
   products: Product[] = [];
   transactionsToSave: Transaction[] = [];
   catalogs: Catalog[] = [];
+
+  // properties for pagination
+
+  pageSize = 6;
+  page = 1;
 
   // endregion
 
   // region Constructor
 
   constructor(private productService: ProductService,
-                      private transactionService: TransactionService,
-                      private catalogService: CatalogService,
-                      private authService: AuthService) { }
+              private transactionService: TransactionService,
+              private catalogService: CatalogService,
+              private authService: AuthService) { }
 
    // endregion
 
@@ -39,7 +45,7 @@ export class TransactionsNewComponent implements OnInit {
 
   // region API Request Methods
 
-  public addTransactions() {
+  public addTransactions(): Subscription {
     return this.transactionService.addUserTransactions(this.authService.decodedToken.nameid, this.transactionsToSave)
       .subscribe(
         // With success save transactions
@@ -73,14 +79,14 @@ export class TransactionsNewComponent implements OnInit {
 
   // region Local Request Methods
 
-  onAddProductToLocalList(index: number) {
+  onAddProductToLocalList(index: number): void {
     let transaction = new Transaction();
     // initialize new transaction
     transaction = this.transactionService.addProductToLocalList(this.products[index])
 
     // Check if just adding transaction isn't duplicate of exist local transaction list
-    for (let i = 0; i < this.transactionsToSave.length; i++)
-      // If exist then
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.transactionsToSave.length; i++){
       if (this.transactionsToSave[i].productNameFrom === transaction.productNameFrom) {
         // increase his quantity by 1
         this.transactionsToSave[i].quantity++;
@@ -90,6 +96,8 @@ export class TransactionsNewComponent implements OnInit {
         this.totalPaid += this.products[index].price;
         return;
       }
+    }
+      // If exist then
 
       // Otherwise update total paid with price of really new transaction
     this.totalPaid += transaction.paid;
@@ -98,7 +106,7 @@ export class TransactionsNewComponent implements OnInit {
   }
 
   // Deleting by one specify transaction
-  onDeleteProductFromTransaction(index: number) {
+  onDeleteProductFromTransaction(index: number): void {
     // If product on specify transaction have more than 1 quantity
     if (this.transactionsToSave[index].quantity > 1) {
       // Decrease it by one
@@ -118,19 +126,24 @@ export class TransactionsNewComponent implements OnInit {
   }
 
  // Display filtered products ba category to list
-  filterProductByCatalogName(index: number) {
+  filterProductByCatalogName(index: number): void {
     this.selectedCatalog = this.transactionService.getSelectedCatalog(index, this.catalogs);
 
     // If category is selected then
-    if (this.selectedCatalog !== 'Wybierz katalog')
+    if (this.selectedCatalog !== 'Wybierz katalog'){
+
       // fill list with products which have this category
+
       this.productService.getUserProducts(this.authService.decodedToken.nameid)
-        .subscribe((products: Product[]) => {
-          this.products = products.filter(c => c.catalogName == this.selectedCatalog);
-        });
-    // otherwise load all products
-    else
+      .subscribe((products: Product[]) => {
+        this.products = products.filter(c => c.catalogName === this.selectedCatalog);
+      });
+
+    }else{
+
+      // otherwise load all products
       this.loadProducts();
+    }
 
   }
 

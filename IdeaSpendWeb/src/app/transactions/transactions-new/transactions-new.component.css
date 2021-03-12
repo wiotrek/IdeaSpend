@@ -86,12 +86,39 @@
 }
 
 
-/* LOGO */
+/* =================================================== */
+/* =================== LOGO ========================== */
+/* =================================================== */
 
 .basket-logo {
-  font-size: 2rem;
+  cursor: pointer;
+  transform: scale(1.0, 1.0);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
 }
 
+.basket-logo:hover {
+  transform: scale(1.2, 1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  opacity: 0.7;
+}
+
+
+.basket-logo i {
+  font-size: 5em;
+  color: white;
+}
+
+.basket-logo i:hover {
+  color: var(--yellow);
+}
+
+.basket-logo span {
+  font-size: medium;
+  position: absolute;
+  border-radius: 15px;
+}
 
 /* =================================================== */
 /* =================== PRODUCT LIST ================== */
@@ -106,8 +133,7 @@
 }
 
 .product-list .content {
-  max-height: 220px;
-  overflow-y: hidden;
+  min-height: 400px;
 }
 
 .content {
@@ -209,4 +235,18 @@
   border: 3px solid transparent;
   border-radius: var(--border-radius);
   background-clip: content-box;
+}
+
+/* =================================================== */
+/* ==================== PAGINATION =================== */
+/* =================================================== */
+
+ngb-pagination ::ng-deep a {
+  background-color: var(--div-color) !important;
+  border: 0;
+  color: var(--text-light);
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  color: var(--yellow);
 }
