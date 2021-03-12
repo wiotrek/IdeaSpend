@@ -1,0 +1,10 @@
+/* Main section */
+
+.content {
+     font-size: 1.7rem;
+}
+
+.content ul li {
+     background-color: transparent;
+     opacity: 1;
+}

@@ -1,0 +1,56 @@
+<section class="ml-4 d-flex text-light">
+
+
+     <section class="col-2">
+          <h2>Twój koszyk</h2>
+     </section>
+
+     <section class="col-9 content">
+          <ul class="list-group flex-row text-center mt-5">
+               <li class="list-group-item" style="width: 110px"></li>
+               <li class="list-group-item" style="width: 350px">Produkt</li>
+               <li class="list-group-item" style="width: 80px">Ilość</li>
+               <li class="list-group-item" style="width: 80px">Waga</li>
+               <li class="list-group-item" style="width: 80px">Waluta</li>
+               <li class="list-group-item" style="width: 200px">Data kupna</li>
+               <li class="list-group-item" style="width: 120px">Suma</li>
+          </ul>
+
+          <div class="content justify-content-start">
+ 
+         <ul class="list-group flex-row text-center mt-2" *ngFor="let transaction of transactionToBasket; index as poz">
+ 
+           <!-- Edit button -->
+           <li class="list-group-item d-flex pr-2" style="width: 55px">
+             <button class="btn edit-product">
+               E
+             </button>
+           </li>
+ 
+           <!-- Cancel button -->
+           <li class="list-group-item d-flex pl-1" style="width: 55px">
+             <button class="btn edit-product" (click)="onDeleteProductFromTransaction(poz)">
+               X
+             </button>
+           </li>
+ 
+           <li class="list-group-item" style="width: 350px">{{transaction.productNameFrom}}</li>
+           <li class="list-group-item pl-5" style="width: 80px">{{transaction.quantity}}</li>
+           <li class="list-group-item pl-5" style="width: 80px">{{transaction.weights}}</li>
+           <li class="list-group-item" style="width: 80px">{{transaction.currency}}</li>
+           <li class="list-group-item pl-5 " style="width: 200px">{{transaction.transactionDate | date: 'yyyy-MM-dd'}}</li>
+           <li class="list-group-item pl-5 " style="width: 120px">{{transaction.paid.toFixed(2)}} zł</li>
+ 
+         </ul>
+ 
+       </div>
+     </section>
+
+
+
+
+
+
+</section>
+
+<a (click)="cancel()" class="text-light">Cancel</a>

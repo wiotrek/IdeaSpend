@@ -32,6 +32,7 @@ import {NgApexchartsModule} from 'ng-apexcharts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransactionsBasketComponent } from './transactions/transactions-new/transactions-basket/transactions-basket.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductOverviewComponent,
     ProductCatalogsComponent,
     ProductAddComponent,
+    TransactionsBasketComponent,
   ],
   imports: [
     BrowserModule,
