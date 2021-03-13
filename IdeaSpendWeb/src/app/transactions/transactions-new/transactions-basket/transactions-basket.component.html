@@ -1,7 +1,14 @@
 <section class="ml-4 d-flex text-light">
 
 
-  <section class="col-2 left-panel"></section>
+  <section class="col-2 left-panel">
+    <ul>
+      <li>
+        <button (click)="addTransactions()"
+        >Zatwierdź <span><i class="fa fa-check" aria-hidden="true"></i></span>
+      </button></li>
+    </ul>
+  </section>
 
   <section class="col-10 content">
     <ul class="list-group flex-row text-center mt-5">
@@ -42,6 +49,13 @@
       </ul>
 
     </div>
+
+    <div class="transaction-pagination" *ngIf="transactionToBasket?.length > 8">
+
+      <ngb-pagination [collectionSize]="transactionToBasket?.length" [(page)]="page" [pageSize]="pageSize"
+        aria-label="Default pagination" size="lg"></ngb-pagination>
+    </div>
+
   </section>
 
 

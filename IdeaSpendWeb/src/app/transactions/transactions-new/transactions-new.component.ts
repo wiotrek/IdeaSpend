@@ -15,7 +15,7 @@ import {ProductService} from '../../_services/product.service';
 })
 export class TransactionsNewComponent implements OnInit {
   // region Properties
-  basketMode = true;
+  basketMode = false;
   totalPaid = 0;
   selectedCatalog = '';
   products: Product[] = [];
@@ -24,7 +24,7 @@ export class TransactionsNewComponent implements OnInit {
 
   // properties for pagination
 
-  pageSize = 6;
+  pageSize = 8;
   page = 1;
 
   // endregion

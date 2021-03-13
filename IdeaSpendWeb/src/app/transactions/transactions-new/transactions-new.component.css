@@ -220,23 +220,6 @@
   font-weight: 600;
 }
 
-
-/* =================================================== */
-/* ====================== SCROLL ===================== */
-/* =================================================== */
-
-::-webkit-scrollbar {
-  background-color: var(--div-color-dark);
-  width: 13px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--yellow);
-  border: 3px solid transparent;
-  border-radius: var(--border-radius);
-  background-clip: content-box;
-}
-
 /* =================================================== */
 /* ==================== PAGINATION =================== */
 /* =================================================== */

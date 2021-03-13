@@ -46,7 +46,9 @@
 
     <section class="col-1">
       <div class="basket-logo">
-        <i class="fa fa-shopping-basket" (click)="basketToggle()"
+
+        <!-- if you dont add any item, you can't open basket -->
+        <i class="fa fa-shopping-basket" (click)="transactionsToSave.length > 0 ? basketToggle() : false"
         [ngStyle]="{'color': basketMode ? 'var(--yellow)' : 'white'}"></i>
         <span class="badge badge-light" *ngIf="transactionsToSave.length > 0">{{transactionsToSave.length}}</span>
       </div>
@@ -94,7 +96,7 @@
 
       </div>
 
-      <div class="transaction-pagination" *ngIf="products?.length > 6">
+      <div class="transaction-pagination" *ngIf="products?.length > 8">
 
         <ngb-pagination [collectionSize]="products?.length" [(page)]="page" [pageSize]="pageSize"
           aria-label="Default pagination" size="lg"></ngb-pagination>
@@ -104,6 +106,7 @@
 
     <section *ngIf="basketMode">
       <app-transactions-basket [(transactionToBasket)]="transactionsToSave"
+      (mode)="basketToggle($event)"
       ></app-transactions-basket>
     </section>
 

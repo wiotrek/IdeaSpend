@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Transaction } from 'src/app/_model/transaction';
+import { AuthService } from 'src/app/_services/auth.service';
+import { TransactionService } from 'src/app/_services/transaction.service';
 
 @Component({
   selector: 'app-transactions-basket',
@@ -8,10 +11,18 @@ import { Transaction } from 'src/app/_model/transaction';
 })
 export class TransactionsBasketComponent implements OnInit {
   @Input()  transactionToBasket: Transaction[];
+  @Output() mode = new EventEmitter();
 
   totalPaid = 0;
 
-  constructor() { }
+  // properties for pagination
+  pageSize = 8;
+  page = 1;
+
+  constructor(
+    private transactionService: TransactionService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +43,32 @@ export class TransactionsBasketComponent implements OnInit {
       this.totalPaid -= this.transactionToBasket[index].paid;
       // delete transaction from local list
       this.transactionToBasket.splice(index, 1);
+    }
+
+    // if user delete last item then automatic basket will close
+    this.checkTransactionInBasket();
+
+  }
+
+  public addTransactions(): Subscription {
+    return this.transactionService.addUserTransactions(this.authService.decodedToken.nameid, this.transactionToBasket)
+      .subscribe(
+        // With success save transactions
+        () => {
+          // clear local data,
+          this.transactionToBasket = [];
+          this.totalPaid = 0;
+          this.checkTransactionInBasket();
+        },
+
+        // TODO: add small textbox with error message (duplicate name or too short name)
+        error => console.log(error)
+        );
+  }
+
+  checkTransactionInBasket(): void {
+    if (this.transactionToBasket.length === 0){
+      this.mode.emit(false);
     }
   }
 

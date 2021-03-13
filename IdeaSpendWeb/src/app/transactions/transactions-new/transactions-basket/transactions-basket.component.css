@@ -1,19 +1,26 @@
 /* left panel */
 
-.left-panel ul{
-}
-
-.left-panel ul li {
-     margin-top: 5px;
+.left-panel ul {
      list-style: none;
-     cursor: pointer;
 }
 
-.left-panel ul li i {
+.left-panel ul li button{
+     padding: 10px;
      font-size: 2rem;
+     color: var(--yellow);
+     background-color: var(--div-color-dark);
+     border: 0;
+     cursor: pointer;
+     transform: scale(1, 1);
+     transition-duration: 500ms;
+     transition-timing-function: ease-out;
 }
 
-.left-panel ul li.cancel {
+.left-panel ul li button:hover {
+     transform: scale(1.1, 1.1);
+     transition-duration: 500ms;
+     transition-timing-function: ease-out;
+     color: green;
 }
 
 /* Main section */
@@ -29,6 +36,7 @@
 }
 
 .transaction-list {
+     min-height: 400px;
 }
 
 .transaction-list ul {
@@ -43,4 +51,22 @@
      font-size: 1.2rem;
      padding: 0 12px;
      height: 30px;
+}
+
+/* pagination */
+
+.transaction-pagination{
+     display: flex;
+     justify-content: center;
+     margin-top: 5px;
+}
+
+ngb-pagination ::ng-deep a {
+     background-color: var(--div-color) !important;
+     border: 0;
+     color: var(--text-light);
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+color: var(--yellow);
 }
