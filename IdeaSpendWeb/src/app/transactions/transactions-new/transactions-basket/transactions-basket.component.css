@@ -1,10 +1,46 @@
+/* left panel */
+
+.left-panel ul{
+}
+
+.left-panel ul li {
+     margin-top: 5px;
+     list-style: none;
+     cursor: pointer;
+}
+
+.left-panel ul li i {
+     font-size: 2rem;
+}
+
+.left-panel ul li.cancel {
+}
+
 /* Main section */
 
 .content {
-     font-size: 1.7rem;
+     font-size: 2rem;
 }
 
 .content ul li {
      background-color: transparent;
+     border: 0;
      opacity: 1;
+}
+
+.transaction-list {
+}
+
+.transaction-list ul {
+     background-color: var(--div-color);
+     border-radius: var(--border-radius);
+}
+
+.edit-product {
+     text-align: center;
+     background-color: var(--div-color-dark);
+     color: var(--yellow);
+     font-size: 1.2rem;
+     padding: 0 12px;
+     height: 30px;
 }

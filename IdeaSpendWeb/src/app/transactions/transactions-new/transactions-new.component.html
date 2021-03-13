@@ -2,13 +2,13 @@
 
 <div class="container-fluid">
 
-  <div class="row" *ngIf="!basketMode">
+  <div class="row">
 
     <!-- Category filter & search -->
     <section class="col-10 d-flex justify-content-between">
 
       <!-- dropdown list category -->
-      <div class="category-list text-center">
+      <div class="category-list text-center" *ngIf="!basketMode">
 
         <div data-toggle="dropdown">
           <!-- <p> - Wybierz katalog - </p>-->
@@ -32,7 +32,7 @@
       </div>
 
       <!-- Search product button -->
-      <div class="form-inline search">
+      <div class="form-inline search" *ngIf="!basketMode">
 
         <input class="h-100 py-3 pl-4 border-0" type="text" placeholder="nazwa / sprzedawca">
         <button class="btn ml-2 py-3 px-5">Szukaj</button>
@@ -46,7 +46,8 @@
 
     <section class="col-1">
       <div class="basket-logo">
-        <i class="fa fa-shopping-basket" (click)="basketToggle()"></i>
+        <i class="fa fa-shopping-basket" (click)="basketToggle()"
+        [ngStyle]="{'color': basketMode ? 'var(--yellow)' : 'white'}"></i>
         <span class="badge badge-light" *ngIf="transactionsToSave.length > 0">{{transactionsToSave.length}}</span>
       </div>
     </section>
@@ -102,8 +103,7 @@
     </section>
 
     <section *ngIf="basketMode">
-      <app-transactions-basket (cancelBasket)="cancelBasketMode($event)"
-      [(transactionToBasket)]="transactionsToSave"
+      <app-transactions-basket [(transactionToBasket)]="transactionsToSave"
       ></app-transactions-basket>
     </section>
 

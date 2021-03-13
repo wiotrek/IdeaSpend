@@ -7,7 +7,6 @@ import { Transaction } from 'src/app/_model/transaction';
   styleUrls: ['./transactions-basket.component.css']
 })
 export class TransactionsBasketComponent implements OnInit {
-  @Output() cancelBasket = new EventEmitter();
   @Input()  transactionToBasket: Transaction[];
 
   totalPaid = 0;
@@ -15,11 +14,6 @@ export class TransactionsBasketComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  // exit from basket
-  cancel(): void {
-    this.cancelBasket.emit(false);
   }
 
   onDeleteProductFromTransaction(index: number): void {
