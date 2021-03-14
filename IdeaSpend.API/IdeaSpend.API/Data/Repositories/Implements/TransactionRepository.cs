@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdeaSpend.API
 {
-    // TODO: Move all filter methods to generic package of class and interfaces
-    //       responsible for filter items depend on entity 
-    
     /// <summary>
     /// CRUD operation for Płatności table which is implemented by <see cref="BaseRepository"/>
     /// </summary>
@@ -29,11 +25,20 @@ namespace IdeaSpend.API
             return await _dataContext.SaveChangesAsync() > 0;
         }
 
-        public IQueryable GetTransaction(int userId)
+        /// <summary>
+        /// Finding transactions made with indicated date
+        /// </summary>
+        /// <param name="date">The date which transactions made</param>
+        public IQueryable GetTransactionByDate(int userId, string date = default)
         {
+            if (date == default)
+                date = GetDateOfLastTransaction ( userId );
+            
             var sqlQuery = 
                 from transaction in _dataContext.Set<TransactionEntity>()
                     .Where(i => i.UserId == userId)
+                    .Where(d => d.TransactionDate.Substring(0, 4) == date.Substring(0, 4))
+                    .Where(d => d.TransactionDate.Substring(5, 2) == date.Substring(5, 2))
                     .OrderByDescending ( d => d.TransactionDate )
                 join product in _dataContext.Set<ProductEntity>()
                     on transaction.ProductId equals product.ProductId into grouping
@@ -52,6 +57,11 @@ namespace IdeaSpend.API
 
         }
 
+        /// <summary>
+        /// Finding first N={1, 2, 3, ...} transactions
+        /// </summary>
+        /// <param name="amount">The amount transactions to display</param>
+        /// <returns>transactions from latest to first</returns>
         public IQueryable GetTopNTransactions( int userId, int amount )
         {
             var sqlQuery = 
@@ -73,6 +83,17 @@ namespace IdeaSpend.API
                 };
 
             return sqlQuery;
+        }
+
+        /// <summary>
+        /// Finding first and last transaction
+        /// </summary>
+        public string[] GetRangeDate( int userId )
+        {
+            var first = GetDateOfFirstTransaction ( userId );
+            var last = GetDateOfLastTransaction ( userId );
+
+            return new[] {first, last};
         }
 
         /// <summary>
@@ -111,6 +132,36 @@ namespace IdeaSpend.API
             return sqlQuery;
         }
 
+        #endregion
+        
+        #region Private Methods
+        
+        /// <summary>
+        /// Finding first transaction user made
+        /// </summary>
+        private string GetDateOfFirstTransaction(int userId)
+        {
+            var date = _dataContext.Transactions
+                .Where ( u => u.UserId == userId )
+                .OrderBy ( d => d.TransactionDate )
+                .FirstOrDefault().TransactionDate;
+            
+            return date;
+        }
+
+        /// <summary>
+        /// Finding last transaction user made
+        /// </summary>
+        private string GetDateOfLastTransaction(int userId)
+        {
+            var date = _dataContext.Transactions
+                .Where ( u => u.UserId == userId )
+                .OrderByDescending ( d => d.TransactionDate )
+                .FirstOrDefault().TransactionDate;
+            
+            return date;
+        }
+        
         #endregion
     }
 }

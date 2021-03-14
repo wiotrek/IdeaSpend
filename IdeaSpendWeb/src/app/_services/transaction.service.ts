@@ -24,8 +24,13 @@ export class TransactionService extends BaseService {
     return this.http.post<Array<Transaction>>(`${this.backend}/api/transaction/add/${userId}`, model);
   }
 
-  getTransactions(userId: number): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}`);
+  getTransactions(userId: number, date: string): Observable<Transaction[]> {
+    // If date is selected then load by date
+    if (date !== undefined)
+      return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}/date=${date}`);
+    // otherwise load transactions on date with registered transactions
+    else
+      return this.http.get<Transaction[]>(`${this.backend}/api/transaction/get/${userId}`);
   }
 
   getLast5Transactions(userId: number): Observable<Transaction[]> {
@@ -51,7 +56,7 @@ export class TransactionService extends BaseService {
 
   // Return catalog name from dropdown list
   getSelectedCatalog(index: number, catalog: Catalog[]): string {
-    let catalogName: string = '';
+    let catalogName: string;
 
     if (index === -1)
       catalogName = 'Wybierz katalog';

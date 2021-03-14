@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';
@@ -99,7 +99,6 @@ export class TransactionsNewComponent implements OnInit {
     if (this.selectedCatalog !== 'Wybierz katalog'){
 
       // fill list with products which have this category
-
       this.productService.getUserProducts(this.authService.decodedToken.nameid)
       .subscribe((products: Product[]) => {
         this.products = products.filter(c => c.catalogName === this.selectedCatalog);

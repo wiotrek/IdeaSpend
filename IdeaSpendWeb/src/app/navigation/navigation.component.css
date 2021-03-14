@@ -1,3 +1,41 @@
+/* ============================= */
+/*                            Date and currency                      */
+/* ============================= */
+ .date-and-currency {
+  margin-left: 300px;
+}
+
+.date-and-currency-p, .date-and-currency .dropdown-item{
+  cursor: pointer;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.date-and-currency ul {
+  border: 0;
+  background: linear-gradient(90deg, var(--div-color) 50%, transparent 50%);
+}
+
+.date-and-currency ul .dropdown-item:hover {
+  background: linear-gradient(90deg, #4B5062 50%, transparent 50%);
+}
+
+.date-and-currency .month-list {
+  background: linear-gradient(90deg, var(--div-color) 85%, transparent 15%);
+}
+
+.date-and-currency .month-list  .dropdown-item:hover {
+  background: linear-gradient(90deg, #4B5062 85%, transparent 15%);
+}
+
+.date-and-currency-blocks {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+/* ============================= */
+/*                                 Navigation                             */
+/* ============================= */
 nav {
   font-size: 2.2rem;
   background-color: #4B5062;
@@ -23,6 +61,10 @@ nav {
   padding-top: 17px;
 }
 
+.navbar .date-and-currency p {
+  padding-top: 0;
+}
+
 .navbar i {
   font-size: 2rem;
   color: var(--yellow);
@@ -37,14 +79,16 @@ nav {
 }
 
 .dropdown {
-  height: 50px;
+  height: 30px;
 }
 
 .dropdown-menu {
   background-color: var(--div-color);
+  /*text-align: center;*/
 }
 
 .dropdown-transaction {
+  margin-top: 10px;
   width: 130px;
 }
 

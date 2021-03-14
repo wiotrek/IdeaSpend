@@ -35,14 +35,14 @@ namespace IdeaSpend.API
             var productName_Seller = transactionDto.ProductNameFrom.Split(" - ");
 
             // Get product id for identify product with transaction
-            var product = _productRepository.FindProductByNameAndSeller(productName_Seller[0], productName_Seller[1]);
+            var product = _productRepository.FindProductByNameAndSeller(productName_Seller[0], productName_Seller[^1]);
 
             // Creating transaction must be tapped by any product before saving to db
             if (product == null)
                 return false;
 
             // Sum up price single transaction
-            double paid = TotalSingleTransactionPaid(product.Price, product.Unit, transactionDto.Weights, transactionDto.Quantity);
+            var paid = TotalSingleTransactionPaid(product.Price, product.Unit, transactionDto.Weights, transactionDto.Quantity);
 
             // Create transaction to add
             var transaction = new TransactionEntity
@@ -68,7 +68,7 @@ namespace IdeaSpend.API
         {
             var transactions = amount != 0 ? 
                 _transactionRepository.GetTopNTransactions( userId, amount ) : 
-                _transactionRepository.GetTransaction(userId);
+                _transactionRepository.GetTransactionByDate(userId);
 
             return transactions;
         }
@@ -76,9 +76,19 @@ namespace IdeaSpend.API
         public IQueryable ReadTransactionBySeller( int userId, string seller )
         {
             if( string.IsNullOrWhiteSpace ( seller ) )
-                return _transactionRepository.GetTransaction ( userId );
+                return _transactionRepository.GetTransactionByDate ( userId );
             
             return _transactionRepository.GetTransactionBySeller ( userId, seller );
+        }
+
+        public string[] ReadRangeTransactionDate( int userId )
+        {
+            return _transactionRepository.GetRangeDate ( userId );
+        }
+
+        public IQueryable ReadTransactionByDate( int userId, string date = default )
+        {
+            return _transactionRepository.GetTransactionByDate ( userId, date );
         }
         
         #endregion

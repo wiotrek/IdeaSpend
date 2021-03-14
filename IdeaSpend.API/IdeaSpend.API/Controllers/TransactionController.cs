@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -63,6 +62,22 @@ namespace IdeaSpend.API
             
             return Ok(transactionsToReturn);
         }
-        
+
+        [HttpGet("get/{userId}/date={date}")]
+        public IActionResult GetTransactionByDate( int userId, string date )
+        {
+            var transactions = _transactionService.ReadTransactionByDate ( userId, date );
+            var transactionToReturn = _mapper.Map<IEnumerable<TransactionDto>> ( transactions );
+            
+            return Ok(transactionToReturn);
+        }
+
+        [HttpGet ( "get/date-range/{userId}" )]
+        public IActionResult GetRangeTransactionDate( int userId )
+        {
+            var rangeDate = _transactionService.ReadRangeTransactionDate ( userId );
+
+            return Ok ( rangeDate );
+        }
     }
 }

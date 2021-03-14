@@ -12,7 +12,7 @@ import { TransactionService } from 'src/app/_services/transaction.service';
 export class TransactionsBasketComponent implements OnInit {
   @Input()  transactionToBasket: Transaction[];
   @Output() transactionToBasketChange = new EventEmitter<Transaction[]>();
-  @Output() mode = new EventEmitter();
+  @Output() mode = new EventEmitter<boolean>();
 
   totalPaid = 0;
 
@@ -57,7 +57,6 @@ export class TransactionsBasketComponent implements OnInit {
         // With success save transactions
         () => {
           // clear local data,
-          console.log('czyszczenie');
           this.transactionToBasket = [];
           this.totalPaid = 0;
           this.checkTransactionInBasket(this.transactionToBasket);

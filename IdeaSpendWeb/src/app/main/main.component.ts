@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {TransactionService} from '../_services/transaction.service';
 import {Transaction} from '../_model/transaction';
@@ -11,7 +11,6 @@ import {Transaction} from '../_model/transaction';
 export class MainComponent implements OnInit {
 
   transactions: Transaction[];
-
   // TODO: change font family for information inside square
 
   greenTriangleImage = '../assets/main/green-triangle.png';
@@ -30,19 +29,5 @@ export class MainComponent implements OnInit {
         this.transactions = transactions;
     })
   }
-
-  public months: Array<string> = [
-    "styczen", "luty", "marzec", "kwiecien", "maj",
-    "czerwiec", "lipiec", "sierpien", "wrzesien", "pazdziernik",
-    "listopad", "grudzien"
-  ];
-
-  public years: Array<number> = [
-    2020, 2019, 2018
-  ];
-
-  public currency: Array<string> = [
-    "PLN", "USD", "EUR"
-  ];
 
 }

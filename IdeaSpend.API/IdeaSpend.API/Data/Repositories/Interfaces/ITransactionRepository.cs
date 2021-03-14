@@ -12,7 +12,8 @@ namespace IdeaSpend.API
         /// Saving transaction to db
         /// </summary>
         Task<bool> AddTransaction(TransactionEntity transaction);
-        IQueryable GetTransaction(int userId);
+
+        IQueryable GetTransactionByDate( int userId, string date = default );
         
         /// <summary>
         /// Read specify amount of the transactions
@@ -20,6 +21,8 @@ namespace IdeaSpend.API
         /// <param name="amount">The specify number of the transactions to return</param>
         /// <returns></returns>
         IQueryable GetTopNTransactions( int userId, int amount );
+
+        string[] GetRangeDate( int userId );
 
         IQueryable GetTransactionBySeller( int userId, string seller );
     }
