@@ -11,6 +11,7 @@ import { TransactionService } from 'src/app/_services/transaction.service';
 })
 export class TransactionsBasketComponent implements OnInit {
   @Input()  transactionToBasket: Transaction[];
+  @Output() transactionToBasketChange = new EventEmitter<Transaction[]>();
   @Output() mode = new EventEmitter();
 
   totalPaid = 0;
@@ -46,7 +47,7 @@ export class TransactionsBasketComponent implements OnInit {
     }
 
     // if user delete last item then automatic basket will close
-    this.checkTransactionInBasket();
+    this.checkTransactionInBasket(this.transactionToBasket);
 
   }
 
@@ -58,7 +59,7 @@ export class TransactionsBasketComponent implements OnInit {
           // clear local data,
           this.transactionToBasket = [];
           this.totalPaid = 0;
-          this.checkTransactionInBasket();
+          this.checkTransactionInBasket(this.transactionToBasket);
         },
 
         // TODO: add small textbox with error message (duplicate name or too short name)
@@ -66,7 +67,8 @@ export class TransactionsBasketComponent implements OnInit {
         );
   }
 
-  checkTransactionInBasket(): void {
+  checkTransactionInBasket(transaction: Transaction[]): void {
+    this.transactionToBasketChange.emit(transaction);
     if (this.transactionToBasket.length === 0){
       this.mode.emit(false);
     }
