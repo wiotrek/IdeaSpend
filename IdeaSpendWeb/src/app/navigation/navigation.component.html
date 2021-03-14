@@ -47,6 +47,45 @@
 
         </div>
 
+        <!-- Dropdown date and currency -->
+        <div class="nav-item nav-link mx-4">
+
+          <div class="date-and-currency">
+
+            <!-- MONTHS -->
+            <div class="date-and-currency-blocks dropdown">
+              <p class="date-and-currency-p" data-toggle="dropdown">
+                {{months[0]}}
+              </p>
+              <ul class="dropdown-menu month-list" aria-labelledby="monthsList">
+                <li class="dropdown-item " *ngFor="let item of getMonths(); index as month">{{item}}</li>
+              </ul>
+            </div>
+
+            <!-- YEARS -->
+            <div class="date-and-currency-blocks dropdown">
+              <p class="date-and-currency-p" data-toggle="dropdown">
+                {{years[0]}}
+              </p>
+              <ul class="dropdown-menu" aria-labelledby="yearsList">
+                <li class="dropdown-item" *ngFor="let item of years">{{item}}</li>
+              </ul>
+            </div>
+
+            <!-- CURRENCY -->
+            <div class="date-and-currency-blocks dropdown">
+              <p class="date-and-currency-p" data-toggle="dropdown">
+                {{currency[0]}}
+              </p>
+              <ul class="dropdown-menu"  aria-labelledby="dropdownMenuButton1">
+                <li class="dropdown-item" *ngFor="let item of currency">{{item}}</li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
 
@@ -71,7 +110,7 @@
           <i class="fa fa-ellipsis-h"></i>
         </button>
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu mt-4" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" [routerLink]="['/']">Konto</a>
           <a class="btn dropdown-item" (click)="authService.logout()">Wyloguj</a>
         </div>

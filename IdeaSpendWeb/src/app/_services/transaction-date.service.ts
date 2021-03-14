@@ -14,7 +14,7 @@ export class TransactionDateService {
     // if (this.years[0])
     //   this.months = ['Październik', 'Listopad', 'Grudzień'];
     // else
-      this.months = ['Styczeń', 'Luty', 'Marzec'];
+      this.months = ['Styczeń', 'Luty', 'Październik'];
 
     return this.months;
   }

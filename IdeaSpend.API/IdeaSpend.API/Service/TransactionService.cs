@@ -68,7 +68,7 @@ namespace IdeaSpend.API
         {
             var transactions = amount != 0 ? 
                 _transactionRepository.GetTopNTransactions( userId, amount ) : 
-                _transactionRepository.GetTransaction(userId);
+                _transactionRepository.GetTransactionByDate(userId);
 
             return transactions;
         }
@@ -76,7 +76,7 @@ namespace IdeaSpend.API
         public IQueryable ReadTransactionBySeller( int userId, string seller )
         {
             if( string.IsNullOrWhiteSpace ( seller ) )
-                return _transactionRepository.GetTransaction ( userId );
+                return _transactionRepository.GetTransactionByDate ( userId );
             
             return _transactionRepository.GetTransactionBySeller ( userId, seller );
         }

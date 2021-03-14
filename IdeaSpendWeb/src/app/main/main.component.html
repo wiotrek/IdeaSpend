@@ -4,47 +4,8 @@
   <div class="row">
     <div class="col-10 text-light">
 
-      <!-- date and currency -->
-      <section class="py-5 px-5 date-and-currency">
-
-        <!-- TODO: received date from api and setup all information on site  -->
-        <!-- currently dropdown display date from artificial lists from main.component.ts
-           and doesnt changes information on site -->
-        <div class="mt-5">
-
-          <div class="date-and-currency-blocks">
-            <p class="date-and-currency-p" data-toggle="dropdown">
-              {{months[0]}}
-            </p>
-            <ul class="dropdown-menu" aria-labelledby="monthsList">
-              <li><a class="dropdown-item" href="#" *ngFor="let item of months">{{item}}</a></li>
-            </ul>
-          </div>
-
-          <div class="date-and-currency-blocks">
-            <p class="date-and-currency-p" data-toggle="dropdown">
-              {{years[0]}}
-            </p>
-            <ul class="dropdown-menu" aria-labelledby="yearsList">
-              <li><a class="dropdown-item" href="#" *ngFor="let item of years">{{item}}</a></li>
-            </ul>
-          </div>
-
-          <div class="date-and-currency-blocks">
-            <p class="date-and-currency-p" data-toggle="dropdown">
-              {{currency[0]}}
-            </p>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#" *ngFor="let item of currency">{{item}}</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-      </section>
-
       <!-- main stat of the month -->
-      <section class="px-5 main-stats">
+      <section class=" px-5 main-stats">
 
         <div class="square text-center p-5">
 
@@ -109,6 +70,7 @@
           </tbody>
         </table>
       </section>
+
     </div>
   </div>
 </main>

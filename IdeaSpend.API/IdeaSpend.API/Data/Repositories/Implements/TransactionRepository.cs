@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,11 +29,17 @@ namespace IdeaSpend.API
             return await _dataContext.SaveChangesAsync() > 0;
         }
 
-        public IQueryable GetTransaction(int userId)
+        
+        public IQueryable GetTransactionByDate(int userId, DateTime date = default)
         {
+            if (date == default)
+                date = GetDateOfLastTransaction ( userId );
+            
             var sqlQuery = 
                 from transaction in _dataContext.Set<TransactionEntity>()
                     .Where(i => i.UserId == userId)
+                    .Where(d => d.TransactionDate.Year == date.Year)
+                    .Where(d => d.TransactionDate.Month == date.Month)
                     .OrderByDescending ( d => d.TransactionDate )
                 join product in _dataContext.Set<ProductEntity>()
                     on transaction.ProductId equals product.ProductId into grouping
@@ -111,6 +117,20 @@ namespace IdeaSpend.API
             return sqlQuery;
         }
 
+        #endregion
+        
+        #region Private Methods
+
+        private DateTime GetDateOfLastTransaction(int userId)
+        {
+            var date = _dataContext.Transactions
+                .Where ( u => u.UserId == userId )
+                .OrderByDescending ( d => d.TransactionDate )
+                .FirstOrDefault().TransactionDate;
+
+            return date;
+        }
+        
         #endregion
     }
 }

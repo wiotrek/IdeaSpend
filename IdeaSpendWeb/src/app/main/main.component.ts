@@ -31,18 +31,4 @@ export class MainComponent implements OnInit {
     })
   }
 
-  public months: Array<string> = [
-    "styczen", "luty", "marzec", "kwiecien", "maj",
-    "czerwiec", "lipiec", "sierpien", "wrzesien", "pazdziernik",
-    "listopad", "grudzien"
-  ];
-
-  public years: Array<number> = [
-    2020, 2019, 2018
-  ];
-
-  public currency: Array<string> = [
-    "PLN", "USD", "EUR"
-  ];
-
 }

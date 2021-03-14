@@ -1,32 +1,11 @@
 /* ============================= */
-/*       Date and currency       */
-/* ============================= */
-.date-and-currency, .main-stats {
-  font-size: 3rem;
-  margin-left: 280px;
-}
-
-.date-and-currency-p{
-  cursor: pointer;
-  text-transform: capitalize;
-}
-
-.date-and-currency-blocks {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.dropdown-menu {
-  text-align: center;
-}
-
-
-/* ============================= */
 /*          Main stats           */
 /* ============================= */
 .main-stats {
+  margin-left: 280px;
   display: flex;
   justify-content: space-between;
+  margin-top: 70px;
 }
 
 .square {
