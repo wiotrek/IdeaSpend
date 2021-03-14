@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';
@@ -19,7 +19,7 @@ export class TransactionsNewComponent implements OnInit {
   totalPaid = 0;
   selectedCatalog = '';
   products: Product[] = [];
-  transactionsToSave: Transaction[] = [];
+  @Output() transactionsToSave: Transaction[] = [];
   catalogs: Catalog[] = [];
 
   // properties for pagination
@@ -45,20 +45,6 @@ export class TransactionsNewComponent implements OnInit {
 
   // region API Request Methods
 
-  public addTransactions(): Subscription {
-    return this.transactionService.addUserTransactions(this.authService.decodedToken.nameid, this.transactionsToSave)
-      .subscribe(
-        // With success save transactions
-        () => {
-          // clear local data,
-          this.transactionsToSave = [];
-          this.totalPaid = 0;
-        },
-
-        // TODO: add small textbox with error message (duplicate name or too short name)
-        error => console.log(error) );
-  }
-
   loadProducts(): void {
     if (this.authService.loggedIn()){
       this.productService.getUserProducts(this.authService.decodedToken.nameid)
@@ -82,11 +68,12 @@ export class TransactionsNewComponent implements OnInit {
   onAddProductToLocalList(index: number): void {
     let transaction = new Transaction();
     // initialize new transaction
-    transaction = this.transactionService.addProductToLocalList(this.products[index])
+    transaction = this.transactionService.addProductToLocalList(this.products[index]);
 
     // Check if just adding transaction isn't duplicate of exist local transaction list
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.transactionsToSave.length; i++){
+      // If exist then
       if (this.transactionsToSave[i].productNameFrom === transaction.productNameFrom) {
         // increase his quantity by 1
         this.transactionsToSave[i].quantity++;
@@ -97,32 +84,11 @@ export class TransactionsNewComponent implements OnInit {
         return;
       }
     }
-      // If exist then
 
       // Otherwise update total paid with price of really new transaction
     this.totalPaid += transaction.paid;
       // and put this transaction as new to local list
     this.transactionsToSave.push(transaction);
-  }
-
-  // Deleting by one specify transaction
-  onDeleteProductFromTransaction(index: number): void {
-    // If product on specify transaction have more than 1 quantity
-    if (this.transactionsToSave[index].quantity > 1) {
-      // Decrease it by one
-      this.transactionsToSave[index].quantity--;
-      // Update paid with unit price for this product
-      this.transactionsToSave[index].paid -= this.transactionsToSave[index].paid / (this.transactionsToSave[index].quantity+1);
-      // And the same take off from total paid with unit price
-      this.totalPaid -= this.transactionsToSave[index].paid  / (this.transactionsToSave[index].quantity);
-    }
-    // Otherwise
-    else {
-      // Update total paid and
-      this.totalPaid -= this.transactionsToSave[index].paid;
-      // delete transaction from local list
-      this.transactionsToSave.splice(index, 1);
-    }
   }
 
  // Display filtered products ba category to list

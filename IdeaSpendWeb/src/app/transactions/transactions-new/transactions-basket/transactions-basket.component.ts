@@ -57,6 +57,7 @@ export class TransactionsBasketComponent implements OnInit {
         // With success save transactions
         () => {
           // clear local data,
+          console.log('czyszczenie');
           this.transactionToBasket = [];
           this.totalPaid = 0;
           this.checkTransactionInBasket(this.transactionToBasket);
