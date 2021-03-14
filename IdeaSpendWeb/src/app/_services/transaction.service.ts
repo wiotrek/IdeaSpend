@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {BaseService} from './base.service';
 import {HttpClient} from '@angular/common/http';
 import {Catalog} from '../_model/catalog';
+import {DatePipe} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class TransactionService extends BaseService {
   currentAmountBoughtProduct: number = 1;
   transaction: Transaction;
 
-  constructor(private authService: AuthService, private http: HttpClient) { super(); }
+  constructor(private authService: AuthService,
+              private http: HttpClient,
+              private datePipe: DatePipe) { super(); }
 
   addUserTransactions(userId: number, model: any): Observable<Array<Transaction>> {
     return this.http.post<Array<Transaction>>(`${this.backend}/api/transaction/add/${userId}`, model);
@@ -40,7 +43,7 @@ export class TransactionService extends BaseService {
     this.transaction.quantity = this.currentAmountBoughtProduct;
     this.transaction.weights = 1;
     this.transaction.currency = 'PLN';
-    this.transaction.transactionDate = new Date().toLocaleDateString();
+    this.transaction.transactionDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.transaction.paid = this.transaction.quantity * products.price;
 
     return this.transaction;

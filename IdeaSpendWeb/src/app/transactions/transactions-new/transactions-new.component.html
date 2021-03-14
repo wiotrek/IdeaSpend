@@ -81,7 +81,7 @@
 
           <!-- Add product to transaction button -->
           <li class="list-group-item d-flex pr-2" style="width: 100px">
-            <button class="btn edit-product" (click)="onAddProductToLocalList(poz)">
+            <button class="btn edit-product" (click)="onAddProductToLocalList(poz + (page - 1) * pageSize)">
               Dodaj
             </button>
           </li>
@@ -105,8 +105,8 @@
     </section>
 
     <section *ngIf="basketMode">
-      <app-transactions-basket [(transactionToBasket)]="transactionsToSave"
-      (mode)="basketToggle($event)"
+      <app-transactions-basket [transactionToBasket]="transactionsToSave"
+      (mode)="basketToggle()"
       ></app-transactions-basket>
     </section>
 

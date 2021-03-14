@@ -33,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransactionsBasketComponent } from './transactions/transactions-new/transactions-basket/transactions-basket.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { TransactionsBasketComponent } from './transactions/transactions-new/tra
     AuthGuard,
     AuthService,
     CatalogService,
-    ProductService
+    ProductService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

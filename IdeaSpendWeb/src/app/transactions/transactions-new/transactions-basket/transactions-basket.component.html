@@ -39,11 +39,11 @@
           </button>
         </li>
 
-        <li class="list-group-item" style="width: 350px">{{transaction.productNameFrom}}</li>
+        <li class="list-group-item" style="width: 350px" >{{transaction.productNameFrom}}</li>
         <li class="list-group-item pl-5" style="width: 80px">{{transaction.quantity}}</li>
         <li class="list-group-item pl-5" style="width: 80px">{{transaction.weights}}</li>
         <li class="list-group-item" style="width: 80px">{{transaction.currency}}</li>
-        <li class="list-group-item pl-5 " style="width: 200px">{{transaction.transactionDate | date: 'yyyy-MM-dd'}}</li>
+        <li class="list-group-item pl-5 " style="width: 200px">{{transaction.transactionDate}}</li>
         <li class="list-group-item pl-5 " style="width: 180px">{{transaction.paid.toFixed(2)}} zł</li>
 
       </ul>
@@ -57,10 +57,5 @@
     </div>
 
   </section>
-
-
-
-
-
 
 </section>
