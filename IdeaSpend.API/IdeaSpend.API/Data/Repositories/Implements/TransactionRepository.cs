@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdeaSpend.API
@@ -30,7 +29,7 @@ namespace IdeaSpend.API
         }
 
         
-        public IQueryable GetTransactionByDate(int userId, DateTime date = default)
+        public IQueryable GetTransactionByDate(int userId, string date = default)
         {
             if (date == default)
                 date = GetDateOfLastTransaction ( userId );
@@ -38,8 +37,8 @@ namespace IdeaSpend.API
             var sqlQuery = 
                 from transaction in _dataContext.Set<TransactionEntity>()
                     .Where(i => i.UserId == userId)
-                    .Where(d => d.TransactionDate.Year == date.Year)
-                    .Where(d => d.TransactionDate.Month == date.Month)
+                    .Where(d => d.TransactionDate.Substring(0, 4) == date.Substring(0, 4))
+                    .Where(d => d.TransactionDate.Substring(5, 2) == date.Substring(5, 2))
                     .OrderByDescending ( d => d.TransactionDate )
                 join product in _dataContext.Set<ProductEntity>()
                     on transaction.ProductId equals product.ProductId into grouping
@@ -121,14 +120,14 @@ namespace IdeaSpend.API
         
         #region Private Methods
 
-        private DateTime GetDateOfLastTransaction(int userId)
+        private string GetDateOfLastTransaction(int userId)
         {
             var date = _dataContext.Transactions
                 .Where ( u => u.UserId == userId )
                 .OrderByDescending ( d => d.TransactionDate )
                 .FirstOrDefault().TransactionDate;
-
-            return date;
+            
+            return  date;
         }
         
         #endregion

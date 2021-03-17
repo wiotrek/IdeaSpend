@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -26,7 +25,7 @@ namespace IdeaSpend.API
         /// The transaction date indicates when products was bought
         /// </summary>
         [Column("data_transakcji")] 
-        public DateTime TransactionDate { get; set; }
+        public string TransactionDate { get; set; }
         
         /// <summary>
         /// The currency of the product user bought

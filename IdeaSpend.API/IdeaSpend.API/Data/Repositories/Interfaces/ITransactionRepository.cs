@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdeaSpend.API
@@ -14,7 +13,7 @@ namespace IdeaSpend.API
         /// </summary>
         Task<bool> AddTransaction(TransactionEntity transaction);
 
-        IQueryable GetTransactionByDate( int userId, DateTime date = default );
+        IQueryable GetTransactionByDate( int userId, string date = default );
         
         /// <summary>
         /// Read specify amount of the transactions

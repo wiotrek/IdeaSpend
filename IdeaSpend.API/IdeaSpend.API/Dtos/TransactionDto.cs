@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IdeaSpend.API
+﻿namespace IdeaSpend.API
 {
     /// <summary>
     /// The simplify object contain information of the <see cref="TransactionEntity"/>
@@ -24,7 +22,7 @@ namespace IdeaSpend.API
         public string Currency { get; set; }
         public int Quantity { get; set; }
         public double Weights { get; set; }
-        public DateTime TransactionDate { get; set; }
+        public string TransactionDate { get; set; }
         
         public double Paid { get; set; }
 
