@@ -55,10 +55,10 @@
             <!-- MONTHS -->
             <div class="date-and-currency-blocks dropdown">
               <p class="date-and-currency-p" data-toggle="dropdown">
-                {{months[0]}}
+                {{selectedMonth}}
               </p>
               <ul class="dropdown-menu month-list" aria-labelledby="monthsList">
-                <li class="dropdown-item " *ngFor="let item of getMonths(); index as month">{{item}}</li>
+                <li class="dropdown-item" (click)="getSelectedMonth(item)" *ngFor="let item of getMonths()">{{item}}</li>
               </ul>
             </div>
 

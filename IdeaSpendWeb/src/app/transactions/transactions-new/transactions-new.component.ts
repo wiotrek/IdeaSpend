@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Catalog } from 'src/app/_model/catalog';
 import { Product } from 'src/app/_model/product';

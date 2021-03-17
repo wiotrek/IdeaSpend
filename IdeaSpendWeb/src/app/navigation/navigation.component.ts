@@ -1,8 +1,7 @@
 /* tslint:disable */
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthService} from '../_services/auth.service';
-import {TransactionService} from '../_services/transaction.service';
 import {TransactionDateService} from '../_services/transaction-date.service';
 
 @Component({
@@ -12,6 +11,7 @@ import {TransactionDateService} from '../_services/transaction-date.service';
 })
 export class NavigationComponent implements OnInit {
 
+  selectedMonth: string;
   months: Array<string> = [];
   // The color text of the dropdown button
   activeColor: string;
@@ -22,16 +22,31 @@ export class NavigationComponent implements OnInit {
               private transactionDateService: TransactionDateService) {}
 
   ngOnInit(): void {
-    this.transactionDateService.setMonthRange();
+    this.setMonth();
     this.setColor();
-    this.months = this.transactionDateService.months;
+  }
+
+  getSelectedMonth(selected: string): void {
+      this.selectedMonth = selected;
+      localStorage.setItem('month', selected);
   }
 
   public getMonths(): Array<string> {
-
+    this.months = this.transactionDateService.setMonthRange();
     return this.months;
   }
 
+  // Setting month on each page when user is
+  public setMonth(): void {
+    // If no one user select month then set month of last active transaction
+    if (localStorage.getItem('month') === null)
+      this.selectedMonth = 'Styczeń';
+    // otherwise retrieve month from local storage
+    else
+      this.selectedMonth = localStorage.getItem('month');
+  }
+
+  //TODO: Good bye
   public years: Array<number> = [
     2021, 2020
   ];

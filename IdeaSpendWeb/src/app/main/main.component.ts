@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {TransactionService} from '../_services/transaction.service';
 import {Transaction} from '../_model/transaction';
@@ -11,7 +11,6 @@ import {Transaction} from '../_model/transaction';
 export class MainComponent implements OnInit {
 
   transactions: Transaction[];
-
   // TODO: change font family for information inside square
 
   greenTriangleImage = '../assets/main/green-triangle.png';
