@@ -22,6 +22,8 @@ namespace IdeaSpend.API
         /// <returns></returns>
         IQueryable GetTopNTransactions( int userId, int amount );
 
+        string[] GetRangeDate( int userId );
+
         IQueryable GetTransactionBySeller( int userId, string seller );
     }
 }
