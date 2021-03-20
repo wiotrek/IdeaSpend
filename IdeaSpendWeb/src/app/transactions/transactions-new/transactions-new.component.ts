@@ -99,7 +99,6 @@ export class TransactionsNewComponent implements OnInit {
     if (this.selectedCatalog !== 'Wybierz katalog'){
 
       // fill list with products which have this category
-
       this.productService.getUserProducts(this.authService.decodedToken.nameid)
       .subscribe((products: Product[]) => {
         this.products = products.filter(c => c.catalogName === this.selectedCatalog);

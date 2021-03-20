@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {AuthService} from '../_services/auth.service';
 import {TransactionDateService} from '../_services/transaction-date.service';
 import {MonthMapper} from '../_mappers/month-mapper';
+import {TransactionService} from '../_services/transaction.service';
 
 @Component({
   selector: 'app-navigation',
@@ -12,19 +13,18 @@ import {MonthMapper} from '../_mappers/month-mapper';
 })
 export class NavigationComponent implements OnInit {
 
-  // Full represent data with format yyyy-MM-dd
+  // Full represent data with format yyyy-MM-dd. This store first and last transaction user made
   dateTransaction: string[] = [];
-
   selectedMonth: string;
   selectedYear: string;
-  months: Array<string> = [];
-  years: Array<string> = ['2020'];
+
   // The color text of the dropdown button
   activeColor: string;
   logoImage = '../assets/logo/Logo-mini.png';
 
   constructor(private router: Router,
               public authService: AuthService,
+              private transactionService: TransactionService,
               private transactionDateService: TransactionDateService) {}
 
   ngOnInit(): void {
@@ -56,8 +56,7 @@ export class NavigationComponent implements OnInit {
 
   // Load available months on specify year to select by user
   getMonths(): Array<string> {
-    this.months = this.transactionDateService.setMonthRange();
-    return this.months;
+    return this.transactionDateService.setMonthRange();
   }
 
   // Setting selected month on each page when user is

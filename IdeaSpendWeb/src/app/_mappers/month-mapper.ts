@@ -47,4 +47,50 @@ export class MonthMapper {
 
     return monthWord;
   }
+
+  // Convert back word month format to number like 'Marzec' => '03'
+  wordToNumber(month: string) :string{
+    let number: string;
+
+    switch(month) {
+      case 'Styczeń':
+        number = '01';
+        break;
+      case 'Luty':
+        number = '02';
+        break;
+      case 'Marzec':
+        number = '03';
+        break;
+      case 'Kwiecień':
+        number = '04';
+        break;
+      case 'Maj':
+        number = '05';
+        break;
+      case 'Czerwiec':
+        number = '06';
+        break;
+      case 'Lipiec':
+        number = '07';
+        break;
+      case 'Sierpień':
+        number = '08';
+        break;
+      case 'Wrzesień':
+        number = '09';
+        break;
+      case 'Październik':
+        number = '10';
+        break;
+      case 'Listopad':
+        number = '11';
+        break;
+      case 'Grudzień':
+        number = '12';
+        break;
+    }
+
+    return number;
+  }
 }
