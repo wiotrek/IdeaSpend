@@ -65,10 +65,10 @@
             <!-- YEARS -->
             <div class="date-and-currency-blocks dropdown">
               <p class="date-and-currency-p" data-toggle="dropdown">
-                {{years[0]}}
+                {{selectedYear}}
               </p>
               <ul class="dropdown-menu" aria-labelledby="yearsList">
-                <li class="dropdown-item" *ngFor="let item of years">{{item}}</li>
+                <li class="dropdown-item" (click)="getSelectedYear(item.toString())" *ngFor="let item of getYears()">{{item}}</li>
               </ul>
             </div>
 
