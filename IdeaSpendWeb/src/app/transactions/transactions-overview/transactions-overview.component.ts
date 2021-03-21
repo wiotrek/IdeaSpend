@@ -24,6 +24,7 @@ export class TransactionsOverviewComponent implements OnInit {
 
   // Initialize transactions by date on load page or after every changes date from navigation
   loadTransactions(): void {
+    this.page = 1;
     let selectedDate: string
     let convertBack = new MonthMapper();
 
